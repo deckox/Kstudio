@@ -1,0 +1,63 @@
+﻿@model Kstudio_v2.Models.Cliente
+
+@{
+    ViewBag.Title = "Cadastro";
+
+}
+
+@section Scripts{
+    <script type="text/javascript" src='@Url.Content("~/Scripts/Clientes/cadastro.js?v" + DateTime.Now.ToLongTimeString())' asp-append-version="true"></script>
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+
+    @Html.Raw(ViewData["mensagem"] ?? "")
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="topnav">
+        <a href="~/Views/Clientes/Cadastro.cshtml</a>
+        <a href="~/Views/Clientes/Comanda.cshtml">Comanda</a>
+        <a href="~/Views/Clientes/Pesquisa.cshtml">Pesquisa</a>
+        <a class="active" href="~/Views/Clientes/Estoque.cshtml>Estoque</a>
+        <a href="#about">Site</a>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Banda, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Banda, new { htmlAttributes = new { @class = "form-control", @placeholder = "Ex: Banda,Cantor" } })
+            @Html.ValidationMessageFor(model => model.Banda, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Responsavel, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Responsavel, new { htmlAttributes = new { @class = "form-control", @placeholder = "Ex: Nome do responsável" } })
+            @Html.ValidationMessageFor(model => model.Responsavel, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Salvar" class="btn btn-default" />
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="reset" value="Limpar" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+   @*@Html.ActionLink("Back to List", "Index")*@
+</div>
+
+

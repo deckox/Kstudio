@@ -1,0 +1,98 @@
+﻿@model Kstudio_v2.Models.PesquisaCliente
+
+
+@{
+    ViewBag.Title = "Pesquisa";
+}
+
+
+    <div class="form-horizontal">
+
+        @Html.Raw(ViewData["mensagem"] ?? "")
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="topnav">
+            <a href="~/Views/Clientes/Cadastro.cshtml">Cadastro</a>
+            <a href="~/Views/Clientes/Comanda.cshtml">Comanda</a>
+            <a class="active" href="~/Views/Clientes/Pesquisa">Pesquisa</a>
+            <a href="~/Views/Clientes/Estoque.cshtml">Estoque</a>
+            <a href="#about">Site</a>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.LabelPesquisaComanda, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ProcuraPor, new { htmlAttributes = new { @class = "form-control", @placeholder = "Ex: Banda(Cantor),Responsavel,Email e Telefone" } })
+                @Html.ValidationMessageFor(model => model.ProcuraPor, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Salvar" class="btn btn-default" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="reset" value="Limpar" class="btn btn-default" />
+            </div>
+        </div>
+
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ResultadoCliente.Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ResultadoCliente.Banda)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ResultadoCliente.Responsavel)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ResultadoCliente.EstiloMusical)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ResultadoCliente.Email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ResultadoCliente.Telefone)
+                </th>
+                <th></th>
+            </tr>
+
+            @*@foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Banda)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Responsavel)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EstiloMusical)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Telefone)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    </td>
+                </tr>
+            }*@
+        </table>
+
+    </div>
+
+<div>
+    @*@Html.ActionLink("Back to List", "Index")*@
+</div>
+
+

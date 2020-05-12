@@ -1,0 +1,26 @@
+﻿@model IEnumerable<Kstudio_v2.Models.Contato>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <table>
+        @foreach (var contato in Model)
+        {
+            <tr>
+                <td>@contato.IdContato</td>
+                <td>@contato.Nome</td>
+                <td>@contato.Email</td>
+            </tr>
+        }
+    </table>
+</body>
+</html>
