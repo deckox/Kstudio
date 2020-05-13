@@ -6,7 +6,7 @@ using System.Web;
 
 namespace Kstudio_v2.Models
 {
-    public class PesquisaCliente : Cliente
+    public class PesquisaCliente
     {
         [Display(Name = "Procure por banda,responsavel,email ou telefone")]
         public string LabelPesquisaComanda { get; set; }
