@@ -56,15 +56,15 @@ namespace Kstudio_v2.Controllers
         // GET: Clientes/Details/5
         public ActionResult Pesquisa()
         {
-            var clientesRepository = new ClientesRepository();
-            var result = clientesRepository.Listar();
-
-            return View(result);
+            var model = new PesquisaCliente();
+            return View(model);
         }
 
         [HttpPost]
         public ActionResult Pesquisa(PesquisaCliente cliente)
         {
+            var clientesRepository = new ClientesRepository();
+            var result = clientesRepository.ListaCliente(cliente);
             cliente.Resultado = result;
             return View(cliente);
 
