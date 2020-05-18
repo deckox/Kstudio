@@ -29,8 +29,7 @@ namespace Kstudio_v2.Controllers
         public ActionResult Cadastro(Cliente cliente)
         {
             var clientesRepository = new ClientesRepository();
-            var duplicatedClienteResult = clientesRepository.MostraClienteDuplicado(cliente);
-            var isClienteDuplicated = clientesRepository.IsClienteDuplicated(cliente); 
+            var isClienteDuplicated = clientesRepository.IsClienteDuplicated(cliente);
             var result = clientesRepository.Salvar(cliente);
 
 
@@ -41,13 +40,15 @@ namespace Kstudio_v2.Controllers
 
             else if (isClienteDuplicated == true)
             {
+                var duplicatedClienteResult = clientesRepository.MostraClienteDuplicado(cliente);
+
                 ViewData["mensagem"] = "<h3> Cliente já existe: " + duplicatedClienteResult.Banda + " " + duplicatedClienteResult.Responsavel
                     + " " + duplicatedClienteResult.Email + " " + duplicatedClienteResult.Telefone + ", Favor verificar </h3>"; 
             }
 
-            else
+            else 
             {
-                ViewData["mensagem"] = "<h3> Preencher os seguintes campos: Banda, Responsavel, Email e Telefone </h3>"; 
+                ViewData["mensagem"] = "<h3> Nenhum campo pode estar vazio ou em branco, favor preencher os seguintes campos: Banda, Responsavel, Email e Telefone </h3>"; 
             }
            
             return View(cliente);
@@ -56,7 +57,11 @@ namespace Kstudio_v2.Controllers
         // GET: Clientes/Details/5
         public ActionResult Pesquisa()
         {
+            var clientesRepository = new ClientesRepository();
+            var result = clientesRepository.Listar();
+
             var model = new PesquisaCliente();
+            model.Resultado = result;
             return View(model);
         }
 
@@ -64,10 +69,9 @@ namespace Kstudio_v2.Controllers
         public ActionResult Pesquisa(PesquisaCliente cliente)
         {
             var clientesRepository = new ClientesRepository();
-            var result = clientesRepository.ListaCliente(cliente);
+            var result = clientesRepository.ListarClientesDoCampoPesquisa(cliente);
             cliente.Resultado = result;
             return View(cliente);
-
         }
         // GET: Clientes/Details/5
         public ActionResult Comanda()
@@ -79,13 +83,13 @@ namespace Kstudio_v2.Controllers
         public ActionResult Comanda(Cliente cliente)
         {
             var clientesRepository = new ClientesRepository();
-            var validateCliente = clientesRepository.IsAnyClienteNullOrEmpty(cliente);
+          //  var validateCliente = clientesRepository.IsAnyClienteNullOrEmpty(cliente);
             Cliente result = null;
            
-            if (validateCliente == true)
+       /*     if (validateCliente == true)
             {
                 ViewData["mensagem"] = "<h3> Não Existe nenhuma informação cadastrada </h3>";
-            }
+            }*/
 
             //else
             //{

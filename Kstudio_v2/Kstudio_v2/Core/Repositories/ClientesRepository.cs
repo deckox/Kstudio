@@ -26,16 +26,11 @@ namespace Kstudio_v2.Core.Repositories
 
         public bool Salvar(Cliente cliente)
         {
-            var validateCliente = IsAnyClienteNullOrEmpty(cliente);
             var validateField = IsAnyFieldOnCadastroNullOrEmpty(cliente);
             var validateClienteDuplicated = IsClienteDuplicated(cliente);
 
-            if (validateCliente == true)
-            {
-                return false;
-            }
 
-            else if (validateField == true)
+            if (validateField == true)
             {
                 return false;
             }
@@ -107,17 +102,18 @@ namespace Kstudio_v2.Core.Repositories
             return result;
         }
 
-        public Cliente ListaCliente(PesquisaCliente resultado)
+        public List<Cliente> ListarClientesDoCampoPesquisa(PesquisaCliente resultado)
         {
-            Cliente result = null;
+            Cliente cliente = null;
             var listaDeClientes = Listar();
+            var result = new List<Cliente>();
 
             for (int i = 0; i < listaDeClientes.Count; i++)
             {
-                if (listaDeClientes[i].Banda.Equals(resultado.ProcuraPor) || listaDeClientes[i].Responsavel.Equals(resultado.ProcuraPor)
-                || listaDeClientes[i].Email.Equals(resultado.ProcuraPor) || listaDeClientes[i].Telefone.Equals(resultado.ProcuraPor))
+                if (listaDeClientes[i].Banda.Contains(resultado.ProcuraPor.ToLower()) || listaDeClientes[i].Responsavel.Contains(resultado.ProcuraPor.ToLower())
+                || listaDeClientes[i].Email.Contains(resultado.ProcuraPor.ToLower()) || listaDeClientes[i].Telefone.Contains(resultado.ProcuraPor.ToLower()))
                 {
-                    result = new Cliente()
+                    cliente = new Cliente()
                     {
                         Id = listaDeClientes[i].Id,
                         Banda = listaDeClientes[i].Banda.ToString(),
@@ -127,7 +123,7 @@ namespace Kstudio_v2.Core.Repositories
                         Telefone = listaDeClientes[i].Telefone.ToString(),
                     };
 
-                    break;
+                    result.Add(cliente);
                 }
             }
 
@@ -141,7 +137,7 @@ namespace Kstudio_v2.Core.Repositories
 
             for (int i = 0; i < listaDeClientes.Count; i++)
             {
-                if (listaDeClientes[i].Banda.Equals(cliente.Banda) || listaDeClientes[i].Email.Equals(cliente.Email) || listaDeClientes[i].Telefone.Equals(cliente.Telefone))
+                if (listaDeClientes[i].Banda.Equals(cliente.Banda) && listaDeClientes[i].Email.Equals(cliente.Email) && listaDeClientes[i].Telefone.Equals(cliente.Telefone))
                 {
                     result = new Cliente()
                     {
@@ -158,23 +154,23 @@ namespace Kstudio_v2.Core.Repositories
             return result;
         }
 
-        public bool IsAnyClienteNullOrEmpty(Cliente cliente)
-        {
+        //public bool IsAnyClienteNullOrEmpty(Cliente cliente)
+        //{
            
-            if (cliente.Banda == null && cliente.Responsavel == null &&
-                cliente.Email == null && cliente.Telefone == null)
-            {
-                return true;
-            }
+        //    if (cliente.Banda == null && cliente.Responsavel == null &&
+        //        cliente.Email == null && cliente.Telefone == null)
+        //    {
+        //        return true;
+        //    }
 
-            else if (cliente.Banda == string.Empty && cliente.Responsavel == string.Empty &&
-                cliente.Email == string.Empty && cliente.Telefone == string.Empty)
-            {
-                return true;
-            }
+        //    else if (cliente.Banda == string.Empty && cliente.Responsavel == string.Empty &&
+        //        cliente.Email == string.Empty && cliente.Telefone == string.Empty)
+        //    {
+        //        return true;
+        //    }
 
-            return false;
-        }
+        //    return false;
+        //}
 
         public bool IsClienteDuplicated(Cliente cliente)
         {
@@ -182,7 +178,7 @@ namespace Kstudio_v2.Core.Repositories
 
             for (int i = 0; i < listaDeClientes.Count; i++)
             {
-                if (listaDeClientes[i].Banda.Equals(cliente.Banda) || listaDeClientes[i].Email.Equals(cliente.Email) || listaDeClientes[i].Telefone.Equals(cliente.Telefone))
+                if (listaDeClientes[i].Banda.Equals(cliente.Banda.ToLower()) && listaDeClientes[i].Email.Equals(cliente.Email.ToLower()) && listaDeClientes[i].Telefone.Equals(cliente.Telefone.ToLower()))
                 {
                     result = new Cliente()
                     {
@@ -205,6 +201,12 @@ namespace Kstudio_v2.Core.Repositories
         {
             if (cliente.Banda == null || cliente.Responsavel == null ||
                 cliente.Email == null || cliente.Telefone == null)
+            {
+                return true;
+            }
+
+            else if (cliente.Banda == string.Empty || cliente.Responsavel == string.Empty ||
+               cliente.Email == string.Empty || cliente.Telefone == string.Empty)
             {
                 return true;
             }

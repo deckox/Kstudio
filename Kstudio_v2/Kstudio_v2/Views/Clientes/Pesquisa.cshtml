@@ -44,46 +44,46 @@
         <table class="table">
             <tr>
                 <th>
-                    @Html.DisplayTextFor(model => model.Resultado.Id)
+                    @Html.DisplayNameFor(model => model.ResultadoCliente.Id)
                 </th>
                 <th>
-                    @Html.DisplayTextFor(model => model.Resultado.Banda)
+                    @Html.DisplayNameFor(model => model.ResultadoCliente.Banda)
                 </th>
                 <th>
-                    @Html.DisplayTextFor(model => model.Resultado.Responsavel)
+                    @Html.DisplayNameFor(model => model.ResultadoCliente.Responsavel)
                 </th>
                 <th>
-                    @Html.DisplayTextFor(model => model.Resultado.EstiloMusical)
+                    @Html.DisplayNameFor(model => model.ResultadoCliente.EstiloMusical)
                 </th>
                 <th>
-                    @Html.DisplayTextFor(model => model.Resultado.Email)
+                    @Html.DisplayNameFor(model => model.ResultadoCliente.Email)
                 </th>
                 <th>
-                    @Html.DisplayTextFor(model => model.Resultado.Telefone)
+                    @Html.DisplayNameFor(model => model.ResultadoCliente.Telefone)
                 </th>
                 <th></th>
             </tr>
 
-            @*@foreach (var item in Model)
+            @foreach (var item in Model.Resultado)
                 {
                     <tr>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Id)
+                            @Html.DisplayTextFor(modelitem => item.Id)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Banda)
+                            @Html.DisplayTextFor(modelItem => item.Banda)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Responsavel)
+                            @Html.DisplayTextFor(modelItem => item.Responsavel)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.EstiloMusical)
+                            @Html.DisplayTextFor(modelItem => item.EstiloMusical)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Email)
+                            @Html.DisplayTextFor(modelItem => item.Email)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Telefone)
+                            @Html.DisplayTextFor(modelItem => item.Telefone)
                         </td>
                         <td>
                             @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
@@ -91,7 +91,7 @@
                             @Html.ActionLink("Delete", "Delete", new { id = item.Id })
                         </td>
                     </tr>
-                }*@
+                }
         </table>
 
     </div>

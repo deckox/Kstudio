@@ -13,6 +13,6 @@ namespace Kstudio_v2.Models
         public string ProcuraPor { get; set; }
 
         public Cliente ResultadoCliente { get; set; }
-        public Cliente Resultado { get; set; }
+        public List<Cliente> Resultado { get; set; }
     }
 }
