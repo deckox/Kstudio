@@ -30,31 +30,45 @@ namespace Kstudio_v2.Controllers
         {
             var clientesRepository = new ClientesRepository();
             var isClienteDuplicated = clientesRepository.IsClienteDuplicated(cliente);
-            var result = clientesRepository.Salvar(cliente);
+            bool result;
 
-
-            if (result == true)
+            if (isClienteDuplicated == true)
             {
-                ViewData["mensagem"] = "<h3> Cliente cadastrado com sucesso!</h3>";
+                 var showDuplicatedCliente = clientesRepository.MostraClienteDuplicado(cliente);
+
+                ViewData["mensagem"] = "<h3> Cliente existente: " + showDuplicatedCliente.Banda + " " + showDuplicatedCliente.Responsavel
+                    + " " + showDuplicatedCliente.Email + " " + showDuplicatedCliente.Telefone + ", Favor verificar </h3>"; 
             }
 
-            else if (isClienteDuplicated == true)
+            else
             {
-                var duplicatedClienteResult = clientesRepository.MostraClienteDuplicado(cliente);
+                result = clientesRepository.Salvar(cliente);
 
-                ViewData["mensagem"] = "<h3> Cliente já existe: " + duplicatedClienteResult.Banda + " " + duplicatedClienteResult.Responsavel
-                    + " " + duplicatedClienteResult.Email + " " + duplicatedClienteResult.Telefone + ", Favor verificar </h3>"; 
-            }
+                if (result == true)
+                {
+                    ViewData["mensagem"] = "<h3> Cliente cadastrado com sucesso!</h3>";
+                }
 
-            else 
-            {
-                ViewData["mensagem"] = "<h3> Nenhum campo pode estar vazio ou em branco, favor preencher os seguintes campos: Banda, Responsavel, Email e Telefone </h3>"; 
+                else
+                {
+                    ViewData["mensagem"] = "<h3> Nenhum campo pode estar vazio ou em branco, favor preencher os seguintes campos: Banda, Responsavel, Email e Telefone </h3>";
+                }
+
             }
-           
+ 
             return View(cliente);
         }
 
-        // GET: Clientes/Details/5
+        // GET: Usuarios/Details/5
+        public ActionResult Details(int id)
+        {
+            var clientesRepository = new ClientesRepository();
+            var cliente = clientesRepository.Carregar(id);
+            return View(cliente);
+        }
+
+
+        // GET: Clientes/Pesquisa/5
         public ActionResult Pesquisa()
         {
             var clientesRepository = new ClientesRepository();
@@ -144,8 +158,19 @@ namespace Kstudio_v2.Controllers
             try
             {
                 var clientesRepository = new ClientesRepository();
-                clientesRepository.Salvar(cliente);
-                return RedirectToAction("Index");
+                var result = clientesRepository.Salvar(cliente);
+                
+                if (result == true)
+                {
+                    ViewData["mensagem"] = "<h3> Cliente alterado com sucesso!</h3>";
+                }
+
+                else
+                {
+                    ViewData["mensagem"] = "<h3> Ocorreu um erro, " + "result da query = " + result + "</h3>";
+                }
+               
+                return View();
             }
             catch
             {

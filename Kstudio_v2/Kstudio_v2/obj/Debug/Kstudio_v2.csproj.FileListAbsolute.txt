@@ -315,8 +315,8 @@ C:\Users\decko\Dropbox\Workspace\Kstudio_v2\Kstudio_v2\bin\System.Web.WebPages.D
 C:\Users\decko\Dropbox\Workspace\Kstudio_v2\Kstudio_v2\bin\System.Web.WebPages.Razor.xml
 C:\Users\decko\Dropbox\Workspace\Kstudio_v2\Kstudio_v2\bin\System.Web.Optimization.xml
 C:\Users\decko\Dropbox\Workspace\Kstudio_v2\Kstudio_v2\bin\Newtonsoft.Json.xml
+C:\Users\decko\Dropbox\Workspace\Kstudio_v2\Kstudio_v2\obj\Debug\Kstudio_v2.csprojAssemblyReference.cache
 C:\Users\decko\Dropbox\Workspace\Kstudio_v2\Kstudio_v2\obj\Debug\Kstudio_v2.csproj.CoreCompileInputs.cache
 C:\Users\decko\Dropbox\Workspace\Kstudio_v2\Kstudio_v2\obj\Debug\Kstudio_v2.csproj.CopyComplete
 C:\Users\decko\Dropbox\Workspace\Kstudio_v2\Kstudio_v2\obj\Debug\Kstudio_v2.dll
 C:\Users\decko\Dropbox\Workspace\Kstudio_v2\Kstudio_v2\obj\Debug\Kstudio_v2.pdb
-C:\Users\decko\Dropbox\Workspace\Kstudio_v2\Kstudio_v2\obj\Debug\Kstudio_v2.csprojAssemblyReference.cache

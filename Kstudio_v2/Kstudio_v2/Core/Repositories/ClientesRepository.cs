@@ -16,7 +16,7 @@ namespace Kstudio_v2.Core.Repositories
         private const string Sql_Delete = "DELETE from Clientes WHERE Id = {0}";
         private const string Sql_Select = "SELECT * from Clientes";
         private const string Sql_SelectOne = "SELECT * from Clientes WHERE Id={0}";
-        Cliente result = null;
+       // Cliente result = null;
 
         public bool Excluir(int id)
         {
@@ -27,15 +27,8 @@ namespace Kstudio_v2.Core.Repositories
         public bool Salvar(Cliente cliente)
         {
             var validateField = IsAnyFieldOnCadastroNullOrEmpty(cliente);
-            var validateClienteDuplicated = IsClienteDuplicated(cliente);
-
 
             if (validateField == true)
-            {
-                return false;
-            }
-
-            else if (validateClienteDuplicated == true)
             {
                 return false;
             }
@@ -46,7 +39,7 @@ namespace Kstudio_v2.Core.Repositories
                 if (cliente.Id == 0) //Se o Id for 0 o usuario e Novo, entao deve Inserir
                     sql = string.Format(Sql_Insert, cliente.Banda, cliente.Responsavel, cliente.EstiloMusical, cliente.Email, cliente.Telefone);
                 else //Usuario com Id entao os dados devem ser alterados
-                    sql = string.Format(Sql_Update, cliente.Banda, cliente.Responsavel, cliente.EstiloMusical, cliente.Email, cliente.Telefone);
+                    sql = string.Format(Sql_Update, cliente.Id, cliente.Banda, cliente.Responsavel, cliente.EstiloMusical, cliente.Email, cliente.Telefone);
 
                 var result = ExecuteCommand(sql);
                 return result;
@@ -137,7 +130,9 @@ namespace Kstudio_v2.Core.Repositories
 
             for (int i = 0; i < listaDeClientes.Count; i++)
             {
-                if (listaDeClientes[i].Banda.Equals(cliente.Banda) && listaDeClientes[i].Email.Equals(cliente.Email) && listaDeClientes[i].Telefone.Equals(cliente.Telefone))
+                if (listaDeClientes[i].Banda.Equals(cliente.Banda.ToLower()) && 
+                    listaDeClientes[i].Email.Equals(cliente.Email.ToLower()) && listaDeClientes[i].Telefone.Equals(cliente.Telefone.ToLower()))
+
                 {
                     result = new Cliente()
                     {
@@ -148,6 +143,7 @@ namespace Kstudio_v2.Core.Repositories
                         EstiloMusical = listaDeClientes[i].EstiloMusical.ToString(),
                         Telefone = listaDeClientes[i].Telefone.ToString(),
                     };
+                    break;
                 }
             }
 
@@ -174,11 +170,13 @@ namespace Kstudio_v2.Core.Repositories
 
         public bool IsClienteDuplicated(Cliente cliente)
         {
+            Cliente result = null;
             var listaDeClientes = Listar();
 
             for (int i = 0; i < listaDeClientes.Count; i++)
             {
-                if (listaDeClientes[i].Banda.Equals(cliente.Banda.ToLower()) && listaDeClientes[i].Email.Equals(cliente.Email.ToLower()) && listaDeClientes[i].Telefone.Equals(cliente.Telefone.ToLower()))
+                if (listaDeClientes[i].Banda.Equals(cliente.Banda.ToLower()) &&
+                    listaDeClientes[i].Email.Equals(cliente.Email.ToLower()) && listaDeClientes[i].Telefone.Equals(cliente.Telefone.ToLower()))
                 {
                     result = new Cliente()
                     {
