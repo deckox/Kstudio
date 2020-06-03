@@ -97,30 +97,42 @@ namespace Kstudio_v2.Core.Repositories
 
         public List<Cliente> ListarClientesDoCampoPesquisa(PesquisaCliente resultado)
         {
+            var validateField = IsAnyFieldOnPesquisaNullOrEmpty(resultado);
             Cliente cliente = null;
-            var listaDeClientes = Listar();
+          
             var result = new List<Cliente>();
 
-            for (int i = 0; i < listaDeClientes.Count; i++)
+            if (validateField == true)
             {
-                if (listaDeClientes[i].Banda.Contains(resultado.ProcuraPor.ToLower()) || listaDeClientes[i].Responsavel.Contains(resultado.ProcuraPor.ToLower())
-                || listaDeClientes[i].Email.Contains(resultado.ProcuraPor.ToLower()) || listaDeClientes[i].Telefone.Contains(resultado.ProcuraPor.ToLower()))
-                {
-                    cliente = new Cliente()
-                    {
-                        Id = listaDeClientes[i].Id,
-                        Banda = listaDeClientes[i].Banda.ToString(),
-                        Responsavel = listaDeClientes[i].Responsavel.ToString(),
-                        Email = listaDeClientes[i].Email.ToString(),
-                        EstiloMusical = listaDeClientes[i].EstiloMusical.ToString(),
-                        Telefone = listaDeClientes[i].Telefone.ToString(),
-                    };
+                return result;
+            }
+           
+            else
+            {
+                var listaDeClientes = Listar();
 
-                    result.Add(cliente);
+                for (int i = 0; i < listaDeClientes.Count; i++)
+                {
+                    if (listaDeClientes[i].Banda.Contains(resultado.ProcuraPor.ToLower()) || listaDeClientes[i].Responsavel.Contains(resultado.ProcuraPor.ToLower())
+                    || listaDeClientes[i].Email.Contains(resultado.ProcuraPor.ToLower()) || listaDeClientes[i].Telefone.Contains(resultado.ProcuraPor.ToLower()))
+                    {
+                        cliente = new Cliente()
+                        {
+                            Id = listaDeClientes[i].Id,
+                            Banda = listaDeClientes[i].Banda.ToString(),
+                            Responsavel = listaDeClientes[i].Responsavel.ToString(),
+                            Email = listaDeClientes[i].Email.ToString(),
+                            EstiloMusical = listaDeClientes[i].EstiloMusical.ToString(),
+                            Telefone = listaDeClientes[i].Telefone.ToString(),
+                        };
+
+                        result.Add(cliente);
+                    }
                 }
+
+                return result;
             }
 
-            return result;
         }
 
         public Cliente MostraClienteDuplicado(Cliente cliente)
@@ -150,23 +162,21 @@ namespace Kstudio_v2.Core.Repositories
             return result;
         }
 
-        //public bool IsAnyClienteNullOrEmpty(Cliente cliente)
-        //{
-           
-        //    if (cliente.Banda == null && cliente.Responsavel == null &&
-        //        cliente.Email == null && cliente.Telefone == null)
-        //    {
-        //        return true;
-        //    }
+        public bool IsAnyFieldOnPesquisaNullOrEmpty(PesquisaCliente cliente)
+        {
 
-        //    else if (cliente.Banda == string.Empty && cliente.Responsavel == string.Empty &&
-        //        cliente.Email == string.Empty && cliente.Telefone == string.Empty)
-        //    {
-        //        return true;
-        //    }
+            if (cliente.ProcuraPor == null)
+            {
+                return true;
+            }
 
-        //    return false;
-        //}
+            else if (cliente.ProcuraPor == string.Empty)
+            {
+                return true;
+            }
+
+            return false;
+        }
 
         public bool IsClienteDuplicated(Cliente cliente)
         {
