@@ -34,7 +34,7 @@ namespace Kstudio_v2.Controllers
 
             if (isClienteDuplicated == true)
             {
-                 var showDuplicatedCliente = clientesRepository.MostraClienteDuplicado(cliente);
+                var showDuplicatedCliente = clientesRepository.MostraClienteDuplicado(cliente);
 
                 ViewData["mensagem"] = "<h3> Cliente existente: " + showDuplicatedCliente.Banda + " " + showDuplicatedCliente.Responsavel
                     + " " + showDuplicatedCliente.Email + " " + showDuplicatedCliente.Telefone + ", Favor verificar </h3>"; 
@@ -83,22 +83,9 @@ namespace Kstudio_v2.Controllers
         public ActionResult Pesquisa(PesquisaCliente cliente)
         {
             var clientesRepository = new ClientesRepository();
-            var isClienteNull = clientesRepository.IsAnyFieldOnPesquisaNullOrEmpty(cliente);
             var result = clientesRepository.ListarClientesDoCampoPesquisa(cliente);
-
-            if (isClienteNull == true)
-            {
-                ViewData["mensagem"] = "<h3> Nenhum campo pode estar vazio ou em branco, Favor preencher a pesquisa</h3>";
-                cliente.Resultado = result;
-                return View(cliente);
-            }
-
-            else
-            {
-                cliente.Resultado = result;
-                return View(cliente);
-            }
-          
+            cliente.Resultado = result;
+            return View(cliente);
         }
         // GET: Clientes/Details/5
         public ActionResult Comanda()
