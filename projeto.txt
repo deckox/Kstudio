@@ -1,0 +1,4 @@
+- Criar Relatorios mensais e diarios
+- Criar pagina de index com todas as informacoes (relatorios, vendas no dia e etc..)
+- Criar funcao de lucro liquido no index
+- 

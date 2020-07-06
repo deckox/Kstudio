@@ -320,3 +320,4 @@ C:\Users\decko\Dropbox\Workspace\Kstudio_v2\Kstudio_v2\obj\Debug\Kstudio_v2.cspr
 C:\Users\decko\Dropbox\Workspace\Kstudio_v2\Kstudio_v2\obj\Debug\Kstudio_v2.csproj.CopyComplete
 C:\Users\decko\Dropbox\Workspace\Kstudio_v2\Kstudio_v2\obj\Debug\Kstudio_v2.dll
 C:\Users\decko\Dropbox\Workspace\Kstudio_v2\Kstudio_v2\obj\Debug\Kstudio_v2.pdb
+C:\Users\decko\Dropbox\Workspace\Kstudio_v2\Kstudio_v2\bin\Microsoft.Cci.dll

@@ -5,11 +5,17 @@ using System.Web;
 using System.Web.Mvc;
 using Kstudio_v2.Core.Repositories;
 using Kstudio_v2.Models;
+using Microsoft.Ajax.Utilities;
 
 namespace Kstudio_v2.Controllers
 {
+   
+
+
     public class ClientesController : Controller
     {
+        PesquisaCliente globalCliente;
+
         // GET: CLientes
         public ActionResult Index()
         {
@@ -84,42 +90,72 @@ namespace Kstudio_v2.Controllers
         {
             var clientesRepository = new ClientesRepository();
             var result = clientesRepository.ListarClientesDoCampoPesquisa(cliente);
+
+
             cliente.Resultado = result;
             return View(cliente);
         }
         // GET: Clientes/Details/5
         public ActionResult Comanda()
         {
-            return View(new Cliente());
+            var clientesRepository = new ClientesRepository();
+            var result = clientesRepository.Listar();
+
+            var model = new PesquisaCliente();
+            model.Resultado = result;
+            return View(model);
         }
 
         [HttpPost]
-        public ActionResult Comanda(Cliente cliente)
+        public ActionResult Comanda(PesquisaCliente cliente) 
         {
+            globalCliente = cliente;
             var clientesRepository = new ClientesRepository();
-          //  var validateCliente = clientesRepository.IsAnyClienteNullOrEmpty(cliente);
-            Cliente result = null;
-           
-       /*     if (validateCliente == true)
+            var validateCliente = clientesRepository.IsAnyFieldOnPesquisaNullOrEmpty(cliente);
+
+            if (validateCliente == true)
             {
+                var result = clientesRepository.Listar();
+                var model = new PesquisaCliente();
+                model.Resultado = result;
                 ViewData["mensagem"] = "<h3> Não Existe nenhuma informação cadastrada </h3>";
-            }*/
+                return View(model);
+            }
 
-            //else
-            //{
-            //    result = clientesRepository.ListaCliente(cliente);
+            else
+            {
+                var result = clientesRepository.ListarClientesDoCampoPesquisa(cliente);
+                cliente.Resultado = result;
 
-            //    if (result == null)
-            //    {
-            //        ViewData["mensagem"] = "<h3> Não Existe nenhuma informação cadastrada </h3>";
-            //    }
+                if (result == null)
+                {
+                    ViewData["mensagem"] = "<h3> Não Existe nenhuma informação cadastrada </h3>";
+                }
 
-            //}
-          
-           
+                return View(result);
+            }
+
  
-            return View(result);
+  
         }
+
+        public ActionResult InserirComanda(PesquisaCliente globalCliente) 
+        {   
+            var clientesRepository = new ClientesRepository();
+            var result = clientesRepository.ListarClientesDoCampoPesquisa(globalCliente);
+            globalCliente.Resultado = result;
+            return View(globalCliente);
+            
+        }
+
+        //[HttpPost]
+        //public ActionResult InserirComanda(Cliente cliente)
+        //{
+        //    var clientesRepository = new ClientesRepository();
+        //    var result = clientesRepository.ListarClientesDoCampoPesquisa(cliente);
+        //    cliente.Resultado = result;
+        //    return View(cliente);
+        //}
 
         // GET: Clientes/Create
         public ActionResult Create()

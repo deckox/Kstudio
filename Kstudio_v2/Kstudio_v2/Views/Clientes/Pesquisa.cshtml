@@ -14,11 +14,11 @@
         @Html.Raw(ViewData["mensagem"] ?? "")
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="topnav">
-            <a href="~/Views/Clientes/Cadastro.cshtml">Cadastro</a>
-            <a href="~/Views/Clientes/Comanda.cshtml">Comanda</a>
-            <a class="active" href="~/Views/Clientes/Pesquisa">Pesquisa</a>
-            <a href="~/Views/Clientes/Estoque.cshtml">Estoque</a>
-            <a href="#about">Site</a>
+            <a onclick="location.href='@Url.Action("Cadastro", "Clientes" )'">Cadastro</a>
+            <a onclick="location.href='@Url.Action("Comanda", "Clientes" )'">Comanda</a>
+            <a onclick="location.href='@Url.Action("Pesquisa", "Clientes" )'">Pesquisa</a>
+            <a onclick="location.href='@Url.Action("Estoque", "Clientes" )'">Estoque</a>
+            <a onclick="location.href='@Url.Action("Site", "Clientes" )'">Site</a>
         </div>
 
         <div class="form-group">
@@ -30,12 +30,12 @@
         </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Pesquisar" class="btn btn-default" />
+                <input type="submit" value="Pesquisar" display="inline-block" class="btn btn-default" />
             </div>
         </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="reset" value="Limpar" class="btn btn-default" />
+                <input type="reset" value="Limpar" display="inline-block" class="btn btn-default" />
             </div>
         </div>
     </div>

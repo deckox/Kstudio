@@ -98,6 +98,7 @@ namespace Kstudio_v2.Core.Repositories
         public List<Cliente> ListarClientesDoCampoPesquisa(PesquisaCliente resultado)
         {
             var validateField = IsAnyFieldOnPesquisaNullOrEmpty(resultado);
+
             Cliente cliente = null;
           
             var result = new List<Cliente>();
@@ -180,25 +181,30 @@ namespace Kstudio_v2.Core.Repositories
 
         public bool IsClienteDuplicated(Cliente cliente)
         {
-            Cliente result = null;
-            var listaDeClientes = Listar();
+           
+            var validateField = IsAnyFieldOnCadastroNullOrEmpty(cliente);
 
-            for (int i = 0; i < listaDeClientes.Count; i++)
+            if (validateField != true)
             {
-                if (listaDeClientes[i].Banda.Equals(cliente.Banda.ToLower()) &&
-                    listaDeClientes[i].Email.Equals(cliente.Email.ToLower()) && listaDeClientes[i].Telefone.Equals(cliente.Telefone.ToLower()))
+                Cliente result = null;
+                var listaDeClientes = Listar();
+                for (int i = 0; i < listaDeClientes.Count; i++)
                 {
-                    result = new Cliente()
+                    if (listaDeClientes[i].Banda.Equals(cliente.Banda.ToLower()) &&
+                        listaDeClientes[i].Email.Equals(cliente.Email.ToLower()) && listaDeClientes[i].Telefone.Equals(cliente.Telefone.ToLower()))
                     {
-                        Id = listaDeClientes[i].Id,
-                        Banda = listaDeClientes[i].Banda.ToString(),
-                        Responsavel = listaDeClientes[i].Responsavel.ToString(),
-                        Email = listaDeClientes[i].Email.ToString(),
-                        EstiloMusical = listaDeClientes[i].EstiloMusical.ToString(),
-                        Telefone = listaDeClientes[i].Telefone.ToString(),
-                    };
+                        result = new Cliente()
+                        {
+                            Id = listaDeClientes[i].Id,
+                            Banda = listaDeClientes[i].Banda.ToString(),
+                            Responsavel = listaDeClientes[i].Responsavel.ToString(),
+                            Email = listaDeClientes[i].Email.ToString(),
+                            EstiloMusical = listaDeClientes[i].EstiloMusical.ToString(),
+                            Telefone = listaDeClientes[i].Telefone.ToString(),
+                        };
 
-                    return true;
+                        return true;
+                    }
                 }
             }
 

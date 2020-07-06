@@ -35,4 +35,31 @@
         }
     }
 
+    function mostrardate() {
+
+            var date = new Date()
+            var whatYearIs = date.getFullYear()
+            var resultado = document.getElementById('eu')
+
+
+            resultado.innerHTML = 'aaaaaaaaaaaaaaa'
+            window.alert(whatYearIs)
+
+
+    }
+
+    function validarCampo() {
+
+        var banda = document.getElementById('banda')
+        var responsavel = document.getElementById('responsavel')
+        var email = document.getElementById('email')
+        var telefone = document.getElementById('telefone')
+
+        if (banda.value.length == 0 || responsavel.value.length == 0 || email.value.length == 0 || telefone.value.length == 0) {
+
+            alert("OI")
+        }
+    }
+  
+
 });

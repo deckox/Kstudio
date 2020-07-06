@@ -5,13 +5,21 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<div class="topnav">
+    <a onclick="location.href='@Url.Action("Cadastro", "Clientes" )'">Cadastro</a>
+    <a onclick="location.href='@Url.Action("Comanda", "Clientes" )'">Comanda</a>
+    <a onclick="location.href='@Url.Action("Pesquisa", "Clientes" )'">Pesquisa</a>
+    <a onclick="location.href='@Url.Action("Estoque", "Clientes" )'">Estoque</a>
+    <a onclick="location.href='@Url.Action("Site", "Clientes" )'">Site</a>
+</div>
+
 <h2>Details</h2>
 
 <div>
     <h4>Usuario</h4>
     <hr />
     <dl class="dl-horizontal">
-        
+
         <dt>
             @Html.DisplayNameFor(model => model.Banda)
         </dt>
