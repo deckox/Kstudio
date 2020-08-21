@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Cadastro";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 
 }
 
@@ -73,13 +74,13 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.Banda, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10" id="banda">
-                @Html.EditorFor(model => model.Banda, new { htmlAttributes = new { @class = "form-control", @placeholder = "Ex: Banda,Cantor" } })
+            <div class="col-md-10" >
+                @Html.EditorFor(model => model.Banda, new { htmlAttributes = new { @class = "form-control", @placeholder = "Ex: Banda,Cantor", id = "banda", pattern = "[a-zA-Z0-9 ]+" } })
                 @Html.ValidationMessageFor(model => model.Banda, "", new { @class = "text-danger" })
             </div>
             @Html.LabelFor(model => model.Responsavel, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10" id="responsavel">
-                @Html.EditorFor(model => model.Responsavel, new { htmlAttributes = new { @class = "form-control", @placeholder = "Ex: Nome do responsável" } })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Responsavel, new { htmlAttributes = new { @class = "form-control", @placeholder = "Ex: Nome do responsável", id = "responsavel", pattern = "[a-zA-Z ]+" } })
                 @Html.ValidationMessageFor(model => model.Responsavel, "", new { @class = "text-danger" })
             </div>
             @Html.LabelFor(model => model.EstiloMusical, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -88,30 +89,28 @@
                 @Html.ValidationMessageFor(model => model.EstiloMusical, "", new { @class = "text-danger" })
             </div>
             @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10" id="email">
-                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @placeholder = "Ex: Joao@brasil.com.br" } })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @placeholder = "Ex: Joao@brasil.com.br", id = "email", pattern = "[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})" } })
                 @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
             </div>
             @Html.LabelFor(model => model.Telefone, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10" id="telefone">
-                @Html.EditorFor(model => model.Telefone, new { htmlAttributes = new { @class = "form-control", @placeholder = "Ex: 11998442211" } })
-                @Html.ValidationMessageFor(model => model.Telefone, "", new { @class = "text-danger" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Telefone, new { htmlAttributes = new { @class = "form-telefone form-control", @placeholder = "Ex: 11998442211", id = "telefoneId", pattern = "[0-9]{11}" } })
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input id="salvar" type="submit" value="Salvar" onclick="validarCampo()" class="btn-default" />
+                <input id="salvar" type="submit" value="Salvar" onclick="return validarCampo()" class="btn-default" />
                 <input id="limpar" type="reset" value="Limpar" class="btn-default" />
             </div>
         </div>
     </div>
 }
 <div class="footer">
-    <footer>
-        
-         <p id="eu"> Oi eu sou o goku!</p>
- 
+    
+    <footer input id="a" type="button" onload="mostrardate()">
+        <p id="eu"> Oi eu sou o goku!</p>
     </footer>
 </div>
 

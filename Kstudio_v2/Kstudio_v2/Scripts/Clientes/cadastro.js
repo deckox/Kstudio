@@ -1,4 +1,42 @@
-﻿$(document).ready(function () {
+﻿function validarCampo() {
+
+
+    var banda = document.getElementById('banda').value;
+    var responsavel = document.getElementById('responsavel').value;
+    var email = document.getElementById('email').value;
+    var telefone = document.getElementById('telefoneId').value;
+  
+
+    if (banda == "" && responsavel == "" && email == "" && telefone == "") {
+
+        alert("Favor preencher os campos: banda,responsavel,email e telefone");
+        return false;
+    }
+
+    else {
+        return true;
+    }
+}
+
+function apenasletras(input) {
+
+}
+
+
+function mostrardate() {
+
+    var date = new Date();
+    var whatYearIs = date.getFullYear();
+    
+    window.alert(whatYearIs);
+
+    resultado.innerHTML = 'aaaaaaaaaaaaaaa';
+
+
+
+}
+ 
+$(document).ready(function () {
 
     $("#salvar").click(function () {
         var banda = $("#banda").val();
@@ -34,32 +72,5 @@
             $("#msgOk").show();
         }
     }
-
-    function mostrardate() {
-
-            var date = new Date()
-            var whatYearIs = date.getFullYear()
-            var resultado = document.getElementById('eu')
-
-
-            resultado.innerHTML = 'aaaaaaaaaaaaaaa'
-            window.alert(whatYearIs)
-
-
-    }
-
-    function validarCampo() {
-
-        var banda = document.getElementById('banda')
-        var responsavel = document.getElementById('responsavel')
-        var email = document.getElementById('email')
-        var telefone = document.getElementById('telefone')
-
-        if (banda.value.length == 0 || responsavel.value.length == 0 || email.value.length == 0 || telefone.value.length == 0) {
-
-            alert("OI")
-        }
-    }
-  
 
 });
