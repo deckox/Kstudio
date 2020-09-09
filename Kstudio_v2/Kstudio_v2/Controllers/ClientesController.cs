@@ -71,6 +71,7 @@ namespace Kstudio_v2.Controllers
             var clientesRepository = new ClientesRepository();
             var cliente = clientesRepository.Carregar(id);
             return View(cliente);
+            
         }
 
 
@@ -139,25 +140,7 @@ namespace Kstudio_v2.Controllers
   
         }
 
-        public ActionResult InserirComanda(PesquisaCliente globalCliente) 
-        {   
-            var clientesRepository = new ClientesRepository();
-            var result = clientesRepository.ListarClientesDoCampoPesquisa(globalCliente);
-            globalCliente.Resultado = result;
-            return View(globalCliente);
-            
-        }
-
-        //[HttpPost]
-        //public ActionResult InserirComanda(Cliente cliente)
-        //{
-        //    var clientesRepository = new ClientesRepository();
-        //    var result = clientesRepository.ListarClientesDoCampoPesquisa(cliente);
-        //    cliente.Resultado = result;
-        //    return View(cliente);
-        //}
-
-        // GET: Clientes/Create
+ 
         public ActionResult Create()
         {
             return View(new Cliente());

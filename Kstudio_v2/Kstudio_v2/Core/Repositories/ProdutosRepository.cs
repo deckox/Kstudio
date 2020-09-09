@@ -10,7 +10,7 @@ namespace Kstudio_v2.Core.Repositories
 {
     public class ProdutosRepository : BaseRepository
     {
-        private const string Sql_Insert = "INSERT into Produtos (Descricao,Quantidade,Estoque,Preco,ValorTotal,Data) VALUES ('{0}','{1}','{2}','{3}','{4}','{5}',{6})";
+        private const string Sql_Insert = "INSERT into Produtos (Descricao,Quantidade,Estoque,Preco,ValorTotal,Data) VALUES ('{0}','{1}','{2}','{3}','{4}','{5}')";
         private const string Sql_Update = "UPDATE Produtos SET Descricao='{1}',Quantidade='{2}',Estoque='{3}',Preco='{4}',ValorTotal='{5}',Data={6} WHERE Id = {0}";
         private const string Sql_Delete = "DELETE from Produtos WHERE Id = {0}";
         private const string Sql_Select = "SELECT * from Produtos";
@@ -25,8 +25,9 @@ namespace Kstudio_v2.Core.Repositories
         public bool Salvar(Produto produto)
         {
             var sql = "";
+            produto.Estoque = 1;
             if (produto.Id == 0) //Se o Id for 0 o produto e Novo, entao deve Inserir
-                sql = string.Format(Sql_Insert, produto.Descricao, produto.Quantidade, produto.Estoque, produto.Preco, produto.ValorTotal, produto.Data);
+                sql = string.Format(Sql_Insert, produto.Descricao, produto.Quantidade, produto.Estoque, produto.Preco, produto.ValorTotal, produto.Data = DateTime.Now);
             else //produto com Id entao os dados devem ser alterados
                 sql = string.Format(Sql_Update, produto.Descricao, produto.Quantidade, produto.Estoque, produto.Preco, produto.ValorTotal, produto.Data);
 
