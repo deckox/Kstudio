@@ -2,7 +2,13 @@
 
 @{
     ViewBag.Title = "Inserir Dados na Comanda";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 
+}
+
+@section Scripts{
+    <script type="text/javascript" src='@Url.Content("~/Scripts/Clientes/cadastro.js?v3" + DateTime.Now.ToLongTimeString())' asp-append-version="true"></script>
+    @Scripts.Render("~/bundles/jqueryval")
 }
 
 @using (Html.BeginForm())
@@ -21,7 +27,7 @@
             <a onclick="location.href='@Url.Action("Site", "Clientes" )'">Site</a>
         </div>
 
-        <table class="table">
+        @*<table class="table">
             <tr>
                 <th>
                     @Html.DisplayNameFor(model => model.Id)
@@ -39,13 +45,13 @@
                     @Html.DisplayNameFor(model => model.Preco)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Estoque)
+                    @Html.DisplayNameFor(model => model.HorasDeEnsaio)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.ValorTotal)
                 </th>
             </tr>
-        </table>
+        </table>*@
         <div class="form-group">
             @Html.LabelFor(Model => Model.Descricao, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -67,6 +73,16 @@
                 @Html.ValidationMessageFor(model => Model.Preco, "", new { @class = "text-danger" })
             </div>
         </div>
+        <div class="goku">
+
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(Model => Model.HorasDeEnsaio, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(Model => Model.HorasDeEnsaio, new { htmlAttributes = new { @class = "form-control", @placeholder = "Ex: Banda(Cantor),Responsavel,Email e Telefone" } })
+                @Html.ValidationMessageFor(Model => Model.HorasDeEnsaio, "", new { @class = "text-danger" })
+            </div>
+        </div>
         <div class="form-group">
             @Html.LabelFor(Model => Model.ValorTotal, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -77,14 +93,10 @@
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Cadastrar" class="btn btn-default" />
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
                 <input type="reset" value="Limpar" class="btn btn-default" />
+                <input type="button" value="Adicionar Campos" id="add" onclick="addFields()" />
             </div>
         </div>
-
     </div>
 }
 

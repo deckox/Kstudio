@@ -10,8 +10,8 @@ namespace Kstudio_v2.Core.Repositories
 {
     public class ProdutosRepository : BaseRepository
     {
-        private const string Sql_Insert = "INSERT into Produtos (Descricao,Quantidade,Estoque,Preco,ValorTotal,Data) VALUES ('{0}','{1}','{2}','{3}','{4}','{5}')";
-        private const string Sql_Update = "UPDATE Produtos SET Descricao='{1}',Quantidade='{2}',Estoque='{3}',Preco='{4}',ValorTotal='{5}',Data={6} WHERE Id = {0}";
+        private const string Sql_Insert = "INSERT into Produtos (Descricao,Quantidade,HorasDeEnsaio,Preco,ValorTotal,Data) VALUES ('{0}','{1}','{2}','{3}','{4}','{5}')";
+        private const string Sql_Update = "UPDATE Produtos SET Descricao='{1}',Quantidade='{2}',HorasDeEnsaio='{3}',Preco='{4}',ValorTotal='{5}',Data={6} WHERE Id = {0}";
         private const string Sql_Delete = "DELETE from Produtos WHERE Id = {0}";
         private const string Sql_Select = "SELECT * from Produtos";
         private const string Sql_SelectOne = "SELECT * from Produtos WHERE Id={0}";
@@ -25,11 +25,11 @@ namespace Kstudio_v2.Core.Repositories
         public bool Salvar(Produto produto)
         {
             var sql = "";
-            produto.Estoque = 1;
+            
             if (produto.Id == 0) //Se o Id for 0 o produto e Novo, entao deve Inserir
-                sql = string.Format(Sql_Insert, produto.Descricao, produto.Quantidade, produto.Estoque, produto.Preco, produto.ValorTotal, produto.Data = DateTime.Now);
+                sql = string.Format(Sql_Insert, produto.Descricao, produto.Quantidade, produto.HorasDeEnsaio, produto.Preco, produto.ValorTotal, produto.Data = DateTime.Now);
             else //produto com Id entao os dados devem ser alterados
-                sql = string.Format(Sql_Update, produto.Descricao, produto.Quantidade, produto.Estoque, produto.Preco, produto.ValorTotal, produto.Data);
+                sql = string.Format(Sql_Update, produto.Descricao, produto.Quantidade, produto.HorasDeEnsaio, produto.Preco, produto.ValorTotal, produto.Data);
 
             var result = ExecuteCommand(sql);
             return result;
@@ -92,7 +92,7 @@ namespace Kstudio_v2.Core.Repositories
                 Id = int.Parse(reader["Id"].ToString()),
                 Descricao = reader["Descricao"].ToString(),
                 Quantidade = int.Parse(reader["Quantidade"].ToString()),
-                Estoque = int.Parse(reader["Estoque"].ToString()),
+                HorasDeEnsaio = int.Parse(reader["HorasDeEnsaio"].ToString()),
                 Preco = int.Parse(reader["Preco"].ToString()),
                 ValorTotal = int.Parse(reader["ValorTotal"].ToString()),
                 Data = DateTime.Parse(reader["Data"].ToString())

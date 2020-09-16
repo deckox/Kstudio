@@ -35,6 +35,25 @@ function mostrardate() {
 
 
 }
+
+function addFields() {
+
+   // var ul = document.getElementById("campo");
+    var form = document.createElement("form");
+    form.setAttribute("method", "post");
+    form.setAttribute("action", "submit.php"); 
+
+    var FN = document.createElement("input");
+    FN.setAttribute("type", "text");
+    FN.setAttribute("name", "FullName");
+    FN.setAttribute("placeholder", "Full Name"); 
+
+    form.appendChild(FN);
+    document.getElementsByClassName("goku")[0]
+        .appendChild(form);
+    alert("GOKU");
+
+}
  
 $(document).ready(function () {
 
