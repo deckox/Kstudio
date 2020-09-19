@@ -469,3 +469,299 @@ C:\Users\akimura\Dropbox\Workspace\Kstudio_v2\Kstudio_v2\obj\Debug\Kstudio_v2.cs
 C:\Users\akimura\Dropbox\Workspace\Kstudio_v2\Kstudio_v2\obj\Debug\Kstudio_v2.dll
 C:\Users\akimura\Dropbox\Workspace\Kstudio_v2\Kstudio_v2\obj\Debug\Kstudio_v2.pdb
 C:\Users\akimura\Dropbox\Workspace\Kstudio_v2\Kstudio_v2\obj\Debug\Kstudio_v2.csprojAssemblyReference.cache
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\Kstudio_v2.dll.config
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\Kstudio_v2.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\Kstudio_v2.pdb
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\Microsoft.Win32.Primitives.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\netstandard.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.AppContext.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Collections.Concurrent.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Collections.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Collections.NonGeneric.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Collections.Specialized.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.ComponentModel.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.ComponentModel.EventBasedAsync.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.ComponentModel.Primitives.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.ComponentModel.TypeConverter.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Console.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Data.Common.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Diagnostics.Contracts.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Diagnostics.Debug.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Diagnostics.FileVersionInfo.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Diagnostics.Process.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Diagnostics.StackTrace.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Diagnostics.TextWriterTraceListener.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Diagnostics.Tools.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Diagnostics.TraceSource.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Diagnostics.Tracing.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Drawing.Primitives.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Dynamic.Runtime.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Globalization.Calendars.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Globalization.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Globalization.Extensions.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.IO.Compression.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.IO.Compression.ZipFile.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.IO.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.IO.FileSystem.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.IO.FileSystem.DriveInfo.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.IO.FileSystem.Primitives.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.IO.FileSystem.Watcher.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.IO.IsolatedStorage.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.IO.MemoryMappedFiles.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.IO.Pipes.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.IO.UnmanagedMemoryStream.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Linq.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Linq.Expressions.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Linq.Parallel.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Linq.Queryable.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Net.Http.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Net.NameResolution.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Net.NetworkInformation.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Net.Ping.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Net.Primitives.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Net.Requests.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Net.Security.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Net.Sockets.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Net.WebHeaderCollection.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Net.WebSockets.Client.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Net.WebSockets.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.ObjectModel.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Reflection.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Reflection.Extensions.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Reflection.Primitives.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Resources.Reader.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Resources.ResourceManager.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Resources.Writer.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Runtime.CompilerServices.VisualC.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Runtime.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Runtime.Extensions.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Runtime.Handles.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Runtime.InteropServices.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Runtime.Numerics.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Runtime.Serialization.Formatters.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Runtime.Serialization.Json.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Runtime.Serialization.Primitives.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Runtime.Serialization.Xml.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Security.Claims.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Security.Cryptography.Algorithms.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Security.Cryptography.Csp.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Security.Cryptography.Encoding.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Security.Cryptography.Primitives.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Security.Cryptography.X509Certificates.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Security.Principal.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Security.SecureString.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Text.Encoding.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Text.Encoding.Extensions.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Text.RegularExpressions.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Threading.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Threading.Overlapped.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Threading.Tasks.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Threading.Tasks.Parallel.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Threading.Thread.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Threading.ThreadPool.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Threading.Timer.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.ValueTuple.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Xml.ReaderWriter.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Xml.XDocument.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Xml.XmlDocument.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Xml.XmlSerializer.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Xml.XPath.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Xml.XPath.XDocument.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\Antlr3.Runtime.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\DocumentFormat.OpenXml.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\Elasticsearch.Net.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\EntityFramework.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\EntityFramework.SqlServer.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\Microsoft.Cci.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\Nest.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\Newtonsoft.Json.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Buffers.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Data.SQLite.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Data.SQLite.EF6.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Data.SQLite.Linq.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Diagnostics.DiagnosticSource.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.IO.Packaging.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Web.Helpers.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Web.Mvc.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Web.Optimization.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Web.Razor.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Web.WebPages.Deployment.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Web.WebPages.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Web.WebPages.Razor.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\WebGrease.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\Antlr3.Runtime.pdb
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\DocumentFormat.OpenXml.xml
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\Elasticsearch.Net.pdb
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\Elasticsearch.Net.xml
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\EntityFramework.xml
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\EntityFramework.SqlServer.xml
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\Nest.pdb
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\Nest.xml
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Buffers.xml
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Data.SQLite.xml
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Data.SQLite.dll.config
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Diagnostics.DiagnosticSource.xml
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.IO.Packaging.xml
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Web.Helpers.xml
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Web.Mvc.xml
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Web.Razor.xml
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Web.WebPages.xml
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Web.WebPages.Deployment.xml
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Web.WebPages.Razor.xml
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\System.Web.Optimization.xml
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\bin\Newtonsoft.Json.xml
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\obj\Debug\Kstudio_v2.csprojAssemblyReference.cache
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\obj\Debug\Kstudio_v2.csproj.CoreCompileInputs.cache
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\obj\Debug\Kstudio_v2.csproj.CopyComplete
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\obj\Debug\Kstudio_v2.dll
+C:\Users\orion\OneDrive\Área de Trabalho\Kstudio-master\Kstudio_v2\Kstudio_v2\obj\Debug\Kstudio_v2.pdb
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\Kstudio_v2.dll.config
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\Kstudio_v2.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\Kstudio_v2.pdb
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\Microsoft.Win32.Primitives.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\netstandard.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.AppContext.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Collections.Concurrent.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Collections.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Collections.NonGeneric.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Collections.Specialized.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.ComponentModel.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.ComponentModel.EventBasedAsync.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.ComponentModel.Primitives.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.ComponentModel.TypeConverter.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Console.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Data.Common.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Diagnostics.Contracts.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Diagnostics.Debug.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Diagnostics.FileVersionInfo.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Diagnostics.Process.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Diagnostics.StackTrace.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Diagnostics.TextWriterTraceListener.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Diagnostics.Tools.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Diagnostics.TraceSource.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Diagnostics.Tracing.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Drawing.Primitives.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Dynamic.Runtime.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Globalization.Calendars.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Globalization.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Globalization.Extensions.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.IO.Compression.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.IO.Compression.ZipFile.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.IO.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.IO.FileSystem.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.IO.FileSystem.DriveInfo.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.IO.FileSystem.Primitives.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.IO.FileSystem.Watcher.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.IO.IsolatedStorage.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.IO.MemoryMappedFiles.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.IO.Pipes.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.IO.UnmanagedMemoryStream.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Linq.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Linq.Expressions.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Linq.Parallel.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Linq.Queryable.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Net.Http.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Net.NameResolution.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Net.NetworkInformation.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Net.Ping.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Net.Primitives.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Net.Requests.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Net.Security.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Net.Sockets.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Net.WebHeaderCollection.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Net.WebSockets.Client.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Net.WebSockets.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.ObjectModel.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Reflection.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Reflection.Extensions.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Reflection.Primitives.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Resources.Reader.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Resources.ResourceManager.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Resources.Writer.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Runtime.CompilerServices.VisualC.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Runtime.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Runtime.Extensions.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Runtime.Handles.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Runtime.InteropServices.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Runtime.Numerics.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Runtime.Serialization.Formatters.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Runtime.Serialization.Json.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Runtime.Serialization.Primitives.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Runtime.Serialization.Xml.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Security.Claims.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Security.Cryptography.Algorithms.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Security.Cryptography.Csp.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Security.Cryptography.Encoding.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Security.Cryptography.Primitives.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Security.Cryptography.X509Certificates.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Security.Principal.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Security.SecureString.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Text.Encoding.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Text.Encoding.Extensions.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Text.RegularExpressions.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Threading.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Threading.Overlapped.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Threading.Tasks.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Threading.Tasks.Parallel.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Threading.Thread.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Threading.ThreadPool.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Threading.Timer.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.ValueTuple.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Xml.ReaderWriter.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Xml.XDocument.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Xml.XmlDocument.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Xml.XmlSerializer.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Xml.XPath.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Xml.XPath.XDocument.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\Antlr3.Runtime.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\DocumentFormat.OpenXml.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\Elasticsearch.Net.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\EntityFramework.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\EntityFramework.SqlServer.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\Microsoft.Cci.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\Nest.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\Newtonsoft.Json.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Buffers.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Data.SQLite.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Data.SQLite.EF6.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Data.SQLite.Linq.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Diagnostics.DiagnosticSource.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.IO.Packaging.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Web.Helpers.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Web.Mvc.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Web.Optimization.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Web.Razor.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Web.WebPages.Deployment.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Web.WebPages.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Web.WebPages.Razor.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\WebGrease.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\Antlr3.Runtime.pdb
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\DocumentFormat.OpenXml.xml
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\Elasticsearch.Net.pdb
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\Elasticsearch.Net.xml
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\EntityFramework.xml
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\EntityFramework.SqlServer.xml
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\Nest.pdb
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\Nest.xml
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Buffers.xml
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Data.SQLite.xml
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Data.SQLite.dll.config
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Diagnostics.DiagnosticSource.xml
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.IO.Packaging.xml
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Web.Helpers.xml
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Web.Mvc.xml
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Web.Razor.xml
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Web.WebPages.xml
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Web.WebPages.Deployment.xml
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Web.WebPages.Razor.xml
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\System.Web.Optimization.xml
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\bin\Newtonsoft.Json.xml
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\obj\Debug\Kstudio_v2.csprojAssemblyReference.cache
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\obj\Debug\Kstudio_v2.csproj.CoreCompileInputs.cache
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\obj\Debug\Kstudio_v2.csproj.CopyComplete
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\obj\Debug\Kstudio_v2.dll
+C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\obj\Debug\Kstudio_v2.pdb

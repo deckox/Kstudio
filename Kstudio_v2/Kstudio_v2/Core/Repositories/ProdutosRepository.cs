@@ -26,10 +26,10 @@ namespace Kstudio_v2.Core.Repositories
         {
             var sql = "";
             
-            if (produto.Id == 0) //Se o Id for 0 o produto e Novo, entao deve Inserir
-                sql = string.Format(Sql_Insert, produto.Descricao, produto.Quantidade, produto.HorasDeEnsaio, produto.Preco, produto.ValorTotal, produto.Data = DateTime.Now);
-            else //produto com Id entao os dados devem ser alterados
-                sql = string.Format(Sql_Update, produto.Descricao, produto.Quantidade, produto.HorasDeEnsaio, produto.Preco, produto.ValorTotal, produto.Data);
+           //if (produto.Id == 0) //Se o Id for 0 o produto e Novo, entao deve Inserir
+                //sql = string.Format(Sql_Insert, produto.Descricao, produto.Quantidade, produto.HorasDeEnsaio, produto.Preco, produto.ValorTotal, produto.Data = DateTime.Now);
+            //else //produto com Id entao os dados devem ser alterados
+                //sql = string.Format(Sql_Update, produto.Descricao, produto.Quantidade, produto.HorasDeEnsaio, produto.Preco, produto.ValorTotal, produto.Data);
 
             var result = ExecuteCommand(sql);
             return result;
@@ -89,11 +89,12 @@ namespace Kstudio_v2.Core.Repositories
         {
             var produto = new Produto()
             {
+               
                 Id = int.Parse(reader["Id"].ToString()),
-                Descricao = reader["Descricao"].ToString(),
-                Quantidade = int.Parse(reader["Quantidade"].ToString()),
+                //Descricao = reader["Descricao"].ToString(),
+                //Quantidade = int.Parse(reader["Quantidade"].ToString()),
                 HorasDeEnsaio = int.Parse(reader["HorasDeEnsaio"].ToString()),
-                Preco = int.Parse(reader["Preco"].ToString()),
+                //Preco = int.Parse(reader["Preco"].ToString()),
                 ValorTotal = int.Parse(reader["ValorTotal"].ToString()),
                 Data = DateTime.Parse(reader["Data"].ToString())
             };

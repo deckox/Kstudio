@@ -31,7 +31,7 @@ namespace Kstudio_v2.Controllers
 
         public ActionResult InserirComanda()
         {
-            return View();
+            return View(new Produto());
         }
 
         [HttpPost]

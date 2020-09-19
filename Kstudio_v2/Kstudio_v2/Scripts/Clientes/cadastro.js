@@ -38,20 +38,43 @@ function mostrardate() {
 
 function addFields() {
 
-   // var ul = document.getElementById("campo");
-    var form = document.createElement("form");
-    form.setAttribute("method", "post");
-    form.setAttribute("action", "submit.php"); 
 
-    var FN = document.createElement("input");
-    FN.setAttribute("type", "text");
-    FN.setAttribute("name", "FullName");
-    FN.setAttribute("placeholder", "Full Name"); 
+    var detalhe = document.createElement("div");
+    detalhe.setAttribute("name", "detalhe");
+    var detalhes = document.getElementById("detalhes");
+    var template = document.getElementById("template");
+    var index = document.getElementById("detalhes").querySelectorAll('div[name=detalhe]').length;
 
-    form.appendChild(FN);
-    document.getElementsByClassName("goku")[0]
-        .appendChild(form);
-    alert("GOKU");
+    var elDescricao = template.cloneNode(true);   
+    elDescricao.className = "form-group";
+    elDescricao.querySelector("label").innerHTML = "Descrição";
+    elDescricao.querySelector("label").setAttribute("for", "Detalhes_" + index + "__Descricao");
+    elDescricao.querySelector("input").setAttribute("name", "Detalhes[" + index + "].Descricao");
+    elDescricao.querySelector("input").id = "Detalhes_" + index + "__Descricao";
+
+    var elHora = template.cloneNode(true);
+    elHora.className = "form-group";
+    elHora.querySelector("label").innerHTML = "Quantidade";
+    elHora.querySelector("label").setAttribute("for", "Detalhes_" + index + "__Quantidade");
+    elHora.querySelector("input").setAttribute("name", "Detalhes[" + index + "].Quantidade");
+    elHora.querySelector("input").id = "Detalhes_" + index + "__Quantidade";
+
+    var elPreco = template.cloneNode(true);
+    elPreco.className = "form-group";
+    elPreco.querySelector("label").innerHTML = "Preço";
+    elPreco.querySelector("label").setAttribute("for", "Detalhes_" + index + "__Preco");
+    elPreco.querySelector("input").setAttribute("name", "Detalhes[" + index + "].Preco");
+    elPreco.querySelector("input").id = "Detalhes_" + index + "__Preco";
+
+
+    detalhe.appendChild(elDescricao);
+    detalhe.appendChild(elHora);
+    detalhe.appendChild(elPreco);
+    detalhe.appendChild(elPreco);
+    detalhes.appendChild(detalhe);
+    
+    
+
 
 }
  
