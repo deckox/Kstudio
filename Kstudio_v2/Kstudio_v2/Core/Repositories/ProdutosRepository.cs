@@ -22,7 +22,7 @@ namespace Kstudio_v2.Core.Repositories
             return ExecuteCommand(sql);
         }
 
-        public bool Salvar(Produto produto)
+        public bool Salvar(DetalheDoProduto produto)
         {
             var sql = "";
             
@@ -35,14 +35,14 @@ namespace Kstudio_v2.Core.Repositories
             return result;
         }
 
-        public Produto Carregar(int id)
+        public DetalheDoProduto Carregar(int id)
         {
             var connection = GetConnection();
             connection.Open();
             var command = new SQLiteCommand(connection);
 
             command.CommandText = string.Format(Sql_SelectOne, id);
-            var result = new Produto();
+            var result = new DetalheDoProduto();
 
             using (var reader = command.ExecuteReader())
             {
@@ -59,7 +59,7 @@ namespace Kstudio_v2.Core.Repositories
             return result;
         }
 
-        public List<Produto> Listar()
+        public List<DetalheDoProduto> Listar()
         {
             var connection = GetConnection();
             connection.Open();
@@ -67,7 +67,7 @@ namespace Kstudio_v2.Core.Repositories
 
 
             command.CommandText = Sql_Select;
-            var result = new List<Produto>();
+            var result = new List<DetalheDoProduto>();
 
             using (var reader = command.ExecuteReader())
             {
@@ -85,9 +85,9 @@ namespace Kstudio_v2.Core.Repositories
             return result;
         }
 
-        private Produto Parse(SQLiteDataReader reader)
+        private DetalheDoProduto Parse(SQLiteDataReader reader)
         {
-            var produto = new Produto()
+            var produto = new DetalheDoProduto()
             {
                
                 Id = int.Parse(reader["Id"].ToString()),
