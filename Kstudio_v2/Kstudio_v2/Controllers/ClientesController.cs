@@ -97,48 +97,48 @@ namespace Kstudio_v2.Controllers
             return View(cliente);
         }
         // GET: Clientes/Details/5
-        public ActionResult Comanda()
-        {
-            var clientesRepository = new ClientesRepository();
-            var result = clientesRepository.Listar();
+        //public ActionResult Comanda()
+        //{
+        //    var clientesRepository = new ClientesRepository();
+        //    var result = clientesRepository.Listar();
 
-            var model = new PesquisaCliente();
-            model.Resultado = result;
-            return View(model);
-        }
+        //    var model = new PesquisaCliente();
+        //    model.Resultado = result;
+        //    return View(model);
+        //}
 
-        [HttpPost]
-        public ActionResult Comanda(PesquisaCliente cliente) 
-        {
-            globalCliente = cliente;
-            var clientesRepository = new ClientesRepository();
-            var validateCliente = clientesRepository.IsAnyFieldOnPesquisaNullOrEmpty(cliente);
+        //[HttpPost]
+        //public ActionResult Comanda(PesquisaCliente cliente) 
+        //{
+        //    globalCliente = cliente;
+        //    var clientesRepository = new ClientesRepository();
+        //    var validateCliente = clientesRepository.IsAnyFieldOnPesquisaNullOrEmpty(cliente);
 
-            if (validateCliente == true)
-            {
-                var result = clientesRepository.Listar();
-                var model = new PesquisaCliente();
-                model.Resultado = result;
-                ViewData["mensagem"] = "<h3> Não Existe nenhuma informação cadastrada </h3>";
-                return View(model);
-            }
+        //    if (validateCliente == true)
+        //    {
+        //        var result = clientesRepository.Listar();
+        //        var model = new PesquisaCliente();
+        //        model.Resultado = result;
+        //        ViewData["mensagem"] = "<h3> Não Existe nenhuma informação cadastrada </h3>";
+        //        return View(model);
+        //    }
 
-            else
-            {
-                var result = clientesRepository.ListarClientesDoCampoPesquisa(cliente);
-                cliente.Resultado = result;
+        //    else
+        //    {
+        //        var result = clientesRepository.ListarClientesDoCampoPesquisa(cliente);
+        //        cliente.Resultado = result;
 
-                if (result == null)
-                {
-                    ViewData["mensagem"] = "<h3> Não Existe nenhuma informação cadastrada </h3>";
-                }
+        //        if (result == null)
+        //        {
+        //            ViewData["mensagem"] = "<h3> Não Existe nenhuma informação cadastrada </h3>";
+        //        }
 
-                return View(result);
-            }
+        //        return View(result);
+        //    }
 
  
   
-        }
+        //}
 
  
         public ActionResult Create()
@@ -213,7 +213,7 @@ namespace Kstudio_v2.Controllers
                 var clientesRepository = new ClientesRepository();
                 clientesRepository.Excluir(id);
 
-                return RedirectToAction("Pesquisa");
+                return RedirectToAction("Index");
             }
             catch
             {
