@@ -11,6 +11,7 @@ namespace Kstudio_v2.Models
         public string Nome { get; set; }
         public decimal PrecoDeCusto { get; set; }
         public decimal PrecoDeVenda { get; set; }
+        public decimal Preco { get; set; }
 
     }
 }
