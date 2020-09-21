@@ -29,19 +29,19 @@ namespace Kstudio_v2.Controllers
             return View();
         }
 
-        public ActionResult InserirComanda()
-        {
-            return View(new DetalheComanda());
-        }
+        //public ActionResult Comanda()
+        //{
+        //    return View(new DetalheComanda());
+        //}
 
-        [HttpPost]
-        public ActionResult InserirComanda(DetalheComanda produto)
-        {
-            var produtoRepository = new ProdutosRepository();
-            var result = produtoRepository.Salvar(produto);
+        //[HttpPost]
+        //public ActionResult Comanda(DetalheComanda produto)
+        //{
+        //    var produtoRepository = new ProdutosRepository();
+        //    var result = produtoRepository.Salvar(produto);
 
-            return View(produto);
+        //    return View(produto);
 
-        }
+        //}
     }
 }
