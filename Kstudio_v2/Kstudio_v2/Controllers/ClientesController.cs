@@ -17,13 +17,13 @@ namespace Kstudio_v2.Controllers
         PesquisaCliente globalCliente;
 
         // GET: CLientes
-        public ActionResult Index()
-        {
-            var clientesRepository = new ClientesRepository();
-            var result = clientesRepository.Listar();
+        //public ActionResult Index()
+        //{
+        //    var clientesRepository = new ClientesRepository();
+        //    var result = clientesRepository.Listar();
 
-            return View(result);
-        }
+        //    return View(result);
+        //}
 
         public ActionResult Cadastro()
         {
@@ -76,7 +76,7 @@ namespace Kstudio_v2.Controllers
 
 
         // GET: Clientes/Pesquisa/5
-        public ActionResult Pesquisa()
+        public ActionResult Index()
         {
             var clientesRepository = new ClientesRepository();
             var result = clientesRepository.Listar();
@@ -87,7 +87,7 @@ namespace Kstudio_v2.Controllers
         }
 
         [HttpPost]
-        public ActionResult Pesquisa(PesquisaCliente cliente)
+        public ActionResult Index(PesquisaCliente cliente)
         {
             var clientesRepository = new ClientesRepository();
             var result = clientesRepository.ListarClientesDoCampoPesquisa(cliente);

@@ -22,7 +22,7 @@ namespace Kstudio_v2.Core.Repositories
             return ExecuteCommand(sql);
         }
 
-        public bool Salvar(DetalheDoProduto produto)
+        public bool Salvar(DetalheComanda produto)
         {
             var sql = "";
             
@@ -35,14 +35,14 @@ namespace Kstudio_v2.Core.Repositories
             return result;
         }
 
-        public DetalheDoProduto Carregar(int id)
+        public DetalheComanda Carregar(int id)
         {
             var connection = GetConnection();
             connection.Open();
             var command = new SQLiteCommand(connection);
 
             command.CommandText = string.Format(Sql_SelectOne, id);
-            var result = new DetalheDoProduto();
+            var result = new DetalheComanda();
 
             using (var reader = command.ExecuteReader())
             {
@@ -59,7 +59,7 @@ namespace Kstudio_v2.Core.Repositories
             return result;
         }
 
-        public List<DetalheDoProduto> Listar()
+        public List<DetalheComanda> Listar()
         {
             var connection = GetConnection();
             connection.Open();
@@ -67,7 +67,7 @@ namespace Kstudio_v2.Core.Repositories
 
 
             command.CommandText = Sql_Select;
-            var result = new List<DetalheDoProduto>();
+            var result = new List<DetalheComanda>();
 
             using (var reader = command.ExecuteReader())
             {
@@ -85,18 +85,18 @@ namespace Kstudio_v2.Core.Repositories
             return result;
         }
 
-        private DetalheDoProduto Parse(SQLiteDataReader reader)
+        private DetalheComanda Parse(SQLiteDataReader reader)
         {
-            var produto = new DetalheDoProduto()
+            var produto = new DetalheComanda()
             {
                
-                Id = int.Parse(reader["Id"].ToString()),
+                //Id = int.Parse(reader["Id"].ToString()),
                 //Descricao = reader["Descricao"].ToString(),
                 //Quantidade = int.Parse(reader["Quantidade"].ToString()),
-                HorasDeEnsaio = int.Parse(reader["HorasDeEnsaio"].ToString()),
+               // HorasDeEnsaio = int.Parse(reader["HorasDeEnsaio"].ToString()),
                 //Preco = int.Parse(reader["Preco"].ToString()),
-                ValorTotal = int.Parse(reader["ValorTotal"].ToString()),
-                Data = DateTime.Parse(reader["Data"].ToString())
+               // ValorTotal = int.Parse(reader["ValorTotal"].ToString()),
+              //  Data = DateTime.Parse(reader["Data"].ToString())
             };
             return produto;
         }

@@ -31,11 +31,11 @@ namespace Kstudio_v2.Controllers
 
         public ActionResult InserirComanda()
         {
-            return View(new DetalheDoProduto());
+            return View(new DetalheComanda());
         }
 
         [HttpPost]
-        public ActionResult InserirComanda(DetalheDoProduto produto)
+        public ActionResult InserirComanda(DetalheComanda produto)
         {
             var produtoRepository = new ProdutosRepository();
             var result = produtoRepository.Salvar(produto);

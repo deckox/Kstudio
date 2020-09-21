@@ -166,7 +166,6 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ClientesController.cs" />
-    <Compile Include="Controllers\ContatoController.cs" />
     <Compile Include="Controllers\ProdutosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Core\Repositories\BaseRepository.cs" />
@@ -225,7 +224,7 @@
     <Content Include="Views\Contato\Contact.cshtml" />
     <Content Include="Views\Contato\About.cshtml" />
     <Content Include="Views\Clientes\Cadastro.cshtml" />
-    <Content Include="Views\Clientes\Pesquisa.cshtml" />
+    <Content Include="Views\Clientes\Index.cshtml" />
     <Content Include="Views\Clientes\Estoque.cshtml" />
     <Content Include="Views\Clientes\Comanda.cshtml" />
     <Content Include="Views\Clientes\Delete.cshtml" />
