@@ -6,10 +6,12 @@ using System.Web;
 
 namespace Kstudio_v2.Models
 {
-    public class Agendamento : Cliente
+    public class Agendamento
     {
-        public DateTime Data { get; set; }
-        public int Horario { get; set; }
+        public int Id { get; set; }
+        public Cliente Banda { get; set; }
+
+        public List<DetalheAgendamento> Detalhes { get; set; }
 
          
     }

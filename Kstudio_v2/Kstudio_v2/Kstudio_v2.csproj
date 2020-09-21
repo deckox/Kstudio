@@ -177,10 +177,10 @@
     </Compile>
     <Compile Include="Models\Agendamento.cs" />
     <Compile Include="Models\Cliente.cs" />
-    <Compile Include="Models\Contato.cs" />
-    <Compile Include="Models\ContatoModel.cs" />
+    <Compile Include="Models\Comanda.cs" />
+    <Compile Include="Models\DetalheComanda.cs" />
+    <Compile Include="Models\DetalhesAgendamento.cs" />
     <Compile Include="Models\PesquisaCliente.cs" />
-    <Compile Include="Models\DetalheDoProduto.cs" />
     <Compile Include="Models\Produto.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
