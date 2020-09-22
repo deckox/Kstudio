@@ -1,0 +1,46 @@
+﻿@model Kstudio_v2.Models.Usuario
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+<div class="topnav">
+    <a onclick="location.href='@Url.Action("Cadastro", "Clientes" )'">Cadastro</a>
+    <a onclick="location.href='@Url.Action("Comanda", "Clientes" )'">Comanda</a>
+    <a onclick="location.href='@Url.Action("Pesquisa", "Clientes" )'">Pesquisa</a>
+    <a onclick="location.href='@Url.Action("Estoque", "Clientes" )'">Estoque</a>
+    <a onclick="location.href='@Url.Action("Site", "Clientes" )'">Site</a>
+</div>
+
+<h2>Delete</h2>
+
+<h3>Tem certeza que deseja excluir o cliente?</h3>
+<div>
+    <h4>Usuario:</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayTextFor(model => model.Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayTextFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayTextFor(model => model.Login)
+        </dt>
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" />
+            @*@Html.ActionLink("Back to List", "Index")*@
+        </div>
+    }
+</div>

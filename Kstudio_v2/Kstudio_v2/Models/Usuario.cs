@@ -11,8 +11,8 @@ namespace Kstudio_v2.Models
     {
         public int Id { get; set; }
         public string Nome { get; set; }
-        public string Usuarios { get; set; }
-
+        public string Login { get; set; }
         public string Senha { get; set; }
+        public List<Usuario> ListaDeUsuario { get; set; }
     }
 }

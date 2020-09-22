@@ -1,0 +1,39 @@
+﻿@model Kstudio_v2.Models.Usuario
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="topnav">
+    <a onclick="location.href='@Url.Action("Cadastro", "Clientes" )'">Cadastro</a>
+    <a onclick="location.href='@Url.Action("Comanda", "Clientes" )'">Comanda</a>
+    <a onclick="location.href='@Url.Action("Pesquisa", "Clientes" )'">Pesquisa</a>
+    <a onclick="location.href='@Url.Action("Estoque", "Clientes" )'">Estoque</a>
+    <a onclick="location.href='@Url.Action("Site", "Clientes" )'">Site</a>
+</div>
+
+<h2>Details</h2>
+
+<div>
+    <h4>Usuario</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayTextFor(model => model.Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayTextFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayTextFor(model => model.Login)
+        </dt>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

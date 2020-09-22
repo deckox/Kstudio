@@ -26,7 +26,9 @@ function apenasletras(input) {
 function mostrardate() {
 
     var date = new Date();
+    alert("dateok")
     var whatYearIs = date.getFullYear();
+    alert("whatYearIsok")
     
     window.alert(whatYearIs);
 
@@ -76,6 +78,13 @@ function addFields() {
     
 
 
+}
+
+function clearform() {
+
+    alert("before");
+    document.getElementById("cadastroform").reset();
+    alert("after");
 }
  
 $(document).ready(function () {
