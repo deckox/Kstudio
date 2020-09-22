@@ -21,7 +21,15 @@
     <dl class="dl-horizontal">
 
         <dt>
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+
+        <dd>
             @Html.DisplayTextFor(model => model.Id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
         </dt>
 
         <dd>
@@ -29,8 +37,12 @@
         </dd>
 
         <dt>
-            @Html.DisplayTextFor(model => model.Login)
+            @Html.DisplayNameFor(model => model.Login)
         </dt>
+
+        <dd>
+            @Html.DisplayTextFor(model => model.Login)
+        </dd>
     </dl>
 </div>
 <p>

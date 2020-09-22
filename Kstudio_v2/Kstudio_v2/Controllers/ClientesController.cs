@@ -66,7 +66,7 @@ namespace Kstudio_v2.Controllers
         }
 
         // GET: Usuarios/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Detalhes(int id)
         {
             var clientesRepository = new ClientesRepository();
             var cliente = clientesRepository.Carregar(id);
@@ -140,30 +140,8 @@ namespace Kstudio_v2.Controllers
   
         //}
 
- 
-        public ActionResult Create()
-        {
-            return View(new Cliente());
-        }
-
-        // POST: Clientes/Create
-        [HttpPost]
-        public ActionResult Create(Cliente cliente)
-        {
-            try
-            {
-                var clientesRepository = new ClientesRepository();
-                clientesRepository.Salvar(cliente);
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View(cliente);
-            }
-        }
-
         // GET: Clientes/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Editar(int id)
         {
             var clientesRepository = new ClientesRepository();
             var cliente = clientesRepository.Carregar(id);
@@ -172,7 +150,7 @@ namespace Kstudio_v2.Controllers
 
         // POST: Clientes/Edit/5
         [HttpPost]
-        public ActionResult Edit(Cliente cliente)
+        public ActionResult Editar(Cliente cliente)
         {
             try
             {
@@ -198,7 +176,7 @@ namespace Kstudio_v2.Controllers
         }
 
         // GET: Clientes/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Deletar(int id)
         {
             var clientesRepository = new ClientesRepository();
             var cliente = clientesRepository.Carregar(id);
@@ -206,7 +184,7 @@ namespace Kstudio_v2.Controllers
         }
 
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Deletar(int id, FormCollection collection)
         {
             try
             {

@@ -228,14 +228,14 @@
     <Content Include="Views\Clientes\Cadastro.cshtml" />
     <Content Include="Views\Clientes\Index.cshtml" />
     <Content Include="Views\Clientes\Comanda.cshtml" />
-    <Content Include="Views\Clientes\Details.cshtml" />
-    <Content Include="Views\Clientes\Edit.cshtml" />
+    <Content Include="Views\Clientes\Detalhes.cshtml" />
+    <Content Include="Views\Clientes\Editar.cshtml" />
     <Content Include="Views\Produtos\InserirComanda.cshtml" />
     <Content Include="Views\Usuarios\Index.cshtml" />
     <Content Include="Views\Usuarios\Cadastro.cshtml" />
     <Content Include="Views\Usuarios\ListaUsuarios.cshtml" />
     <Content Include="Views\Usuarios\Deletar.cshtml" />
-    <Content Include="Views\Clientes\Delete.cshtml" />
+    <Content Include="Views\Clientes\Deletar.cshtml" />
     <Content Include="Views\Usuarios\Editar.cshtml" />
     <Content Include="Views\Usuarios\Detalhes.cshtml" />
   </ItemGroup>
