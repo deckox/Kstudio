@@ -12,7 +12,22 @@ namespace Kstudio_v2.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            try
+            {
+                var usuariosRepository = new UsuariosRepository();
+                var listaAuxBd = usuariosRepository.Listar();
+
+
+                var result = new List<Usuario>();
+                result = listaAuxBd;
+
+                return View(result);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         [HttpPost]
@@ -64,27 +79,6 @@ namespace Kstudio_v2.Controllers
                 }
 
                 return View();
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-           
-        }
-
-        public ActionResult ListaUsuarios()
-        {
-            try
-            {
-                var usuariosRepository = new UsuariosRepository();
-                var listaAuxBd = usuariosRepository.Listar();
-
-
-                var result = new Usuario();
-                result.ListaDeUsuario = listaAuxBd;
-
-                return View(result);
             }
             catch (Exception)
             {
@@ -177,7 +171,7 @@ namespace Kstudio_v2.Controllers
                     ViewData["mensagem"] = "<h1>DEU RUIM</h1>";
                 }
 
-                return View();
+                return RedirectToAction("Index");
             }
             catch
             {

@@ -166,6 +166,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ClientesController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
     <Compile Include="Controllers\ProdutosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -231,9 +232,9 @@
     <Content Include="Views\Clientes\Detalhes.cshtml" />
     <Content Include="Views\Clientes\Editar.cshtml" />
     <Content Include="Views\Produtos\InserirComanda.cshtml" />
-    <Content Include="Views\Usuarios\Index.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Usuarios\Cadastro.cshtml" />
-    <Content Include="Views\Usuarios\ListaUsuarios.cshtml" />
+    <Content Include="Views\Usuarios\index.cshtml" />
     <Content Include="Views\Usuarios\Deletar.cshtml" />
     <Content Include="Views\Clientes\Deletar.cshtml" />
     <Content Include="Views\Usuarios\Editar.cshtml" />
