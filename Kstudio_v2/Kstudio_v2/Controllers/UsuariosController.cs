@@ -31,28 +31,26 @@ namespace Kstudio_v2.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(Usuario usuario)
+        public ActionResult Index(string campoPesquisar, Usuario usuario)
         {
             try
             {
+                var aux = new Usuario();
+           
+
                 var usuariosRepository = new UsuariosRepository();
+               // var listaAuxBd = usuariosRepository.BuscarUsuario();
 
-                if (usuariosRepository.ValidarLogin(usuario) == true)
-                {
-                    ViewData["mensagem"] = "<h1>Usuario cadastrado com sucesso!</h1>";
-                    return RedirectToAction("ListaUsuarios");
-                }
-                else
-                {
-                    ViewData["mensagem"] = "<h1>DEU RUIM</h1>";
-                    return View();
-                }
+
+                var result = new List<Usuario>();
+              //  result = listaAuxBd;
+
+                return View(result);
             }
-
             catch (Exception)
             {
 
-                return View();
+                throw;
             }
 
         }
