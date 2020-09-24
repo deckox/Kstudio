@@ -19,7 +19,9 @@ namespace Kstudio_v2.Core.Repositories
         private const string Sql_SelectOne = "SELECT * from Usuarios WHERE Id={0}";
         private const string Sql_SelectLogin = "SELECT * from Usuarios WHERE Login='{0}'";
         private const string Sql_SelectLoginSenha = "SELECT * from Usuarios WHERE Login='{0}' AND Senha='{1}'";
-        private const string Sql_SelectLoginNome = "SELECT * from Usuarios WHERE Nome='{0}' AND Login='{1}'";
+        private const string Sql_SelectNomeLogin = "SELECT * from Usuarios WHERE Nome LIKE '{0}' OR Login LIKE '{0}'";
+
+
 
         public bool Excluir(int id)
         {
@@ -173,14 +175,14 @@ namespace Kstudio_v2.Core.Repositories
             return aux;
         }
 
-        public List<Usuario> BuscarUsuario(Usuario usuario)
+        public List<Usuario> BuscarUsuario(string pesquisa)
         {
             var connection = GetConnection();
             connection.Open();
             var command = new SQLiteCommand(connection);
 
 
-            command.CommandText = string.Format(Sql_Select, usuario.Nome, usuario.Login);
+            command.CommandText = string.Format(Sql_SelectNomeLogin, pesquisa);
             var result = new List<Usuario>();
 
             using (var reader = command.ExecuteReader())
@@ -188,7 +190,7 @@ namespace Kstudio_v2.Core.Repositories
                 while (reader.Read())
                 {
                     var user = Parse(reader);
-                    result.Add(usuario);
+                    result.Add(user);
                 }
             }
             command.Dispose();

@@ -31,19 +31,15 @@ namespace Kstudio_v2.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(string campoPesquisar, Usuario usuario)
+        public ActionResult Index(string campoPesquisar)
         {
             try
             {
-                var aux = new Usuario();
-           
-
+                var aux = campoPesquisar;
                 var usuariosRepository = new UsuariosRepository();
-               // var listaAuxBd = usuariosRepository.BuscarUsuario();
-
-
-                var result = new List<Usuario>();
-              //  result = listaAuxBd;
+                var listaAuxBd = usuariosRepository.BuscarUsuario(aux);
+                var result = listaAuxBd;
+             
 
                 return View(result);
             }
