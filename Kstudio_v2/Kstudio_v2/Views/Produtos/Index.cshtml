@@ -1,0 +1,68 @@
+﻿@model List<Kstudio_v2.Models.Produto>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.Raw(ViewData["mensagem"] ?? "")
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.Label("Lista de Produtos")
+                @Html.ActionLink("Novo", "Cadastro", "Produtos", null, null)
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.Label("Pesquisar")
+                <input type="text" name="campoPesquisar" />
+                <input type="submit" value="Pesquisar" class="btn btn-default" />
+            </div>
+        </div>
+
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.LabelForModel("Id")
+                </th>
+                <th>
+                    @Html.LabelForModel("Nome")
+                </th>
+                <th>
+                    @Html.LabelForModel("Preço")
+                </th>
+            </tr>
+
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayTextFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayTextFor(modelItem => item.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayTextFor(modelItem => item.PrecoDeVenda)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Editar", "Editar", new { id = item.Id })
+                        @Html.ActionLink("Detalhes", "Detalhes", new { id = item.Id })
+                        @Html.ActionLink("Deletar", "Deletar", new { id = item.Id })
+                    </td>
+                </tr>
+            }
+        </table>
+
+    </div>
+}
+
+
+

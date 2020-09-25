@@ -10,11 +10,15 @@ namespace Kstudio_v2.Core.Repositories
 {
     public class ProdutosRepository : BaseRepository
     {
-        private const string Sql_Insert = "INSERT into Produtos (Descricao,Quantidade,HorasDeEnsaio,Preco,ValorTotal,Data) VALUES ('{0}','{1}','{2}','{3}','{4}','{5}')";
-        private const string Sql_Update = "UPDATE Produtos SET Descricao='{1}',Quantidade='{2}',HorasDeEnsaio='{3}',Preco='{4}',ValorTotal='{5}',Data={6} WHERE Id = {0}";
+        private const string Sql_Insert = "INSERT into Produtos (Nome,PrecoDeCusto,PrecoDeVenda,Preco) VALUES ('{0}','{1}','{2}','{3}')";
+        private const string Sql_Update = "UPDATE Produtos SET Nome='{1}',PrecoDeCusto='{2}',PrecoDeVenda='{3}', Preco='{4}' WHERE Id = {0}";
         private const string Sql_Delete = "DELETE from Produtos WHERE Id = {0}";
         private const string Sql_Select = "SELECT * from Produtos";
+        private const string Sql_SelectProduto = "SELECT * from Produtos WHERE Nome = '{0}'";
         private const string Sql_SelectOne = "SELECT * from Produtos WHERE Id={0}";
+        private const string Sql_SelectPesquisaQualquerProduto = "SELECT * from Usuarios WHERE Nome LIKE '%{0}%' OR Login LIKE '%{0}%'";
+
+
 
         public bool Excluir(int id)
         {
@@ -22,27 +26,40 @@ namespace Kstudio_v2.Core.Repositories
             return ExecuteCommand(sql);
         }
 
-        public bool Salvar(DetalheComanda produto)
+        public bool Salvar(Produto produto)
         {
-            var sql = "";
-            
-           //if (produto.Id == 0) //Se o Id for 0 o produto e Novo, entao deve Inserir
-                //sql = string.Format(Sql_Insert, produto.Descricao, produto.Quantidade, produto.HorasDeEnsaio, produto.Preco, produto.ValorTotal, produto.Data = DateTime.Now);
-            //else //produto com Id entao os dados devem ser alterados
-                //sql = string.Format(Sql_Update, produto.Descricao, produto.Quantidade, produto.HorasDeEnsaio, produto.Preco, produto.ValorTotal, produto.Data);
+            var result = false;
 
-            var result = ExecuteCommand(sql);
-            return result;
+            if (ValidarProdutoJaCadastrado(produto) == true)
+            {
+                return result;
+            }
+
+            else
+            {
+                var sql = "";
+
+                if (produto.Id == 0) //Se o Id for 0 o produto e Novo, entao deve Inserir
+                    sql = string.Format(Sql_Insert, produto.Nome.ToLower(), produto.PrecoDeCusto, produto.PrecoDeVenda, produto.Preco = 0);
+                else //produto com Id entao os dados devem ser alterados
+                    sql = string.Format(Sql_Update, produto.Id, produto.Nome.ToLower(), produto.PrecoDeCusto, produto.PrecoDeVenda, produto.Preco = 0);
+
+                result = ExecuteCommand(sql);
+                return result;
+
+            }
+
+           
         }
 
-        public DetalheComanda Carregar(int id)
+        public Produto Carregar(int id)
         {
             var connection = GetConnection();
             connection.Open();
             var command = new SQLiteCommand(connection);
 
             command.CommandText = string.Format(Sql_SelectOne, id);
-            var result = new DetalheComanda();
+            var result = new Produto();
 
             using (var reader = command.ExecuteReader())
             {
@@ -59,7 +76,7 @@ namespace Kstudio_v2.Core.Repositories
             return result;
         }
 
-        public List<DetalheComanda> Listar()
+        public List<Produto> Listar()
         {
             var connection = GetConnection();
             connection.Open();
@@ -67,7 +84,7 @@ namespace Kstudio_v2.Core.Repositories
 
 
             command.CommandText = Sql_Select;
-            var result = new List<DetalheComanda>();
+            var result = new List<Produto>();
 
             using (var reader = command.ExecuteReader())
             {
@@ -85,20 +102,71 @@ namespace Kstudio_v2.Core.Repositories
             return result;
         }
 
-        private DetalheComanda Parse(SQLiteDataReader reader)
+        private Produto Parse(SQLiteDataReader reader)
         {
-            var produto = new DetalheComanda()
+            var produto = new Produto()
             {
-               
-                //Id = int.Parse(reader["Id"].ToString()),
-                //Descricao = reader["Descricao"].ToString(),
-                //Quantidade = int.Parse(reader["Quantidade"].ToString()),
-               // HorasDeEnsaio = int.Parse(reader["HorasDeEnsaio"].ToString()),
-                //Preco = int.Parse(reader["Preco"].ToString()),
-               // ValorTotal = int.Parse(reader["ValorTotal"].ToString()),
-              //  Data = DateTime.Parse(reader["Data"].ToString())
+                  Id = int.Parse(reader["Id"].ToString()),
+                  Nome = reader["Nome"].ToString(),
+                  PrecoDeCusto = decimal.Parse(reader["PrecoDeCusto"].ToString()),
+                  PrecoDeVenda = decimal.Parse(reader["PrecoDeVenda"].ToString()),
+                  Preco = decimal.Parse(reader["Preco"].ToString()),
             };
             return produto;
+        }
+        public bool ValidarProdutoJaCadastrado(Produto produto)
+        {
+            var connection = GetConnection();
+            connection.Open();
+
+            var command = new SQLiteCommand(connection);
+            command.CommandText = string.Format(Sql_SelectProduto,produto.Nome);
+
+            var result = new Produto();
+
+            using (var reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    result = Parse(reader);
+                    break;
+                }
+            }
+
+            if(result.Nome == produto.Nome)
+            {
+                return true;
+            }
+
+            else
+            {
+                return false;
+            }
+
+        }
+
+        public List<Produto> BuscarProdutos(string pesquisa)
+        {
+            var connection = GetConnection();
+            connection.Open();
+
+            var command = new SQLiteCommand(connection);
+
+            command.CommandText = string.Format(Sql_SelectPesquisaQualquerProduto, pesquisa);
+
+            var result = new List<Produto>();
+            var auxResult = new Produto();
+
+            using (var reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    auxResult = Parse(reader);
+                    result.Add(auxResult);
+                }
+            }
+
+            return result; 
         }
 
     }

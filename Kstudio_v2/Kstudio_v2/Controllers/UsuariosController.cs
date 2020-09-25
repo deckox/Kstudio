@@ -38,10 +38,8 @@ namespace Kstudio_v2.Controllers
                 var aux = campoPesquisar;
                 var usuariosRepository = new UsuariosRepository();
                 var listaAuxBd = usuariosRepository.BuscarUsuario(aux);
-                var result = listaAuxBd;
-             
 
-                return View(result);
+                return View(listaAuxBd);
             }
             catch (Exception)
             {

@@ -1,0 +1,59 @@
+﻿@model Kstudio_v2.Models.Produto
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="topnav">
+    <a onclick="location.href='@Url.Action("Cadastro", "Clientes" )'">Cadastro</a>
+    <a onclick="location.href='@Url.Action("Comanda", "Clientes" )'">Comanda</a>
+    <a onclick="location.href='@Url.Action("Pesquisa", "Clientes" )'">Pesquisa</a>
+    <a onclick="location.href='@Url.Action("Estoque", "Clientes" )'">Estoque</a>
+    <a onclick="location.href='@Url.Action("Site", "Clientes" )'">Site</a>
+</div>
+
+<h2>Detalhes do Produto</h2>
+
+<div>
+    <h4></h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayTextFor(model => model.Id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayTextFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PrecoDeCusto)
+        </dt>
+
+        <dd>
+            @Html.DisplayTextFor(model => model.PrecoDeCusto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PrecoDeVenda)
+        </dt>
+
+        <dd>
+            @Html.DisplayTextFor(model => model.PrecoDeVenda)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Editar", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

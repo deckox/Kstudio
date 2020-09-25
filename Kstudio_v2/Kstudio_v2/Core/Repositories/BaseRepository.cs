@@ -14,7 +14,7 @@ namespace Kstudio_v2.Core.Repositories
         private string Database;
 
         private const string Sql_CreateClientes = "CREATE TABLE Clientes (Id INTEGER PRIMARY KEY AUTOINCREMENT, Banda varchar(255), Responsavel varchar(255), EstiloMusical varchar(255), Email varchar(255), Telefone varchar(255))";
-        private const string Sql_CreateProdutos = "CREATE TABLE Produtos (Id INTEGER PRIMARY KEY AUTOINCREMENT, Descricao varchar(255), Quantidade INTEGER, HorasDeEnsaio INTEGER, Preco DECIMAL, ValorTotal DECIMAL, Data DATETIME)";
+        private const string Sql_CreateProdutos = "CREATE TABLE Produtos (Id INTEGER PRIMARY KEY AUTOINCREMENT, Nome varchar(255), PrecoDeCusto DECIMAL, PrecoDeVenda DECIMAL, Preco DECIMAL)";
         private const string Sql_Usuarios = "CREATE TABLE Usuarios (Id INTEGER PRIMARY KEY AUTOINCREMENT, Nome varchar(255), Login varchar(255), Senha varchar(255))";
 
         public BaseRepository()
@@ -32,7 +32,7 @@ namespace Kstudio_v2.Core.Repositories
         public void CreateDatabaseIfDoNotExist()
         {
             var exist = File.Exists(Database);
-        
+
             if (!exist)
             {
                 SQLiteConnection.CreateFile(Database);

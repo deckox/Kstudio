@@ -19,7 +19,7 @@ namespace Kstudio_v2.Core.Repositories
         private const string Sql_SelectOne = "SELECT * from Usuarios WHERE Id={0}";
         private const string Sql_SelectLogin = "SELECT * from Usuarios WHERE Login='{0}'";
         private const string Sql_SelectLoginSenha = "SELECT * from Usuarios WHERE Login='{0}' AND Senha='{1}'";
-        private const string Sql_SelectNomeLogin = "SELECT * from Usuarios WHERE Nome LIKE '{0}' OR Login LIKE '{0}'";
+        private const string Sql_SelectNomeLogin = "SELECT * from Usuarios WHERE Nome LIKE '%{0}%' OR Login LIKE '%{0}%'";
 
 
 
@@ -42,9 +42,9 @@ namespace Kstudio_v2.Core.Repositories
             else
             {
                 if (usuario.Id == 0) //Se o Id for 0 o produto e Novo, entao deve Inserir
-                    sql = string.Format(Sql_Insert, usuario.Nome.ToLower(), usuario.Login.ToLower(), usuario.Senha); 
+                    sql = string.Format(Sql_Insert, usuario.Nome, usuario.Login, usuario.Senha); 
                 else //produto com Id entao os dados devem ser alterados
-                    sql = string.Format(Sql_Update, usuario.Id, usuario.Nome.ToLower(), usuario.Login.ToLower(), usuario.Senha);
+                    sql = string.Format(Sql_Update, usuario.Id, usuario.Nome, usuario.Login, usuario.Senha);
 
                 result = ExecuteCommand(sql);
 
