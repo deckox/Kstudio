@@ -16,7 +16,7 @@ namespace Kstudio_v2.Core.Repositories
         private const string Sql_Select = "SELECT * from Produtos";
         private const string Sql_SelectProduto = "SELECT * from Produtos WHERE Nome = '{0}'";
         private const string Sql_SelectOne = "SELECT * from Produtos WHERE Id={0}";
-        private const string Sql_SelectPesquisaQualquerProduto = "SELECT * from Usuarios WHERE Nome LIKE '%{0}%' OR Login LIKE '%{0}%'";
+        private const string Sql_SelectPesquisaQualquerProduto = "SELECT * from Produtos WHERE Nome LIKE '%{0}%'";
 
 
 
@@ -155,13 +155,12 @@ namespace Kstudio_v2.Core.Repositories
             command.CommandText = string.Format(Sql_SelectPesquisaQualquerProduto, pesquisa);
 
             var result = new List<Produto>();
-            var auxResult = new Produto();
 
             using (var reader = command.ExecuteReader())
             {
                 while (reader.Read())
                 {
-                    auxResult = Parse(reader);
+                    var auxResult = Parse(reader);
                     result.Add(auxResult);
                 }
             }

@@ -32,10 +32,9 @@ namespace Kstudio_v2.Controllers
             try
             {
                 var produtoRepository = new ProdutosRepository();
+                var result = produtoRepository.BuscarProdutos(campoPesquisar);
 
-
-
-                return View();
+                return View(result);
 
             }
             catch (Exception ex)
