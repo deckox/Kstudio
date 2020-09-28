@@ -165,13 +165,11 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\AgendamentoController.cs" />
     <Compile Include="Controllers\ClientesController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
     <Compile Include="Controllers\ProdutosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Core\Repositories\AgendamentosRepository.cs" />
     <Compile Include="Core\Repositories\BaseRepository.cs" />
     <Compile Include="Core\Repositories\ClientesRepository.cs" />
     <Compile Include="Core\Repositories\ProdutosRepository.cs" />
@@ -247,7 +245,6 @@
     <Content Include="Views\Produtos\Deletar.cshtml" />
     <Content Include="Views\Produtos\Editar.cshtml" />
     <Content Include="Views\Produtos\Detalhes.cshtml" />
-    <Content Include="Views\Agendamento\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
