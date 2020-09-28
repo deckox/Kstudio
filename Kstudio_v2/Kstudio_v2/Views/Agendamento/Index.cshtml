@@ -1,4 +1,4 @@
-﻿@model List<Kstudio_v2.Models.Produto>
+﻿@model List<Kstudio_v2.Models.Agendamento>
 
 @{
     ViewBag.Title = "Index";
@@ -9,19 +9,19 @@
 {
     @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
+    <div class="form-horizonta">
         @Html.Raw(ViewData["mensagem"] ?? "")
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
             <div class="col-md-10">
-                @Html.Label("Lista de Produtos")
-                @Html.ActionLink("Novo", "Cadastro", "Produtos", null, null)
+                @Html.Label("Lista de Agendamentos")
+                @Html.ActionLink("Agendar", "Cadastro")
             </div>
         </div>
         <div class="form-group">
             <div class="col-md-10">
-                @Html.Label("Pesquisar")
-                <input type="text" name="campoPesquisar" />
+                @Html.Label("Pesquisar: ")
+                <input type="text" name="campoPesquisa" />
                 <input type="submit" value="Buscar" class="btn btn-default" />
             </div>
         </div>
@@ -32,13 +32,12 @@
                     @Html.LabelForModel("Id")
                 </th>
                 <th>
-                    @Html.LabelForModel("Nome")
+                    @Html.LabelForModel("Data")
                 </th>
                 <th>
-                    @Html.LabelForModel("Preço")
+                    @Html.LabelForModel("Banda")
                 </th>
             </tr>
-
 
             @foreach (var item in Model)
             {
@@ -47,10 +46,10 @@
                         @Html.DisplayTextFor(modelItem => item.Id)
                     </td>
                     <td>
-                        @Html.DisplayTextFor(modelItem => item.Nome)
+                        @Html.DisplayTextFor(modelItem => item.Detalhes)
                     </td>
                     <td>
-                        @Html.DisplayTextFor(modelItem => item.PrecoDeVenda)
+                        @Html.DisplayTextFor(modelItem => item.Banda)
                     </td>
                     <td>
                         @Html.ActionLink("Editar", "Editar", new { id = item.Id })
@@ -62,7 +61,6 @@
         </table>
 
     </div>
+
+
 }
-
-
-
