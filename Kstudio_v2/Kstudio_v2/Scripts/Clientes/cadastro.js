@@ -86,6 +86,12 @@ function clearform() {
     document.getElementById("cadastroform").reset();
     alert("after");
 }
+
+$(document).ready(function () {
+    $("#campoPesquisa").autocomplete({
+        source: '@Url.Action("BuscarIdBanda", "Agendamento")'      
+    });
+});
  
 $(document).ready(function () {
 

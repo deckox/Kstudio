@@ -32,10 +32,16 @@
                     @Html.LabelForModel("Id")
                 </th>
                 <th>
+                    @Html.LabelForModel("Id Cliente")
+                </th>
+                <th>
                     @Html.LabelForModel("Data")
                 </th>
                 <th>
-                    @Html.LabelForModel("Banda")
+                    @Html.LabelForModel("Horario Inicio")
+                </th>
+                <th>
+                    @Html.LabelForModel("Horario Final")
                 </th>
             </tr>
 
@@ -46,10 +52,16 @@
                         @Html.DisplayTextFor(modelItem => item.Id)
                     </td>
                     <td>
-                        @Html.DisplayTextFor(modelItem => item.Detalhes)
+                        @Html.DisplayTextFor(modelItem => item.IdCliente)
                     </td>
                     <td>
-                        @Html.DisplayTextFor(modelItem => item.Banda)
+                        @Html.DisplayTextFor(modelItem => item.Data)
+                    </td>
+                    <td>
+                        @Html.DisplayTextFor(modelItem => item.HorarioInicio)
+                    </td>
+                    <td>
+                        @Html.DisplayTextFor(modelItem => item.HorarioFinal)
                     </td>
                     <td>
                         @Html.ActionLink("Editar", "Editar", new { id = item.Id })
