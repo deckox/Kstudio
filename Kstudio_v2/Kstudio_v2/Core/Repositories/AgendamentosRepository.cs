@@ -12,7 +12,7 @@ namespace Kstudio_v2.Core.Repositories
 {
     public class AgendamentosRepository : BaseRepository
     {
-        private const string Sql_Insert = "INSERT into Agendamentos (Data,HorarioInicio,HorarioFim) VALUES ('{0}','{1}','{2}')";
+        private const string Sql_Insert = "INSERT into Agendamentos (IdCliente,Data,HorarioInicio,HorarioFim) VALUES ('{0}','{1}','{2}','{3}')";
         private const string Sql_Update = "UPDATE Agendamentos SET Nome='{1}',Login='{2}',Senha='{3}' WHERE Id = {0}";
         private const string Sql_Delete = "DELETE from Agendamentos WHERE Id = {0}";
         private const string Sql_Select = "SELECT * from Agendamentos";
