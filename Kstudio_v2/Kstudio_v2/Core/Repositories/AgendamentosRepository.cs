@@ -1,10 +1,12 @@
-﻿using DocumentFormat.OpenXml.Presentation;
+﻿using DocumentFormat.OpenXml.Drawing.Charts;
+using DocumentFormat.OpenXml.Presentation;
 using Kstudio_v2.Models;
 using Nest;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Data.SQLite;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 
@@ -17,8 +19,7 @@ namespace Kstudio_v2.Core.Repositories
         private const string Sql_Delete = "DELETE from Agendamentos WHERE Id = {0}";
         private const string Sql_Select = "SELECT * from Agendamentos";
         private const string Sql_SelectOne = "SELECT * from Agendamentos WHERE Id={0}";
-        private const string Sql_SelectLogin = "SELECT * from Agendamentos WHERE Login='{0}'";
-        private const string Sql_SelectLoginSenha = "SELECT * from Agendamentos WHERE Login='{0}' AND Senha='{1}'";
+        private const string Sql_SelectJoin = "SELECT a.*, c.Responsavel as Responsavel FROM Agendamentos a INNER JOIN Clientes c ON a.IdCliente = c.Id";
         private const string Sql_SelectBandaResponsavel = "SELECT * FROM CLIENTES WHERE Banda LIKE '%{0}%' OR Responsavel LIKE '%{0}%'";
 
         public bool Excluir(int id)
@@ -34,12 +35,12 @@ namespace Kstudio_v2.Core.Repositories
 
             if (agendamento.Id == 0) //Se o Id for 0 o usuario e Novo, entao deve Inserir
             {
-                sql = string.Format(Sql_Insert, agendamento.IdCliente, agendamento.Data, agendamento.HorarioInicio, agendamento.HorarioFinal);
+                sql = string.Format(Sql_Insert, agendamento.Cliente.Id, agendamento.Data.ToShortDateString(), agendamento.HorarioInicio, agendamento.HorarioFinal);
             }
 
             else //Usuario com Id entao os dados devem ser alterados
             {
-                sql = string.Format(Sql_Update, agendamento.Id, agendamento.IdCliente, agendamento.Data, agendamento.HorarioInicio, agendamento.HorarioFinal);
+                sql = string.Format(Sql_Update, agendamento.Id, agendamento.Cliente.Id, agendamento.Data.ToShortDateString(), agendamento.HorarioInicio, agendamento.HorarioFinal);
             }
 
             return ExecuteCommand(sql);
@@ -59,7 +60,7 @@ namespace Kstudio_v2.Core.Repositories
             {
                 while (reader.Read())
                 {
-                   // result = Parse(reader);
+                   result = Parse(reader);
                 }
             }
 
@@ -76,7 +77,7 @@ namespace Kstudio_v2.Core.Repositories
             connection.Open();
             var command = new SQLiteCommand(connection);
 
-            command.CommandText = Sql_Select;
+            command.CommandText = Sql_SelectJoin;
 
             var result = new List<Agendamento>();
 
@@ -84,7 +85,8 @@ namespace Kstudio_v2.Core.Repositories
             {
                 while (reader.Read())
                 {
-                   // result.Add(Parse(reader));
+                   var agendamento = Parse(reader);
+                   result.Add(agendamento);
                 }
             }
 
@@ -95,15 +97,19 @@ namespace Kstudio_v2.Core.Repositories
             return result;
         }
 
-        public Agendamento Parse(SqlDataReader reader)
+        public Agendamento Parse(SQLiteDataReader reader)
         {
             var result = new Agendamento()
             {
+                
                 Id = int.Parse(reader["Id"].ToString()),
-                Data = DateTime.Parse(reader["Data"].ToString().ToLower()),
-                //IdCliente = reader["IdCliente"].ToString(),
-                HorarioInicio = reader["HorarioInicio"].ToString().ToLower(),
-                HorarioFinal = reader["HorarioFinal"].ToString().ToLower(),
+                Data = DateTime.Parse(reader["Data"].ToString()),
+                Cliente = new Cliente()
+                {
+                    Id = int.Parse(reader["Cliente.Id"].ToString()),
+                },
+                HorarioInicio = reader["HorarioInicio"].ToString(),
+                HorarioFinal = reader["HorarioFinal"].ToString(),
             };
  
              return result;

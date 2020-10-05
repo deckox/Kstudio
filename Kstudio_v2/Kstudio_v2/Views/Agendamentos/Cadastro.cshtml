@@ -34,14 +34,14 @@
         <div class="form-group">
             <div class="col-md-10">
                 @Html.Label("Banda:")
-                <input type="text" list="autocompleteCliente" id="pesquisa" />
+                <input type="text" list="autocompleteCliente" id="pesquisa" autocomplete="off"/>
                 <datalist id="autocompleteCliente"></datalist>
                 @Html.ActionLink("Novo", "Clientes", "Cadastro")
             </div>
         </div>
         <div class="form-group">
             <div class="col-md-10">
-                @Html.HiddenFor(model => model.IdCliente)
+                @Html.HiddenFor(model => model.Cliente.Id)
                 @Html.LabelFor(model => model.Data)
                 @Html.EditorFor(model => model.Data, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.LabelFor(model => model.HorarioInicio)

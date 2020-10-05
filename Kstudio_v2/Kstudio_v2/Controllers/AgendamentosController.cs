@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Compilation;
 using System.Web.Mvc;
 
 namespace Kstudio_v2.Controllers
@@ -14,7 +15,21 @@ namespace Kstudio_v2.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            try
+            {
+                var agendamentoRepository = new AgendamentosRepository();
+                var clienteRepository = new ClientesRepository();
+
+                var listaDeAgendamentosDoBD = agendamentoRepository.Listar();
+
+                return View(listaDeAgendamentosDoBD);
+            }
+            catch (Exception ex)
+            {
+               
+               throw;
+            }
+          
         }
 
         public ActionResult Cadastro()
@@ -29,8 +44,11 @@ namespace Kstudio_v2.Controllers
             try
             {
                 var agendamentoRepository = new AgendamentosRepository();
+                var clienteRepository = new ClientesRepository();
 
-                if (agendamento.IdCliente == null)
+                agendamento.Cliente = clienteRepository.Carregar(agendamento.Cliente.Id);
+
+                if (agendamento.Cliente.Id == 0)
                 {
                     ViewData["mensagem"] = "Favor selecionar um cliente valido";
                 }
@@ -53,22 +71,24 @@ namespace Kstudio_v2.Controllers
             }
         }
 
-        public ActionResult BuscarIdBanda()
-        {
-            
-
-            return RedirectToAction("Cadastro");
-        }
-
         public string BuscarClientesAutocomplete(string value)
         {
-            var agendamentoRepository = new AgendamentosRepository();
+            try
+            {
+                var clienteRepository = new ClientesRepository();
 
-            var listaDeClientesDoBD = agendamentoRepository.BuscarIdDaBanda(value);
+                var listaDeClientesDoBD = clienteRepository.BuscarIdDaBanda(value);
 
-            var jsonResult = JsonConvert.SerializeObject(listaDeClientesDoBD);
+                var jsonResult = JsonConvert.SerializeObject(listaDeClientesDoBD);
 
-            return jsonResult;
+                return jsonResult;
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+           
         }
     }
 }

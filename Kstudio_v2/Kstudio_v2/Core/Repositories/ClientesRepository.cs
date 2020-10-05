@@ -16,7 +16,8 @@ namespace Kstudio_v2.Core.Repositories
         private const string Sql_Delete = "DELETE from Clientes WHERE Id = {0}";
         private const string Sql_Select = "SELECT * from Clientes";
         private const string Sql_SelectOne = "SELECT * from Clientes WHERE Id={0}";
-       // Cliente result = null;
+        private const string Sql_SelectBandaResponsavel = "SELECT * FROM CLIENTES WHERE Banda LIKE '%{0}%' OR Responsavel LIKE '%{0}%'";
+        // Cliente result = null;
 
         public bool Excluir(int id)
         {
@@ -240,6 +241,29 @@ namespace Kstudio_v2.Core.Repositories
                 Telefone = reader["Telefone"].ToString().ToLower(),
             };
             return cliente;
+        }
+
+        public List<Cliente> BuscarIdDaBanda(string pesquisabanda)
+        {
+
+            var connection = GetConnection();
+            connection.Open();
+            var command = new SQLiteCommand(connection);
+
+            command.CommandText = string.Format(Sql_SelectBandaResponsavel, pesquisabanda);
+
+            var result = new List<Cliente>();
+
+            using (var reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    var cliente = Parse(reader);
+                    result.Add(cliente);
+                }
+            }
+
+            return result;
         }
     }
 
