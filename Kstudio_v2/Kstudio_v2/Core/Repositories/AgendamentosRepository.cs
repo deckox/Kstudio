@@ -19,7 +19,7 @@ namespace Kstudio_v2.Core.Repositories
         private const string Sql_Delete = "DELETE from Agendamentos WHERE Id = {0}";
         private const string Sql_Select = "SELECT * from Agendamentos";
         private const string Sql_SelectOne = "SELECT * from Agendamentos WHERE Id={0}";
-        private const string Sql_SelectJoin = "SELECT a.*, c.Responsavel as Responsavel FROM Agendamentos a INNER JOIN Clientes c ON a.IdCliente = c.Id";
+        private const string Sql_SelectJoin = "SELECT a.*, c.* FROM Agendamentos a INNER JOIN Clientes c ON a.IdCliente = c.Id";
         private const string Sql_SelectBandaResponsavel = "SELECT * FROM CLIENTES WHERE Banda LIKE '%{0}%' OR Responsavel LIKE '%{0}%'";
 
         public bool Excluir(int id)
@@ -32,15 +32,17 @@ namespace Kstudio_v2.Core.Repositories
         public bool Salvar(Agendamento agendamento)
         {
             var sql = "";
+            var data = DateTime.Parse(agendamento.Data.ToString());
+            var dataConvertida = data.ToString("yyyy-MM-dd");
 
             if (agendamento.Id == 0) //Se o Id for 0 o usuario e Novo, entao deve Inserir
             {
-                sql = string.Format(Sql_Insert, agendamento.Cliente.Id, agendamento.Data.ToShortDateString(), agendamento.HorarioInicio, agendamento.HorarioFinal);
+                sql = string.Format(Sql_Insert, agendamento.Cliente.Id, dataConvertida, agendamento.HorarioInicio, agendamento.HorarioFinal);
             }
 
             else //Usuario com Id entao os dados devem ser alterados
             {
-                sql = string.Format(Sql_Update, agendamento.Id, agendamento.Cliente.Id, agendamento.Data.ToShortDateString(), agendamento.HorarioInicio, agendamento.HorarioFinal);
+                sql = string.Format(Sql_Update, agendamento.Id, agendamento.Cliente.Id, dataConvertida, agendamento.HorarioInicio, agendamento.HorarioFinal);
             }
 
             return ExecuteCommand(sql);
@@ -99,20 +101,24 @@ namespace Kstudio_v2.Core.Repositories
 
         public Agendamento Parse(SQLiteDataReader reader)
         {
-            var result = new Agendamento()
-            {
-                
-                Id = int.Parse(reader["Id"].ToString()),
-                Data = DateTime.Parse(reader["Data"].ToString()),
-                Cliente = new Cliente()
-                {
-                    Id = int.Parse(reader["Cliente.Id"].ToString()),
-                },
-                HorarioInicio = reader["HorarioInicio"].ToString(),
-                HorarioFinal = reader["HorarioFinal"].ToString(),
-            };
- 
-             return result;
+           
+     
+            var result = new Agendamento();
+            result.Id = int.Parse(reader["Id"].ToString());
+            result.Data = DateTime.Parse(reader["Data"].ToString());
+            result.HorarioInicio = reader["HorarioInicio"].ToString();
+            result.HorarioFinal = reader["HorarioFim"].ToString();
+
+            result.Cliente = new Cliente();
+            result.Cliente.Id = int.Parse(reader["IdCliente"].ToString());
+            result.Cliente.Responsavel = reader["Responsavel"].ToString();
+            result.Cliente.Telefone = reader["Telefone"].ToString();
+            result.Cliente.Email = reader["Email"].ToString();
+            result.Cliente.Banda = reader["Banda"].ToString();
+            result.Cliente.EstiloMusical = reader["EstiloMusical"].ToString();
+            
+
+            return result;
         }
 
         private Cliente ParseCliente(SQLiteDataReader reader)
