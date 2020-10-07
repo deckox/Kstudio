@@ -249,6 +249,9 @@
     <Content Include="Views\Produtos\Detalhes.cshtml" />
     <Content Include="Views\Agendamentos\Index.cshtml" />
     <Content Include="Views\Agendamentos\Cadastro.cshtml" />
+    <Content Include="Views\Agendamentos\Deletar.cshtml" />
+    <Content Include="Views\Agendamentos\Detalhes.cshtml" />
+    <Content Include="Views\Agendamentos\Editar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

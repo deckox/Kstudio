@@ -15,7 +15,7 @@
         <div class="form-group">
             <div class="col-md-10">
                 @Html.Label("Lista de Agendamentos")
-                @Html.ActionLink("Agendar", "Cadastro")
+                @Html.ActionLink("Cadastrar Agendamento", "Cadastro")
             </div>
         </div>
         <div class="form-group">
@@ -32,6 +32,12 @@
                     @Html.LabelForModel("Id")
                 </th>
                 <th>
+                    @Html.LabelForModel("Banda")
+                </th>
+                <th>
+                    @Html.LabelForModel("Responsável")
+                </th>
+                <th>
                     @Html.LabelForModel("Data")
                 </th>
                 <th>
@@ -44,25 +50,31 @@
 
             @foreach (var item in Model)
             {
-                <tr>
-                    <td>
-                        @Html.DisplayTextFor(modelItem => item.Id)
-                    </td>
-                    <td>
-                        @Html.DisplayTextFor(modelItem => item.Data)
-                    </td>
-                    <td>
-                        @Html.DisplayTextFor(modelItem => item.HorarioInicio)
-                    </td>
-                    <td>
-                        @Html.DisplayTextFor(modelItem => item.HorarioFinal)
-                    </td>
-                    <td>
-                        @Html.ActionLink("Editar", "Editar", new { id = item.Id })
-                        @Html.ActionLink("Detalhes", "Detalhes", new { id = item.Id })
-                        @Html.ActionLink("Deletar", "Deletar", new { id = item.Id })
-                    </td>
-                </tr>
+        <tr>
+            <td>
+                @Html.DisplayTextFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayTextFor(modelItem => item.Cliente.Banda)
+            </td>
+            <td>
+                @Html.DisplayTextFor(modelItem => item.Cliente.Responsavel)
+            </td>
+            <td>
+                @Html.DisplayTextFor(modelItem => item.Data)
+            </td>
+            <td>
+                @Html.DisplayTextFor(modelItem => item.HorarioInicio)
+            </td>
+            <td>
+                @Html.DisplayTextFor(modelItem => item.HorarioFinal)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Editar", new { id = item.Id })
+                @Html.ActionLink("Detalhes", "Detalhes", new { id = item.Id })
+                @Html.ActionLink("Deletar", "Deletar", new { id = item.Id })
+            </td>
+        </tr>
             }
         </table>
 

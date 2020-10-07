@@ -1,0 +1,66 @@
+﻿@model Kstudio_v2.Models.Agendamento
+
+@{
+    ViewBag.Title = "Deletar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Deletar</h2>
+
+<h3>Tem certeza que deseja excluir o produto?</h3>
+
+<div>
+    <h4>Produto</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd>
+            @Html.DisplayTextFor(model => model.Id)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Cliente.Banda)
+        </dt>
+        <dd>
+            @Html.DisplayTextFor(model => model.Cliente.Banda)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Cliente.Responsavel)
+        </dt>
+        <dd>
+            @Html.DisplayTextFor(model => model.Cliente.Responsavel)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Data)
+        </dt>
+        <dd>
+            @Html.DisplayTextFor(model => model.Data)
+        </dd>
+        <dt>
+           @Html.DisplayNameFor(model => model.HorarioInicio)
+        </dt>
+        <dd>
+            @Html.DisplayTextFor(model => model.HorarioInicio)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.HorarioFinal)
+        </dt>
+        <dd>
+            @Html.DisplayTextFor(model => model.HorarioFinal)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" />
+            @*@Html.ActionLink("Back to List", "Index")*@
+        </div>
+    }
+
+
+</div>
+

@@ -71,6 +71,97 @@ namespace Kstudio_v2.Controllers
             }
         }
 
+        public ActionResult Editar(int id)
+        {
+            try
+            {
+                var agendamentoRepository = new AgendamentosRepository();
+                var result = agendamentoRepository.Carregar(id);
+
+                return View(result);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+           
+        }
+
+        [HttpPost]
+        public ActionResult Editar(Agendamento agendamento, int id)
+        {
+            try
+            {
+                var agendamentoRepository = new AgendamentosRepository();
+                var result = agendamentoRepository.Carregar(id);
+                agendamento.Cliente = result.Cliente;
+     
+
+                if (agendamentoRepository.Salvar(agendamento) == true)
+                {
+                    ViewData["mensagem"] = "<h1>Agendamento alterado com sucesso!</h1>";
+                }
+                else
+                {
+                    ViewData["mensagem"] = "<h1>DEU RUIM</h1>";
+                }
+
+                return RedirectToAction("Index");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+            
+        }
+
+        public ActionResult Detalhes(int id)
+        {
+            try
+            {
+                var agendamentoRepository = new AgendamentosRepository();
+                var result = agendamentoRepository.Carregar(id);
+
+                return View(result);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+
+        }
+
+        public ActionResult Deletar(int id)
+        {
+            try
+            {
+                var agendamentoRepository = new AgendamentosRepository();
+
+                var result = agendamentoRepository.Carregar(id);
+
+                return View(result);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+           
+        }
+
+        [HttpPost]
+        public ActionResult Deletar(int id, FormCollection collection)
+        {
+            var agendamentoRepository = new AgendamentosRepository();
+            agendamentoRepository.Excluir(id);
+
+
+            return RedirectToAction("Index");
+        }
+
         public string BuscarClientesAutocomplete(string value)
         {
             try
