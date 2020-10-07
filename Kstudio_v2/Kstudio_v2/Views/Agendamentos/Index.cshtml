@@ -50,31 +50,31 @@
 
             @foreach (var item in Model)
             {
-        <tr>
-            <td>
-                @Html.DisplayTextFor(modelItem => item.Id)
-            </td>
-            <td>
-                @Html.DisplayTextFor(modelItem => item.Cliente.Banda)
-            </td>
-            <td>
-                @Html.DisplayTextFor(modelItem => item.Cliente.Responsavel)
-            </td>
-            <td>
-                @Html.DisplayTextFor(modelItem => item.Data)
-            </td>
-            <td>
-                @Html.DisplayTextFor(modelItem => item.HorarioInicio)
-            </td>
-            <td>
-                @Html.DisplayTextFor(modelItem => item.HorarioFinal)
-            </td>
-            <td>
-                @Html.ActionLink("Editar", "Editar", new { id = item.Id })
-                @Html.ActionLink("Detalhes", "Detalhes", new { id = item.Id })
-                @Html.ActionLink("Deletar", "Deletar", new { id = item.Id })
-            </td>
-        </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayTextFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayTextFor(modelItem => item.Cliente.Banda)
+                    </td>
+                    <td>
+                        @Html.DisplayTextFor(modelItem => item.Cliente.Responsavel)
+                    </td>
+                    <td>
+                        @Html.DisplayTextFor(modelItem => item.Data)
+                    </td>
+                    <td>
+                        @Html.DisplayTextFor(modelItem => item.HorarioInicio)
+                    </td>
+                    <td>
+                        @Html.DisplayTextFor(modelItem => item.HorarioFinal)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Editar", "Editar", new { id = item.Id })
+                        @Html.ActionLink("Detalhes", "Detalhes", new { id = item.Id })
+                        @Html.ActionLink("Deletar", "Deletar", new { id = item.Id })
+                    </td>
+                </tr>
             }
         </table>
 

@@ -18,7 +18,6 @@ namespace Kstudio_v2.Controllers
             try
             {
                 var agendamentoRepository = new AgendamentosRepository();
-                var clienteRepository = new ClientesRepository();
 
                 var listaDeAgendamentosDoBD = agendamentoRepository.Listar();
 
@@ -117,12 +116,14 @@ namespace Kstudio_v2.Controllers
             
         }
 
-        public ActionResult Detalhes(int id)
+        public ActionResult Detalhes(Agendamento agendamento, int id)
         {
             try
             {
                 var agendamentoRepository = new AgendamentosRepository();
-                var result = agendamentoRepository.Carregar(id);
+                var dadosCliente = agendamentoRepository.Carregar(id);
+                agendamento = dadosCliente;
+                var result = agendamentoRepository.CarregarLista(agendamento);
 
                 return View(result);
             }

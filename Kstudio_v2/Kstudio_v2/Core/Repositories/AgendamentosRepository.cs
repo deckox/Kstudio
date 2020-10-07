@@ -18,7 +18,8 @@ namespace Kstudio_v2.Core.Repositories
         private const string Sql_Update = "UPDATE Agendamentos SET IdCliente='{1}',Data='{2}',HorarioInicio='{3}',HorarioFim='{4}' WHERE Id = {0}";
         private const string Sql_Delete = "DELETE from Agendamentos WHERE Id = {0}";
         private const string Sql_Select = "SELECT * from Agendamentos";
-        private const string Sql_SelectOne = "SELECT a.*, c.* FROM Agendamentos a INNER JOIN Clientes c ON a.IdCliente = c.Id WHERE a.Id={0}";//"SELECT * from Agendamentos WHERE Id={0}";
+        private const string Sql_SelectOne = "SELECT a.*, c.* FROM Agendamentos a INNER JOIN Clientes c ON a.IdCliente = c.Id WHERE a.Id={0}";
+        private const string Sql_SelectByIdCliente = "SELECT a.*, c.* FROM Agendamentos a INNER JOIN Clientes c ON a.IdCliente = c.Id WHERE a.IdCliente={0}";
         private const string Sql_SelectJoin = "SELECT a.*, c.* FROM Agendamentos a INNER JOIN Clientes c ON a.IdCliente = c.Id";
         private const string Sql_SelectBandaResponsavel = "SELECT * FROM CLIENTES WHERE Banda LIKE '%{0}%' OR Responsavel LIKE '%{0}%'";
 
@@ -63,6 +64,32 @@ namespace Kstudio_v2.Core.Repositories
                 while (reader.Read())
                 {
                    result = Parse(reader);
+                }
+            }
+
+            command.Dispose();
+            connection.Close();
+            connection.Dispose();
+
+            return result;
+        }
+
+        public List<Agendamento> CarregarLista(Agendamento agendamento)
+        {
+            var connection = GetConnection();
+            connection.Open();
+            var command = new SQLiteCommand(connection);
+
+            command.CommandText = string.Format(Sql_SelectByIdCliente, agendamento.Cliente.Id);
+
+            var result = new List<Agendamento>();
+
+            using (var reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {   
+                    var itemAgendamento = Parse(reader);
+                    result.Add(itemAgendamento);
                 }
             }
 
