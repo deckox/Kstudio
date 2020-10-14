@@ -16,5 +16,6 @@ namespace Kstudio_v2.Models
         public string EstiloMusical { get; set; }
         public string Email { get; set; }
         public string Telefone { get; set; }
+       
     }
 }

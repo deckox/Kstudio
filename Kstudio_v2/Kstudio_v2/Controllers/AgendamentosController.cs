@@ -33,7 +33,7 @@ namespace Kstudio_v2.Controllers
 
         public ActionResult Cadastro()
         {
-            return View();
+            return View(new Agendamento());
         }
         
         [HttpPost]
@@ -124,6 +124,7 @@ namespace Kstudio_v2.Controllers
                 var dadosCliente = agendamentoRepository.Carregar(id);
                 agendamento = dadosCliente;
                 var result = agendamentoRepository.CarregarLista(agendamento);
+                ViewBag.id = id;
 
                 return View(result);
             }

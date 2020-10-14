@@ -40,19 +40,25 @@ function mostrardate() {
 
 function addFields() {
 
-
-    var detalhe = document.createElement("div");
-    detalhe.setAttribute("name", "detalhe");
+    
+    var detalhe = document.createElement("div"); //cria <div></div>
+    detalhe.setAttribute("name", "detalhe"); //cria name <div name="detalhe"></div>
     var detalhes = document.getElementById("detalhes");
-    var template = document.getElementById("template");
+    var template = document.getElementById("template"); 
     var index = document.getElementById("detalhes").querySelectorAll('div[name=detalhe]').length;
 
-    var elDescricao = template.cloneNode(true);   
-    elDescricao.className = "form-group";
-    elDescricao.querySelector("label").innerHTML = "Descrição";
-    elDescricao.querySelector("label").setAttribute("for", "Detalhes_" + index + "__Descricao");
-    elDescricao.querySelector("input").setAttribute("name", "Detalhes[" + index + "].Descricao");
-    elDescricao.querySelector("input").id = "Detalhes_" + index + "__Descricao";
+    var elDescricao = template.cloneNode(true);   // clona a div abaixo:
+    //<div id="template" class="form-group hide" disa="">
+    //    <label class="control-label col-md-2"></label>
+    //    <div class="col-md-10">
+    //        <input class="form-control text-box single-line" type="text" value="">
+	//    </div>
+    //</div>
+    elDescricao.className = "form-group";  //<div id="template" class="form-group hide" >
+    elDescricao.querySelector("label").innerHTML = "Descrição";  //<label class="control-label col-md-2">Descrição</label>
+    elDescricao.querySelector("label").setAttribute("for", "Detalhes_" + index + "__Descricao"); // <label class="control-label col-md-2" for="Detalhes_[index]__Descricao">Descrição</label>
+    elDescricao.querySelector("input").setAttribute("name", "Detalhes[" + index + "].Descricao"); // <input class="form-control text-box single-line" type="text" value="" name="Detalhes[index].Descricao">
+    elDescricao.querySelector("input").id = "Detalhes_" + index + "__Descricao"; // <input class="form-control text-box single-line" type="text" value="" name="Detalhes[index].Descricao" id="Detalhes_1__Descricao">
 
     var elHora = template.cloneNode(true);
     elHora.className = "form-group";
@@ -74,9 +80,6 @@ function addFields() {
     detalhe.appendChild(elPreco);
     detalhe.appendChild(elPreco);
     detalhes.appendChild(detalhe);
-    
-    
-
 
 }
 

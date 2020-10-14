@@ -15,6 +15,69 @@
 
 <h2>Detalhes do Agendamento</h2>
 
+
+
+<div>
+    @for (int i = 0; i < Model.Count; i++)
+    {
+        var idNumber = (int)ViewBag.id;
+        if (Model[i].Id == idNumber)
+        {
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model[i].Id)
+                </dt>
+
+                <dd>
+                    @Html.DisplayTextFor(model => model[i].Id)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model[i].Cliente.Banda)
+                </dt>
+
+                <dd>
+                    @Html.DisplayTextFor(model => model[i].Cliente.Banda)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model[i].Cliente.Responsavel)
+                </dt>
+
+                <dd>
+                    @Html.DisplayTextFor(model => model[i].Cliente.Responsavel)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model[i].Data)
+                </dt>
+
+                <dd>
+                    @Html.DisplayTextFor(model => model[i].Data)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model[i].HorarioInicio)
+                </dt>
+
+                <dd>
+                    @Html.DisplayTextFor(model => model[i].HorarioInicio)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model[i].HorarioFinal)
+                </dt>
+
+                <dd>
+                    @Html.DisplayTextFor(model => model[i].HorarioFinal)
+                </dd>
+          </dl>
+        }
+    }
+</div>
+
+<h3>Todos Agendamentos Ativos</h3>
+
 <div>
     <hr />
     <table class="table">
@@ -69,33 +132,4 @@
         }
     </table>
 </div>
-<div>
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayTextFor(modelItem => item.Id)
-            </td>
-            <td>
-                @Html.DisplayTextFor(modelItem => item.Cliente.Banda)
-            </td>
-            <td>
-                @Html.DisplayTextFor(modelItem => item.Cliente.Responsavel)
-            </td>
-            <td>
-                @Html.DisplayTextFor(modelItem => item.Data)
-            </td>
-            <td>
-                @Html.DisplayTextFor(modelItem => item.HorarioInicio)
-            </td>
-            <td>
-                @Html.DisplayTextFor(modelItem => item.HorarioFinal)
-            </td>
-            <td>
-                @Html.ActionLink("Editar", "Editar", new { id = item.Id })
-                @Html.ActionLink("Detalhes", "Detalhes", new { id = item.Id })
-                @Html.ActionLink("Deletar", "Deletar", new { id = item.Id })
-            </td>
-        </tr>
-    }
-</div>
+
