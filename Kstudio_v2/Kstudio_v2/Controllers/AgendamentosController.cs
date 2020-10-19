@@ -33,11 +33,24 @@ namespace Kstudio_v2.Controllers
 
         public ActionResult Cadastro()
         {
-            return View(new Agendamento());
+            try
+            {
+                var listaAgendamentos = new Cliente();
+                listaAgendamentos.Agendamentos.Add(new Agendamento());
+
+
+                return View(listaAgendamentos);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+           
         }
         
         [HttpPost]
-        public ActionResult Cadastro(Agendamento agendamento)
+        public ActionResult Cadastro(Cliente cliente)
         {
 
             try
@@ -45,21 +58,22 @@ namespace Kstudio_v2.Controllers
                 var agendamentoRepository = new AgendamentosRepository();
                 var clienteRepository = new ClientesRepository();
 
-                agendamento.Cliente = clienteRepository.Carregar(agendamento.Cliente.Id);
+              
+                // agendamento[0].Cliente = clienteRepository.Carregar(agendamento[0].Cliente.Id);
 
-                if (agendamento.Cliente.Id == 0)
-                {
-                    ViewData["mensagem"] = "Favor selecionar um cliente valido";
-                }
+                //if (agendamento[0].Cliente.Id == 0)
+                //{
+                //    ViewData["mensagem"] = "Favor selecionar um cliente valido";
+                //}
 
-                else if (agendamentoRepository.Salvar(agendamento) == true)
-                {
-                    ViewData["mensagem"] = "<h1>Usuario cadastrado com sucesso!</h1>";
-                }
-                else
-                {
-                    ViewData["mensagem"] = "<h1>DEU RUIM</h1>";
-                }
+                //else if (agendamentoRepository.Salvar(agendamento) == true)
+                //{
+                //    ViewData["mensagem"] = "<h1>Usuario cadastrado com sucesso!</h1>";
+                //}
+                //else
+                //{
+                //    ViewData["mensagem"] = "<h1>DEU RUIM</h1>";
+                //}
 
                 return View();
             }

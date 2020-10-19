@@ -63,7 +63,7 @@
 
 function addFieldsAgendamento() {
 
-    var detalhe = document.createElement("<div>");
+    var detalhe = document.createElement("div");
     detalhe.setAttribute("name", "detalhe");
     var detalhes = document.getElementById("detalhes");
     var template = document.getElementById("template");

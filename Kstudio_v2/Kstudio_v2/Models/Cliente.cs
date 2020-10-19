@@ -16,6 +16,11 @@ namespace Kstudio_v2.Models
         public string EstiloMusical { get; set; }
         public string Email { get; set; }
         public string Telefone { get; set; }
-       
+        public List<Agendamento>Agendamentos { get; set; }
+
+        public Cliente()
+        {
+            Agendamentos = new List<Agendamento>();
+        }
     }
 }

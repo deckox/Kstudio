@@ -18,16 +18,12 @@ namespace Kstudio_v2.Models
         public string HorarioInicio { get; set; }
         [Display(Name = "Até")]
         public string HorarioFinal { get; set; }
-        public List<Agendamento> ListaAgendamentos { get; set; }
+        
 
 
         public Agendamento()
         {
-            this.Cliente = new Cliente();
-            ListaAgendamentos = new List<Agendamento>();
-            ListaAgendamentos.Add(new Agendamento());
-           
-           
+            Cliente = new Cliente();
         }
 
     }
