@@ -1,4 +1,4 @@
-﻿@model List<Kstudio_v2.Models.Agendamento>
+﻿@model List<Kstudio_v2.Models.Cliente>
 
 @{
     ViewBag.Title = "Index";
@@ -50,29 +50,30 @@
 
             @foreach (var item in Model)
             {
+                var index = 0;
                 <tr>
                     <td>
                         @Html.DisplayTextFor(modelItem => item.Id)
                     </td>
                     <td>
-                        @Html.DisplayTextFor(modelItem => item.Cliente.Banda)
+                        @Html.DisplayTextFor(modelItem => item.Banda)
                     </td>
                     <td>
-                        @Html.DisplayTextFor(modelItem => item.Cliente.Responsavel)
+                        @Html.DisplayTextFor(modelItem => item.Responsavel)
                     </td>
                     <td>
-                        @Html.DisplayTextFor(modelItem => item.Data)
+                        @Html.DisplayTextFor(modelItem => item.Agendamentos[index].Data)
                     </td>
                     <td>
-                        @Html.DisplayTextFor(modelItem => item.HorarioInicio)
+                        @Html.DisplayTextFor(modelItem => item.Agendamentos[index].HorarioInicio)
                     </td>
                     <td>
-                        @Html.DisplayTextFor(modelItem => item.HorarioFinal)
+                        @Html.DisplayTextFor(modelItem => item.Agendamentos[index].HorarioFinal)
                     </td>
                     <td>
-                        @Html.ActionLink("Editar", "Editar", new { id = item.Id })
-                        @Html.ActionLink("Detalhes", "Detalhes", new { id = item.Id })
-                        @Html.ActionLink("Deletar", "Deletar", new { id = item.Id })
+                        @Html.ActionLink("Editar", "Editar", new { id = item.Agendamentos[0].Id })
+                        @Html.ActionLink("Detalhes", "Detalhes", new { id = item.Agendamentos[0].Id })
+                        @Html.ActionLink("Deletar", "Deletar", new { id = item.Agendamentos[0].Id })
                     </td>
                 </tr>
             }

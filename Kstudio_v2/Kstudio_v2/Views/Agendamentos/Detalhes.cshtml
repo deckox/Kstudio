@@ -1,4 +1,4 @@
-﻿@model List<Kstudio_v2.Models.Agendamento>
+﻿@model Kstudio_v2.Models.Cliente
 
 @{
     ViewBag.Title = "Details";
@@ -18,58 +18,58 @@
 
 
 <div>
-    @for (int i = 0; i < Model.Count; i++)
+    @for (int i = 0; i < Model.Agendamentos.Count; i++)
     {
         var idNumber = (int)ViewBag.id;
-        if (Model[i].Id == idNumber)
+        if (Model.Agendamentos[0].Id == idNumber)
         {
             <dl class="dl-horizontal">
                 <dt>
-                    @Html.DisplayNameFor(model => model[i].Id)
+                    @Html.DisplayNameFor(model => model.Id)
                 </dt>
 
                 <dd>
-                    @Html.DisplayTextFor(model => model[i].Id)
+                    @Html.DisplayTextFor(model => model.Id)
                 </dd>
 
                 <dt>
-                    @Html.DisplayNameFor(model => model[i].Cliente.Banda)
+                    @Html.DisplayNameFor(model => model.Banda)
                 </dt>
 
                 <dd>
-                    @Html.DisplayTextFor(model => model[i].Cliente.Banda)
+                    @Html.DisplayTextFor(model => model.Banda)
                 </dd>
 
                 <dt>
-                    @Html.DisplayNameFor(model => model[i].Cliente.Responsavel)
+                    @Html.DisplayNameFor(model => model.Responsavel)
                 </dt>
 
                 <dd>
-                    @Html.DisplayTextFor(model => model[i].Cliente.Responsavel)
+                    @Html.DisplayTextFor(model => model.Responsavel)
                 </dd>
 
                 <dt>
-                    @Html.DisplayNameFor(model => model[i].Data)
+                    @Html.DisplayNameFor(model => model.Agendamentos[i].Data)
                 </dt>
 
                 <dd>
-                    @Html.DisplayTextFor(model => model[i].Data)
+                    @Html.DisplayTextFor(model => model.Agendamentos[i].Data)
                 </dd>
 
                 <dt>
-                    @Html.DisplayNameFor(model => model[i].HorarioInicio)
+                    @Html.DisplayNameFor(model => model.Agendamentos[i].HorarioInicio)
                 </dt>
 
                 <dd>
-                    @Html.DisplayTextFor(model => model[i].HorarioInicio)
+                    @Html.DisplayTextFor(model => model.Agendamentos[i].HorarioInicio)
                 </dd>
 
                 <dt>
-                    @Html.DisplayNameFor(model => model[i].HorarioFinal)
+                    @Html.DisplayNameFor(model => model.Agendamentos[i].HorarioFinal)
                 </dt>
 
                 <dd>
-                    @Html.DisplayTextFor(model => model[i].HorarioFinal)
+                    @Html.DisplayTextFor(model => model.Agendamentos[i].HorarioFinal)
                 </dd>
           </dl>
         }
@@ -102,14 +102,14 @@
             </th>
         </tr>
 
-        @foreach (var item in Model)
+        @*@foreach (var item in Model)
         {
             <tr>
                 <td>
                     @Html.DisplayTextFor(modelItem => item.Id)
                 </td>
                 <td>
-                    @Html.DisplayTextFor(modelItem => item.Cliente.Banda)
+                    @Html.DisplayTextFor(modelItem => item.)
                 </td>
                 <td>
                     @Html.DisplayTextFor(modelItem => item.Cliente.Responsavel)
@@ -129,7 +129,7 @@
                     @Html.ActionLink("Deletar", "Deletar", new { id = item.Id })
                 </td>
             </tr>
-        }
+        }*@
     </table>
 </div>
 

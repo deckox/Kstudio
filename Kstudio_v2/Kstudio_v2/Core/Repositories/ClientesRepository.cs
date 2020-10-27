@@ -17,7 +17,6 @@ namespace Kstudio_v2.Core.Repositories
         private const string Sql_Select = "SELECT * from Clientes";
         private const string Sql_SelectOne = "SELECT * from Clientes WHERE Id={0}";
         private const string Sql_SelectBandaResponsavel = "SELECT * FROM CLIENTES WHERE Banda LIKE '%{0}%' OR Responsavel LIKE '%{0}%'";
-        // Cliente result = null;
 
         public bool Excluir(int id)
         {

@@ -8,10 +8,11 @@ using System.Linq;
 using System.Web;
 using System.Web.Compilation;
 using System.Web.Mvc;
+using System.Web.UI;
 
 namespace Kstudio_v2.Controllers
 {
-    public class AgendamentosController: Controller
+    public class AgendamentosController : Controller
     {
         public ActionResult Index()
         {
@@ -25,10 +26,9 @@ namespace Kstudio_v2.Controllers
             }
             catch (Exception ex)
             {
-               
-               throw;
+                throw;
             }
-          
+
         }
 
         public ActionResult Cadastro()
@@ -36,7 +36,7 @@ namespace Kstudio_v2.Controllers
             try
             {
                 var listaAgendamentos = new Cliente();
-                listaAgendamentos.Agendamentos.Add(new Agendamento());
+                listaAgendamentos.Agendamentos.Add(new Agendamento()); //adiciona um objeto vazio somente para startar o for
 
 
                 return View(listaAgendamentos);
@@ -46,38 +46,33 @@ namespace Kstudio_v2.Controllers
 
                 throw;
             }
-           
+
         }
-        
+
         [HttpPost]
-        public ActionResult Cadastro(Cliente cliente)
+        public ActionResult Cadastro(int Id, Cliente cliente)
         {
 
             try
             {
+
+                var listaAgendamentos = cliente;
                 var agendamentoRepository = new AgendamentosRepository();
-                var clienteRepository = new ClientesRepository();
 
-              
-                // agendamento[0].Cliente = clienteRepository.Carregar(agendamento[0].Cliente.Id);
+                if (agendamentoRepository.Salvar(listaAgendamentos) == true)
+                {
+                    ViewData["mensagem"] = "<h1>Agendamento Cadastrado com sucesso!</h1>";
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    ViewData["mensagem"] = "<h1>Não foi possível cadastrar um Agendamento!</h1>";
+                    return View(listaAgendamentos);
+                }
 
-                //if (agendamento[0].Cliente.Id == 0)
-                //{
-                //    ViewData["mensagem"] = "Favor selecionar um cliente valido";
-                //}
-
-                //else if (agendamentoRepository.Salvar(agendamento) == true)
-                //{
-                //    ViewData["mensagem"] = "<h1>Usuario cadastrado com sucesso!</h1>";
-                //}
-                //else
-                //{
-                //    ViewData["mensagem"] = "<h1>DEU RUIM</h1>";
-                //}
-
-                return View();
+             
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
                 throw;
@@ -98,20 +93,18 @@ namespace Kstudio_v2.Controllers
                 Console.WriteLine(e);
                 throw;
             }
-           
+
         }
 
         [HttpPost]
-        public ActionResult Editar(Agendamento agendamento, int id)
+        public ActionResult Editar(Cliente cliente, int id)
         {
             try
             {
+                cliente.Agendamentos[0].Id = cliente.Id;
                 var agendamentoRepository = new AgendamentosRepository();
-                var result = agendamentoRepository.Carregar(id);
-                agendamento.Cliente = result.Cliente;
-     
 
-                if (agendamentoRepository.Salvar(agendamento) == true)
+                if (agendamentoRepository.Salvar(cliente) == true)
                 {
                     ViewData["mensagem"] = "<h1>Agendamento alterado com sucesso!</h1>";
                 }
@@ -127,17 +120,17 @@ namespace Kstudio_v2.Controllers
                 Console.WriteLine(e);
                 throw;
             }
-            
+
         }
 
-        public ActionResult Detalhes(Agendamento agendamento, int id)
+        public ActionResult Detalhes(Cliente cliente, int id)
         {
             try
             {
                 var agendamentoRepository = new AgendamentosRepository();
                 var dadosCliente = agendamentoRepository.Carregar(id);
-                agendamento = dadosCliente;
-                var result = agendamentoRepository.CarregarLista(agendamento);
+                cliente = dadosCliente;
+                var result = agendamentoRepository.CarregarLista(cliente);
                 ViewBag.id = id;
 
                 return View(result);
@@ -165,17 +158,36 @@ namespace Kstudio_v2.Controllers
                 Console.WriteLine(e);
                 throw;
             }
-           
+
         }
 
         [HttpPost]
         public ActionResult Deletar(int id, FormCollection collection)
         {
-            var agendamentoRepository = new AgendamentosRepository();
-            agendamentoRepository.Excluir(id);
+
+            try
+            {
+                var agendamentoRepository = new AgendamentosRepository();
 
 
-            return RedirectToAction("Index");
+                if (agendamentoRepository.Excluir(id) == true)
+                {
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    var result = agendamentoRepository.Carregar(id);
+                    ViewData["mensagem"] = "<h1>DEU RUIM</h1>";
+                    return View(result);
+
+                }
+            }
+            catch (Exception msg)
+            {
+
+                throw;
+            }
+           
         }
 
         public string BuscarClientesAutocomplete(string value)
@@ -195,7 +207,7 @@ namespace Kstudio_v2.Controllers
 
                 throw;
             }
-           
+
         }
     }
 }

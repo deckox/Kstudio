@@ -9,7 +9,7 @@
         //Obtem o texto digitado no campo de pesquisa
         var value = document.getElementById("pesquisa").value;
 
-        //Faz uma requisição Ajax de GET no controller na action GetClientesForAutocomplete passando o valor digitado no campo como parametro
+        //Faz uma requisição Ajax de GET no controller na action BuscarClientesAutocomplete passando o valor digitado no campo como parametro
         var request = $.ajax({
             url: 'BuscarClientesAutocomplete',
             type: 'GET',
@@ -27,7 +27,7 @@
             var options = '';
             jsondata.forEach(function (cliente) {
              
-                var sugestion = cliente.Banda + ' - ' + cliente.Responsavel;
+                var sugestion = cliente.Banda + '-' + cliente.Responsavel;
                 options += '<option data-id="' + cliente.Id + '"> ' + sugestion + ' </option>';
             });
 
@@ -54,7 +54,7 @@
 
         //Se alguma opção estiver selecionada, jopa o id do clienteescolhido no campo hidden que sera enviado comos dados ao salvar
         if (selectedOption != '') {
-            document.getElementById("Cliente_Id").value = selectedOption;
+            document.getElementById("Id").value = selectedOption;
         }
 
     }
@@ -67,7 +67,7 @@ function addFieldsAgendamento() {
     detalhe.setAttribute("name", "detalhe");
     var detalhes = document.getElementById("detalhes");
     var template = document.getElementById("template");
-    var index = document.getElementById("detalhes").querySelectorAll('div[name=detalhe]').length;
+    var index = document.getElementById("detalhes").querySelectorAll('div[name=detalhe]').length + 1;
 
     var data = template.cloneNode(true);   // clona a div abaixo:
     //<div id="template" class="form-group hide" disa="">
@@ -78,23 +78,23 @@ function addFieldsAgendamento() {
     //</div>
     data.className = "form-group";  //<div id="template" class="form-group hide" >
     data.querySelector("label").innerHTML = "Data";  //<label class="control-label col-md-2">Descrição</label>
-    data.querySelector("label").setAttribute("for", "Detalhes_" + index + "__Data"); // <label class="control-label col-md-2" for="Detalhes_[index]__Descricao">Descrição</label>
-    data.querySelector("input").setAttribute("name", "Detalhes[" + index + "].Data"); // <input class="form-control text-box single-line" type="text" value="" name="Detalhes[index].Descricao">
-    data.querySelector("input").id = "Detalhes_" + index + "__Data"; // <input class="form-control text-box single-line" type="text" value="" name="Detalhes[index].Descricao" id="Detalhes_1__Descricao">
+    data.querySelector("label").setAttribute("for", "Agendamentos_" + index + "__Data"); // <label class="control-label col-md-2" for="Detalhes_[index]__Descricao">Descrição</label>
+    data.querySelector("input").setAttribute("name", "Agendamentos[" + index + "].Data"); // <input class="form-control text-box single-line" type="text" value="" name="Detalhes[index].Descricao">
+    data.querySelector("input").id = "Agendamentos_" + index + "__Data"; // <input class="form-control text-box single-line" type="text" value="" name="Detalhes[index].Descricao" id="Detalhes_1__Descricao">
 
     var horario = template.cloneNode(true);
     horario.className = "form-group";
     horario.querySelector("label").innerHTML = "Horário";
-    horario.querySelector("label").setAttribute("for", "Detalhes_" + index + "__Horario");
-    horario.querySelector("input").setAttribute("name", "Detalhes[" + index + "].Horario"); 
-    horario.querySelector("input").id = "Detalhes_" + index + "__horario";
+    horario.querySelector("label").setAttribute("for", "Agendamentos_" + index + "__HorarioInicio");
+    horario.querySelector("input").setAttribute("name", "Agendamentos[" + index + "].HorarioInicio"); 
+    horario.querySelector("input").id = "Agendamentos_" + index + "__HorarioInicio";
 
     var ate = template.cloneNode(true);
     ate.className = "form-group";
     ate.querySelector("label").innerHTML = "Até";
-    ate.querySelector("label").setAttribute("for", "Detalhes_" + index + "__Ate");
-    ate.querySelector("input").setAttribute("name", "Detalhes[" + index + "].Ate");
-    ate.querySelector("input").id = "Detalhes_" + index + "__Ate";
+    ate.querySelector("label").setAttribute("for", "Agendamentos_" + index + "__HorarioFinal");
+    ate.querySelector("input").setAttribute("name", "Agendamentos[" + index + "].HorarioFinal");
+    ate.querySelector("input").id = "Agendamentos_" + index + "__HorarioFinal";
 
     detalhe.appendChild(data);
     detalhe.appendChild(horario);
