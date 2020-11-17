@@ -23,6 +23,7 @@ namespace Kstudio_v2.Core.Repositories
         private const string Sql_SelectJoin = "SELECT a.*, c.* FROM Agendamentos a INNER JOIN Clientes c ON a.IdCliente = c.Id";
         private const string Sql_SelectBandaResponsavel = "SELECT * FROM CLIENTES WHERE Banda LIKE '%{0}%' OR Responsavel LIKE '%{0}%'";
 
+
         public bool Excluir(int id)
         {
             var sql = string.Format(Sql_Delete, id);
@@ -36,12 +37,15 @@ namespace Kstudio_v2.Core.Repositories
             var listSql = new List<string>();
             var ok = 0;
 
-          //  var data = DateTime.Parse(cliente.Data.ToString());
-         //   var dataConvertida = data.ToString("yyyy-MM-dd");
-            var dataConvertida = "2010-11-22";
+          
+            //   var dataConvertida = "2010-11-22";
 
             for (int i = 0; i < cliente.Agendamentos.Count; i++)
             {
+                var data = DateTime.Parse(cliente.Agendamentos[i].Data.ToString());
+                var dataConvertida = data.ToString("yyyy-MM-dd");
+
+
                 if (cliente.Agendamentos[i].Id == 0) //Se o Id for 0 o usuario e Novo, entao deve Inserir
                 {
                     sql = string.Format(Sql_Insert, cliente.Id, dataConvertida, cliente.Agendamentos[i].HorarioInicio, cliente.Agendamentos[i].HorarioFinal);
@@ -99,13 +103,13 @@ namespace Kstudio_v2.Core.Repositories
             return result;
         }
 
-        public Cliente CarregarLista(Cliente cliente)
+        public Cliente CarregarLista(int id)
         {
             var connection = GetConnection();
             connection.Open();
             var command = new SQLiteCommand(connection);
 
-            command.CommandText = string.Format(Sql_SelectByIdCliente, cliente.Id);
+            command.CommandText = string.Format(Sql_SelectByIdCliente, id);
 
             var result = new Cliente();
 
@@ -186,27 +190,52 @@ namespace Kstudio_v2.Core.Repositories
             return cliente;
         }
 
-        public List<Cliente> BuscarIdDaBanda(string pesquisabanda)
+        public List<Cliente> BuscarIdDaBanda(int id)
         {
 
             var connection = GetConnection();
             connection.Open();
             var command = new SQLiteCommand(connection);
 
-            command.CommandText = string.Format(Sql_SelectBandaResponsavel, pesquisabanda);
+            command.CommandText = string.Format(Sql_SelectByIdCliente, id);
 
             var result = new List<Cliente>();
+            result.Add(new Cliente());
 
             using(var reader = command.ExecuteReader())
             {
                 while (reader.Read())
                 {
-                    var cliente = ParseCliente(reader);
-                    result.Add(cliente);
+                    var cliente = Parse(reader);
+                    if (cliente.Id == result[0].Id)
+                    {
+                        var agendamento = cliente.Agendamentos[0];
+                        result[0].Agendamentos.Add(agendamento);
+                    }
+                    else
+                    {
+                        if (result[0].Id == null || result[0].Id == 0)
+                        {
+                           result[0] = cliente;
+                        }
+                       
+                    }
+                  
                 }
             }
 
             return result;
+        }
+
+        public Cliente ValidarHorario(Cliente cliente)
+        {
+            var connection = GetConnection();
+            connection.Open();
+            var command = new SQLiteCommand(connection);
+
+
+
+            return cliente;
         }
     }
 

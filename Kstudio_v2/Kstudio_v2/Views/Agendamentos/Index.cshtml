@@ -5,6 +5,11 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@section Scripts{
+    <script type="text/javascript" src='@Url.Content("~/Scripts/Agendamentos/cadastro.js?v3")' asp-append-version="true"></script>
+
+}
+
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
@@ -16,18 +21,23 @@
             <div class="col-md-10">
                 @Html.Label("Lista de Agendamentos")
                 @Html.ActionLink("Cadastrar Agendamento", "Cadastro")
+                <input type="hidden" id="Id" />
+                <input type="button" id="button1" value="HI" onclick="teste()" />
             </div>
         </div>
         <div class="form-group">
             <div class="col-md-10">
                 @Html.Label("Pesquisar: ")
-                <input type="text" name="campoPesquisa" />
-                <input type="submit" value="Buscar" class="btn btn-default" />
+                <input type="text" list="autocompleteCliente" id="pesquisa" name="campopesquisa" autocomplete="off" onchange="buscarAgendamentos()" />
+                <datalist id="autocompleteCliente"></datalist>
+                @Html.Label("Procurar por data: ")
+                <input type="text" id="pesquisadata" name="campopesquisadata" autocomplete="off" />
+                <input type="button" value="Pesquisar" />;
             </div>
         </div>
 
-        <table class="table">
-            <tr>
+        <table class="table" id="agendamentosDoCliente">
+            <tr id="tablelabel">
                 <th>
                     @Html.LabelForModel("Id")
                 </th>
@@ -51,7 +61,7 @@
             @foreach (var item in Model)
             {
                 var index = 0;
-                <tr>
+                <tr id="trId">
                     <td>
                         @Html.DisplayTextFor(modelItem => item.Id)
                     </td>
@@ -78,8 +88,5 @@
                 </tr>
             }
         </table>
-
     </div>
-
-
 }

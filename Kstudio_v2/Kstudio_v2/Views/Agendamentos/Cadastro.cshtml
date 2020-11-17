@@ -29,57 +29,75 @@
         <h1>Cadastrar Agendamento</h1>
         <div class="form-group">
             <div class="col-md-10">
-                @*@Html.EditorFor(model => model.IdCliente, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })*@
-                @Html.Label("Id: ")
-                @Html.HiddenFor(model => model.Id)
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-md-10">
                 @Html.Label("Banda:")
                 <input type="text" list="autocompleteCliente" id="pesquisa" name="campopesquisa" autocomplete="off" />
                 <datalist id="autocompleteCliente"></datalist>
                 @Html.ActionLink("Novo", "Cadastro", "Clientes")
             </div>
         </div>
-        <div id="detalhes">
-            
-            @for (int i = 0; i < Model.Agendamentos.Count; i++)
-            {
-                <div id="detalhe">
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.Agendamentos[i].Data, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.Agendamentos[i].Data, new { htmlAttributes = new { @class = "form-control", @placeholder = "Ex: Banda(Cantor),Responsavel,Email e Telefone" } })
-                            @Html.ValidationMessageFor(model => model.Agendamentos[i].Data, "", new { @class = "text-danger" })
-                        </div>
+        @*<div class="col-md-10">*@
+        <table class="table" id="agendamentosDoCliente">
+            <tr id="tablelabel">
+                <th>
+                    @Html.LabelForModel("Data")
+                </th>
+                <th>
+                    @Html.LabelForModel("Horario de Inicio")
+                </th>
+                <th>
+                    @Html.LabelForModel("Horario Final")
+                </th>
+            </tr>
+
+            @*</div>*@
+            <div id="detalhes" class="col-md-10">
+
+                @for (int i = 0; i < Model.Agendamentos.Count; i++)
+                {
+                    <div id="detalhe" class="col-md-10">
+                        <tr>
+                            <td>
+                                <div class="form-group">
+                                    @*@Html.LabelFor(model => model.Agendamentos[i].Data, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Agendamentos[i].Data, new { htmlAttributes = new { @class = "form-control", @placeholder = "Ex: Banda(Cantor),Responsavel,Email e Telefone" } })
+                                        @Html.ValidationMessageFor(model => model.Agendamentos[i].Data, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    @*@Html.LabelFor(model => model.Agendamentos[i].HorarioInicio, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Agendamentos[i].HorarioInicio, new { htmlAttributes = new { @class = "form-control", @placeholder = "Ex: Banda(Cantor),Responsavel,Email e Telefone" } })
+                                        @Html.ValidationMessageFor(model => model.Agendamentos[i].HorarioInicio, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    @*@Html.LabelFor(model => model.Agendamentos[i].HorarioFinal, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Agendamentos[i].HorarioFinal, new { htmlAttributes = new { @class = "form-control", @placeholder = "Ex: Banda(Cantor),Responsavel,Email e Telefone" } })
+                                        @Html.ValidationMessageFor(model => model.Agendamentos[i].HorarioFinal, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
                     </div>
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.Agendamentos[i].HorarioInicio, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.Agendamentos[i].HorarioInicio, new { htmlAttributes = new { @class = "form-control", @placeholder = "Ex: Banda(Cantor),Responsavel,Email e Telefone" } })
-                            @Html.ValidationMessageFor(model => model.Agendamentos[i].HorarioInicio, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.Agendamentos[i].HorarioFinal, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.Agendamentos[i].HorarioFinal, new { htmlAttributes = new { @class = "form-control", @placeholder = "Ex: Banda(Cantor),Responsavel,Email e Telefone" } })
-                            @Html.ValidationMessageFor(model => model.Agendamentos[i].HorarioFinal, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-                </div>
-            }
-        </div>
-        <div>
-            <input type="button" id="plus" value="+" class="btn btn-default" onclick="addFieldsAgendamento()" />
-            <input type="button" id="minus" value="-" class="btn btn-default" />
-        </div>
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input id="salvar" type="submit" value="Salvar" class="btn-default" />
-                <input id="limpar" type="reset" value="Limpar" class="btn-default" />
-            </div>
+                }
+
+        </table>
+    </div>
+    <div class="col-md-10">
+        <input type="button" id="plus" value="+" class="btn btn-default" onclick="addFieldsAgendamento()" />
+        <input type="button" id="minus" value="-" class="btn btn-default" />
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input id="salvar" type="submit" value="Salvar" class="btn-default" />
+            <input id="limpar" type="reset" value="Limpar" class="btn-default" />
         </div>
     </div>
+    
 }

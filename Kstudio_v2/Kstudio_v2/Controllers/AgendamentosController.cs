@@ -130,10 +130,10 @@ namespace Kstudio_v2.Controllers
                 var agendamentoRepository = new AgendamentosRepository();
                 var dadosCliente = agendamentoRepository.Carregar(id);
                 cliente = dadosCliente;
-                var result = agendamentoRepository.CarregarLista(cliente);
+               // var result = agendamentoRepository.CarregarLista(cliente);
                 ViewBag.id = id;
 
-                return View(result);
+                return View();
             }
             catch (Exception e)
             {
@@ -208,6 +208,29 @@ namespace Kstudio_v2.Controllers
                 throw;
             }
 
+        }
+
+        public string BuscarAgendamentosAutocomplete(string value)
+        {
+            try
+            {
+                var split = value.Split('-');
+                var id = int.Parse(split[0]);
+
+                var agendamentoRepository = new AgendamentosRepository();
+
+                var listaDeClientesDoBD = agendamentoRepository.BuscarIdDaBanda(id);
+
+                var jsonResult = JsonConvert.SerializeObject(listaDeClientesDoBD);
+               
+
+                return jsonResult;
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
         }
     }
 }
