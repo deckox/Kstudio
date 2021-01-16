@@ -18,25 +18,6 @@
     }
 }
 
-function apenasletras(input) {
-
-}
-
-
-function mostrardate() {
-
-    var date = new Date();
-    alert("dateok")
-    var whatYearIs = date.getFullYear();
-    alert("whatYearIsok")
-    
-    window.alert(whatYearIs);
-
-    resultado.innerHTML = 'aaaaaaaaaaaaaaa';
-
-
-
-}
 
 function addFields() {
 

@@ -15,9 +15,9 @@ namespace Kstudio_v2.Models
         public Cliente Cliente { get; set; }
         public DateTime Data { get; set; }
         [Display(Name = "Horário")]
-        public string HorarioInicio { get; set; }
+        public DateTime HorarioInicio { get; set; }
         [Display(Name = "Até")]
-        public string HorarioFinal { get; set; }
+        public DateTime HorarioFinal { get; set; }
         
 
 

@@ -179,8 +179,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helper\ClienteViewModelParser.cs" />
     <Compile Include="Models\Agendamento.cs" />
+    <Compile Include="Models\AgendamentoViewModel.cs" />
     <Compile Include="Models\Cliente.cs" />
+    <Compile Include="Models\ClienteViewModel.cs" />
     <Compile Include="Models\Comanda.cs" />
     <Compile Include="Models\DetalheComanda.cs" />
     <Compile Include="Models\PesquisaCliente.cs" />

@@ -1,14 +1,11 @@
-﻿using DocumentFormat.OpenXml.Wordprocessing;
-using Nest;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
 namespace Kstudio_v2.Models
 {
-    public class Cliente
+    public class ClienteViewModel
     {
         public int Id { get; set; }
         public string Banda { get; set; }
@@ -16,13 +13,12 @@ namespace Kstudio_v2.Models
         public string EstiloMusical { get; set; }
         public string Email { get; set; }
         public string Telefone { get; set; }
-        public List<Agendamento>Agendamentos { get; set; }
- 
+        public List<AgendamentoViewModel> AgendamentosViewModel { get; set; }
 
-        public Cliente()
+        public ClienteViewModel()
         {
-            Agendamentos = new List<Agendamento>();
-            
+           
+            AgendamentosViewModel = new List<AgendamentoViewModel>();
         }
     }
 }

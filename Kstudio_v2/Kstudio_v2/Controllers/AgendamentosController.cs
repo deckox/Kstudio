@@ -1,4 +1,5 @@
 ﻿using Kstudio_v2.Core.Repositories;
+using Kstudio_v2.Helper;
 using Kstudio_v2.Models;
 using Microsoft.Ajax.Utilities;
 using Newtonsoft.Json;
@@ -35,9 +36,11 @@ namespace Kstudio_v2.Controllers
         {
             try
             {
-                var listaAgendamentos = new Cliente();
-                listaAgendamentos.Agendamentos.Add(new Agendamento()); //adiciona um objeto vazio somente para startar o for
+                //var listaAgendamentos = new Cliente();
+                //listaAgendamentos.Agendamentos.Add(new Agendamento()); //adiciona um objeto vazio somente para startar o for
 
+                var listaAgendamentos = new ClienteViewModel();
+                listaAgendamentos.AgendamentosViewModel.Add(new AgendamentoViewModel());
 
                 return View(listaAgendamentos);
             }
@@ -50,16 +53,18 @@ namespace Kstudio_v2.Controllers
         }
 
         [HttpPost]
-        public ActionResult Cadastro(int Id, Cliente cliente)
+        public ActionResult Cadastro(ClienteViewModel clienteViewModel, string value)
         {
 
             try
             {
+                var newCliente = new ClienteViewModelParser();
+                var convertToCliente = newCliente.clienteViewModelParser(clienteViewModel);
 
-                var listaAgendamentos = cliente;
+
                 var agendamentoRepository = new AgendamentosRepository();
 
-                if (agendamentoRepository.Salvar(listaAgendamentos) == true)
+                if (agendamentoRepository.Salvar(convertToCliente) == true)
                 {
                     ViewData["mensagem"] = "<h1>Agendamento Cadastrado com sucesso!</h1>";
                     return RedirectToAction("Index");
@@ -67,7 +72,7 @@ namespace Kstudio_v2.Controllers
                 else
                 {
                     ViewData["mensagem"] = "<h1>Não foi possível cadastrar um Agendamento!</h1>";
-                    return View(listaAgendamentos);
+                    return View(convertToCliente);
                 }
 
              

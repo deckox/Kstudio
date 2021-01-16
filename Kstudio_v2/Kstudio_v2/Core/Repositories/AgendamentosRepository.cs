@@ -22,7 +22,7 @@ namespace Kstudio_v2.Core.Repositories
         private const string Sql_SelectByIdCliente = "SELECT a.*, c.* FROM Agendamentos a INNER JOIN Clientes c ON a.IdCliente = c.Id WHERE a.IdCliente={0}";
         private const string Sql_SelectJoin = "SELECT a.*, c.* FROM Agendamentos a INNER JOIN Clientes c ON a.IdCliente = c.Id";
         private const string Sql_SelectBandaResponsavel = "SELECT * FROM CLIENTES WHERE Banda LIKE '%{0}%' OR Responsavel LIKE '%{0}%'";
-
+        private const string Sql_SelectDisponibilidadeDeHorario = "SELECT * FROM agendamentos WHERE Data = '%{0}%' AND HorarioInicio >= '%{0}%' AND HorarioFIM <= '%{0}%'";
 
         public bool Excluir(int id)
         {
@@ -33,33 +33,31 @@ namespace Kstudio_v2.Core.Repositories
 
         public bool Salvar(Cliente cliente)
         {
-            var sql = "";
             var listSql = new List<string>();
             var ok = 0;
-
-          
-            //   var dataConvertida = "2010-11-22";
+            string sql;
 
             for (int i = 0; i < cliente.Agendamentos.Count; i++)
             {
                 var data = DateTime.Parse(cliente.Agendamentos[i].Data.ToString());
                 var dataConvertida = data.ToString("yyyy-MM-dd");
-
+                var horaInicio = cliente.Agendamentos[i].HorarioInicio.ToString("hh:mm:ss");
+                var horaFim = cliente.Agendamentos[i].HorarioFinal.ToString("hh:mm:ss");
 
                 if (cliente.Agendamentos[i].Id == 0) //Se o Id for 0 o usuario e Novo, entao deve Inserir
                 {
-                    sql = string.Format(Sql_Insert, cliente.Id, dataConvertida, cliente.Agendamentos[i].HorarioInicio, cliente.Agendamentos[i].HorarioFinal);
+                    sql = string.Format(Sql_Insert, cliente.Id, dataConvertida, horaInicio, horaFim);
                 }
 
                 else //Usuario com Id entao os dados devem ser alterados
                 {
-                    sql = string.Format(Sql_Update, cliente.Agendamentos[i].Id, dataConvertida, cliente.Agendamentos[i].HorarioInicio, cliente.Agendamentos[i].HorarioFinal);
+                    sql = string.Format(Sql_Update, cliente.Agendamentos[i].Id, dataConvertida, horaInicio, horaFim);
                 }
 
                 listSql.Add(sql);
                 
 
-                if (ExecuteCommand(listSql[i]) == true)
+                if (ExecuteCommand(listSql[i]))
                 {
                     ok++;
                 }
@@ -70,12 +68,7 @@ namespace Kstudio_v2.Core.Repositories
                 return true;
             }
 
-            else
-            {
-                return false;
-            }
-
-          
+            return false;
         }
 
         public Cliente Carregar(int id)
@@ -161,8 +154,8 @@ namespace Kstudio_v2.Core.Repositories
             var result = new Cliente();
             result.Agendamentos.Add(new Agendamento());
 
-            result.Agendamentos[0].HorarioInicio = reader["HorarioInicio"].ToString();
-            result.Agendamentos[0].HorarioFinal = reader["HorarioFim"].ToString();
+            result.Agendamentos[0].HorarioInicio = DateTime.Parse(reader["HorarioInicio"].ToString());
+            result.Agendamentos[0].HorarioFinal = DateTime.Parse(reader["HorarioFim"].ToString());
             result.Agendamentos[0].Data = DateTime.Parse(reader["Data"].ToString());
             result.Agendamentos[0].Id = int.Parse((reader["Id"].ToString()));
 
@@ -174,20 +167,6 @@ namespace Kstudio_v2.Core.Repositories
             result.EstiloMusical = reader["EstiloMusical"].ToString();
 
             return result;
-        }
-
-        private Cliente ParseCliente(SQLiteDataReader reader)
-        {
-            var cliente = new Cliente()
-            {
-                Id = int.Parse(reader["Id"].ToString()),
-                Banda = reader["Banda"].ToString().ToLower(),
-                Responsavel = reader["Responsavel"].ToString().ToLower(),
-                Email = reader["Email"].ToString().ToLower(),
-                EstiloMusical = reader["EstiloMusical"].ToString().ToLower(),
-                Telefone = reader["Telefone"].ToString().ToLower(),
-            };
-            return cliente;
         }
 
         public List<Cliente> BuscarIdDaBanda(int id)
@@ -227,15 +206,16 @@ namespace Kstudio_v2.Core.Repositories
             return result;
         }
 
-        public Cliente ValidarHorario(Cliente cliente)
+        public bool ValidarHorarioDisponivel(Cliente cliente)
         {
             var connection = GetConnection();
             connection.Open();
             var command = new SQLiteCommand(connection);
 
+            command.CommandText = string.Format(Sql_SelectDisponibilidadeDeHorario, cliente.Agendamentos[0].Data, cliente.Agendamentos[0].HorarioInicio, cliente.Agendamentos[0].HorarioFinal);
 
 
-            return cliente;
+            return true;
         }
     }
 
