@@ -22,7 +22,7 @@ namespace Kstudio_v2.Core.Repositories
         private const string Sql_SelectByIdCliente = "SELECT a.*, c.* FROM Agendamentos a INNER JOIN Clientes c ON a.IdCliente = c.Id WHERE a.IdCliente={0}";
         private const string Sql_SelectJoin = "SELECT a.*, c.* FROM Agendamentos a INNER JOIN Clientes c ON a.IdCliente = c.Id";
         private const string Sql_SelectBandaResponsavel = "SELECT * FROM CLIENTES WHERE Banda LIKE '%{0}%' OR Responsavel LIKE '%{0}%'";
-        private const string Sql_SelectDisponibilidadeDeHorario = "SELECT * FROM agendamentos WHERE Data = '%{0}%' AND HorarioInicio >= '%{0}%' AND HorarioFIM <= '%{0}%'";
+        private const string Sql_SelectDisponibilidadeDeHorario = "SELECT * FROM agendamentos WHERE Data = '%{0}%' AND HorarioFIM > '%{0}%'";
 
         public bool Excluir(int id)
         {
@@ -212,7 +212,11 @@ namespace Kstudio_v2.Core.Repositories
             connection.Open();
             var command = new SQLiteCommand(connection);
 
-            command.CommandText = string.Format(Sql_SelectDisponibilidadeDeHorario, cliente.Agendamentos[0].Data, cliente.Agendamentos[0].HorarioInicio, cliente.Agendamentos[0].HorarioFinal);
+            for (int i = 0; i < cliente.Agendamentos.Count; i++)
+            {
+                command.CommandText = string.Format(Sql_SelectDisponibilidadeDeHorario, cliente.Agendamentos[i].Data, cliente.Agendamentos[i].HorarioInicio);
+
+            }
 
 
             return true;
