@@ -53,7 +53,7 @@ namespace Kstudio_v2.Controllers
         }
 
         [HttpPost]
-        public ActionResult Cadastro(ClienteViewModel clienteViewModel, string value)
+        public ActionResult Cadastro(ClienteViewModel clienteViewModel)
         {
 
             try

@@ -1,4 +1,5 @@
-﻿@model Kstudio_v2.Models.ClienteViewModel
+﻿@using Newtonsoft.Json
+@model Kstudio_v2.Models.ClienteViewModel
 
 
 @{
@@ -55,7 +56,7 @@
                                 <div class="form-group">
                                     @*@Html.LabelFor(model => model.Agendamentos[i].Data, htmlAttributes: new { @class = "control-label col-md-2" })*@
                                     <div class="col-md-10">
-                                        @Html.EditorFor(model => model.AgendamentosViewModel[i].Data, new { htmlAttributes = new { @class = "form-control", placeholder = "2020-12-30", required = "required", pattern = "^\\d{4}[\\-\\/\\s]?((((0[13578])|(1[02]))[\\-\\/\\s]?(([0-2][0-9])|(3[01])))|(((0[469])|(11))[\\-\\/\\s]?(([0-2][0-9])|(30)))|(02[\\-\\/\\s]?[0-2][0-9]))$", oninvalid = "this.setCustomValidity('Please Enter valid email')" } })
+                                        @Html.EditorFor(model => model.AgendamentosViewModel[i].Data, new { htmlAttributes = new { @class = "form-control", required = "required" } }) 
                                         @Html.ValidationMessageFor(model => model.AgendamentosViewModel[i].Data, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
@@ -64,7 +65,7 @@
                                 <div class="form-group">
                                     @*@Html.LabelFor(model => model.Agendamentos[i].HorarioInicio, htmlAttributes: new { @class = "control-label col-md-2" })*@
                                     <div class="col-md-10">
-                                        @Html.EditorFor(model => model.AgendamentosViewModel[i].HorarioInicio, new { htmlAttributes = new { @class = "form-control", placeholder = "12:00", pattern = "([01]?[0-9]|2[0-3]):[0-5][0-9]", required = "required", oninvalid = "this.setCustomValidity('Please Enter valid email')" } })
+                                        @Html.EditorFor(model => model.AgendamentosViewModel[i].HorarioInicio, new { htmlAttributes = new { @class = "form-control", required = "required" } })
                                         @Html.ValidationMessageFor(model => model.AgendamentosViewModel[i].HorarioInicio, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
@@ -73,7 +74,7 @@
                                 <div class="form-group">
                                     @*@Html.LabelFor(model => model.Agendamentos[i].HorarioFinal, htmlAttributes: new { @class = "control-label col-md-2" })*@
                                     <div class="col-md-10">
-                                        @Html.EditorFor(model => model.AgendamentosViewModel[i].HorarioFinal, new { htmlAttributes = new { @class = "form-control", placeholder = "12:00", required = "required", pattern = "([01]?[0-9]|2[0-3]):[0-5][0-9]", oninvalid = "this.setCustomValidity('Please Enter valid email')" } })
+                                        @Html.EditorFor(model => model.AgendamentosViewModel[i].HorarioFinal, new { htmlAttributes = new { @class = "form-control", required = "required" } })
                                         @Html.ValidationMessageFor(model => model.AgendamentosViewModel[i].HorarioFinal, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
