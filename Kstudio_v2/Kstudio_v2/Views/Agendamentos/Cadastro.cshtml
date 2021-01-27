@@ -51,7 +51,7 @@
                 @for (int i = 0; i < Model.AgendamentosViewModel.Count; i++)
                 {
                     <div id="detalhe" class="col-md-10">
-                        <tr>
+                        <tr id="trIdTable">
                             <td id="modeloData">
                                 <div class="form-group">
                                     @*@Html.LabelFor(model => model.Agendamentos[i].Data, htmlAttributes: new { @class = "control-label col-md-2" })*@
@@ -87,7 +87,7 @@
     </div>
     <div class="col-md-10">
         <input type="button" id="plus" value="+" class="btn btn-default" onclick="addFieldsAgendamento()" />
-        <input type="button" id="minus" value="-" class="btn btn-default" />
+        <input type="button" id="minus" value="-" class="btn btn-default" onclick="removeFieldsAgendamento()"/>
     </div>
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">

@@ -41,8 +41,8 @@ namespace Kstudio_v2.Core.Repositories
             {
                 var data = DateTime.Parse(cliente.Agendamentos[i].Data.ToString());
                 var dataConvertida = data.ToString("yyyy-MM-dd");
-                var horaInicio = cliente.Agendamentos[i].HorarioInicio.ToString("hh:mm:ss");
-                var horaFim = cliente.Agendamentos[i].HorarioFinal.ToString("hh:mm:ss");
+                var horaInicio = cliente.Agendamentos[i].HorarioInicio.ToString("HH:mm:ss");
+                var horaFim = cliente.Agendamentos[i].HorarioFinal.ToString("HH:mm:ss");
 
                 if (cliente.Agendamentos[i].Id == 0) //Se o Id for 0 o usuario e Novo, entao deve Inserir
                 {

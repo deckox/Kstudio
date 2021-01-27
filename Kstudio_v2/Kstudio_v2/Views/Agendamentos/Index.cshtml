@@ -32,7 +32,7 @@
                 <datalist id="autocompleteCliente"></datalist>
                 @Html.Label("Procurar por data: ")
                 <input type="text" id="pesquisadata" name="campopesquisadata" autocomplete="off" />
-                <input type="button" value="Pesquisar" />;
+                <input type="button" value="Pesquisar" />
             </div>
         </div>
 
@@ -72,13 +72,13 @@
                         @Html.DisplayTextFor(modelItem => item.Responsavel)
                     </td>
                     <td>
-                        @Html.DisplayTextFor(modelItem => item.Agendamentos[index].Data)
+                        @Html.DisplayFor(modelItem => item.Agendamentos[index].Data, "ShortDateTime")
+                        @*@String.Format("{0:dd/MM/yyyy}", item.Agendamentos[index].Data)*@
+                    <td>
+                        @Html.DisplayTextFor(modelItem => item.Agendamentos[index].HorarioInicio.TimeOfDay)
                     </td>
                     <td>
-                        @Html.DisplayTextFor(modelItem => item.Agendamentos[index].HorarioInicio)
-                    </td>
-                    <td>
-                        @Html.DisplayTextFor(modelItem => item.Agendamentos[index].HorarioFinal)
+                        @Html.DisplayTextFor(modelItem => item.Agendamentos[index].HorarioFinal.TimeOfDay)
                     </td>
                     <td>
                         @Html.ActionLink("Editar", "Editar", new { id = item.Agendamentos[0].Id })

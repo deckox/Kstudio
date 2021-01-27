@@ -63,13 +63,16 @@
 
 function addFieldsAgendamento() {
 
-    var detalhe = document.createElement("tr");
-    detalhe.setAttribute("name", "detalhe");
+   
     var detalhes = document.getElementById("agendamentosDoCliente").getElementsByTagName('tbody')[0];
+    var index = document.getElementById("agendamentosDoCliente").getElementsByTagName('tr').length - 1;
+    var detalhe = document.createElement("tr");
+    detalhe.setAttribute("id", "detalhe_" + index);
     var templateData = document.getElementById("modeloData");
     var templateHorario = document.getElementById("modeloHorarioInicio");
     var templateAte = document.getElementById("modeloHorarioFim");
-    var index = document.getElementById("modeloData").querySelectorAll('div[name=detalhe]').length + 1;
+    //var index = document.getElementById("modeloData").querySelectorAll('div[name=detalhe]').length + 1;
+   
 
     var data = templateData.cloneNode(true);   // clona a div abaixo:
     
@@ -97,6 +100,29 @@ function addFieldsAgendamento() {
     detalhe.appendChild(horario);
     detalhe.appendChild(ate);
     detalhes.appendChild(detalhe);
+}
+
+function removeFieldsAgendamento() {
+
+    var quantidadeDeTr = document.getElementById("agendamentosDoCliente").getElementsByTagName('tr').length;
+
+    if (quantidadeDeTr < 3) {
+        alert("Não é possivel excluir este campo!!");
+    }
+
+    else if (quantidadeDeTr > 3) {
+        var detalhe = document.getElementById("detalhe_1");
+        detalhe.nextElementSibling.remove();
+    }
+
+    else if (quantidadeDeTr == 3)
+    {
+        var detalhe = document.getElementById("detalhe_1");
+        detalhe.remove();
+    }
+    
+     
+
 }
 
 function buscarAgendamentos() {
