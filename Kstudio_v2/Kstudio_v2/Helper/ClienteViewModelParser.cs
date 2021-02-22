@@ -23,40 +23,19 @@ namespace Kstudio_v2.Helper
             for (var i = 0; i < clienteViewModel.AgendamentosViewModel.Count; i++)
             {
 
-                //if (DateTime.Parse(clienteViewModel.AgendamentosViewModel[i].HorarioInicio) < DateTime.Parse("22:00") && DateTime.Parse(clienteViewModel.AgendamentosViewModel[i].HorarioFinal) <= DateTime.Parse("22:00"))
-                //{
+                var calculoIntervaloDeHoras = TimeSpan.Parse(clienteViewModel.AgendamentosViewModel[i].HorarioFinal) - TimeSpan.Parse(clienteViewModel.AgendamentosViewModel[i].HorarioInicio);
 
-                //}
 
-                //if (DateTime.Parse(clienteViewModel.AgendamentosViewModel[i].Data) >= DateTime.Today)
-                //{
-
-                //}
-
-                //if (TimeSpan.Parse(clienteViewModel.AgendamentosViewModel[i].HorarioInicio) < TimeSpan.Parse(clienteViewModel.AgendamentosViewModel[i].HorarioFinal))
-                //{
-
-                //}
-
-                //if (DateTime.Parse(clienteViewModel.AgendamentosViewModel[i].HorarioFinal) > DateTime.Parse(clienteViewModel.AgendamentosViewModel[i].HorarioInicio))
-                //{
-
-                //}
-
-                //if (TimeSpan.Parse(clienteViewModel.AgendamentosViewModel[i].HorarioInicio) > TimeSpan.FromHours(DateTime.Now.Hour))
-                //{
-
-                //}
-
-                //if (TimeSpan.Parse(clienteViewModel.AgendamentosViewModel[i].HorarioFinal) > TimeSpan.FromHours(DateTime.Now.Hour))
-                //{
-
-                //}
-
-                if (DateTime.Parse(clienteViewModel.AgendamentosViewModel[i].HorarioInicio) < DateTime.Parse("22:00") && DateTime.Parse(clienteViewModel.AgendamentosViewModel[i].HorarioFinal) <= DateTime.Parse("22:00") &&
-                    DateTime.Parse(clienteViewModel.AgendamentosViewModel[i].Data) >= DateTime.Today && DateTime.Parse(clienteViewModel.AgendamentosViewModel[i].HorarioInicio) < DateTime.Parse(clienteViewModel.AgendamentosViewModel[i].HorarioFinal)
-                    && DateTime.Parse(clienteViewModel.AgendamentosViewModel[i].HorarioFinal) > DateTime.Parse(clienteViewModel.AgendamentosViewModel[i].HorarioInicio) && TimeSpan.Parse(clienteViewModel.AgendamentosViewModel[i].HorarioInicio) >= TimeSpan.FromHours(DateTime.Now.Hour)
-                    && TimeSpan.Parse(clienteViewModel.AgendamentosViewModel[i].HorarioFinal) > TimeSpan.FromHours(DateTime.Now.Hour))
+                if (calculoIntervaloDeHoras.TotalHours > 1 &&
+                    DateTime.Parse(clienteViewModel.AgendamentosViewModel[i].HorarioInicio) < DateTime.Parse("22:00") &&
+                    DateTime.Parse(clienteViewModel.AgendamentosViewModel[i].HorarioFinal) <= DateTime.Parse("22:00") &&
+                    DateTime.Parse(clienteViewModel.AgendamentosViewModel[i].HorarioInicio) >= DateTime.Parse("8:00") && 
+                    DateTime.Parse(clienteViewModel.AgendamentosViewModel[i].HorarioFinal) >= DateTime.Parse("9:00") &&
+                    DateTime.Parse(clienteViewModel.AgendamentosViewModel[i].Data) >= DateTime.Today && 
+                    DateTime.Parse(clienteViewModel.AgendamentosViewModel[i].HorarioInicio) < DateTime.Parse(clienteViewModel.AgendamentosViewModel[i].HorarioFinal) &&
+                    DateTime.Parse(clienteViewModel.AgendamentosViewModel[i].HorarioFinal) > DateTime.Parse(clienteViewModel.AgendamentosViewModel[i].HorarioInicio) &&
+                    TimeSpan.Parse(clienteViewModel.AgendamentosViewModel[i].HorarioInicio) >= TimeSpan.FromHours(DateTime.Now.Hour) &&
+                    TimeSpan.Parse(clienteViewModel.AgendamentosViewModel[i].HorarioFinal) > TimeSpan.FromHours(DateTime.Now.Hour))
                 {
                     var data = DateTime.Parse(clienteViewModel.AgendamentosViewModel[i].Data).ToShortDateString();
                     var horarioInicio = DateTime.Parse(clienteViewModel.AgendamentosViewModel[i].HorarioInicio).ToString("HH:mm:ss");
@@ -68,6 +47,7 @@ namespace Kstudio_v2.Helper
                     cliente.Agendamentos[i].HorarioFinal = DateTime.Parse(horarioFinal);
                     cliente.Id = clienteViewModel.Id;
                 }
+
             }
 
             return cliente;

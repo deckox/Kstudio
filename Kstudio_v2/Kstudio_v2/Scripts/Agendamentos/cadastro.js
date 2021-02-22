@@ -108,20 +108,12 @@ function removeFieldsAgendamento() {
 
     if (quantidadeDeTr < 3) {
         alert("Não é possivel excluir este campo!!");
-    }
+    } else {
 
-    else if (quantidadeDeTr > 3) {
-        var detalhe = document.getElementById("detalhe_1");
+        var detalhe = document.getElementById("trIdTable");
         detalhe.nextElementSibling.remove();
-    }
 
-    else if (quantidadeDeTr == 3)
-    {
-        var detalhe = document.getElementById("detalhe_1");
-        detalhe.remove();
     }
-    
-     
 
 }
 

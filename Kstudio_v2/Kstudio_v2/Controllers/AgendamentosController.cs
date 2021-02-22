@@ -58,11 +58,19 @@ namespace Kstudio_v2.Controllers
 
             try
             {
-                var newCliente = new ClienteViewModelParser();
-                var convertToCliente = newCliente.clienteViewModelParser(clienteViewModel);
-
-
+                var newclienteViewModel = new ClienteViewModelParser();
+                var convertToCliente = newclienteViewModel.clienteViewModelParser(clienteViewModel);
                 var agendamentoRepository = new AgendamentosRepository();
+
+                var resultDisponivel = agendamentoRepository.ValidarHorarioDisponivel(convertToCliente);
+
+                if (clienteViewModel.AgendamentosViewModel.Count != convertToCliente.Agendamentos.Count)
+                {
+                    ViewData["mensagem"] = "<h1>Não foi possível cadastrar um Agendamento!</h1>";
+                    return View(clienteViewModel);
+                }
+
+              
 
                 if (agendamentoRepository.Salvar(convertToCliente))
                 {
@@ -71,8 +79,8 @@ namespace Kstudio_v2.Controllers
                 }
                 else
                 {
-                    ViewData["mensagem"] = "<h1>Não foi possível cadastrar um Agendamento!</h1>";
-                    return View(convertToCliente);
+                    ViewData["mensagem"] = "<h1>Agendamento Cadastrado com sucesso!</h1>";
+                    return RedirectToAction("Index");
                 }
 
              

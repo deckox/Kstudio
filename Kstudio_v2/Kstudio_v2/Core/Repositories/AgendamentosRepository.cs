@@ -22,7 +22,7 @@ namespace Kstudio_v2.Core.Repositories
         private const string Sql_SelectByIdCliente = "SELECT a.*, c.* FROM Agendamentos a INNER JOIN Clientes c ON a.IdCliente = c.Id WHERE a.IdCliente={0}";
         private const string Sql_SelectJoin = "SELECT a.*, c.* FROM Agendamentos a INNER JOIN Clientes c ON a.IdCliente = c.Id";
         private const string Sql_SelectBandaResponsavel = "SELECT * FROM CLIENTES WHERE Banda LIKE '%{0}%' OR Responsavel LIKE '%{0}%'";
-        private const string Sql_SelectDisponibilidadeDeHorario = "SELECT * FROM agendamentos WHERE Data = '%{0}%' AND HorarioFIM > '%{0}%'";
+        private const string Sql_SelectDisponibilidadeDeHorario = "SELECT * FROM agendamentos WHERE HorarioFim BETWEEN '%{0}%' AND '%{0}%' AND Data = '%{0}%'";
 
         public bool Excluir(int id)
         {
@@ -34,7 +34,7 @@ namespace Kstudio_v2.Core.Repositories
         public bool Salvar(Cliente cliente)
         {
             var listSql = new List<string>();
-            var ok = 0;
+            var agendamentosCadastrados = 0;
             string sql;
 
             for (int i = 0; i < cliente.Agendamentos.Count; i++)
@@ -59,11 +59,11 @@ namespace Kstudio_v2.Core.Repositories
 
                 if (ExecuteCommand(listSql[i]))
                 {
-                    ok++;
+                    agendamentosCadastrados++;
                 }
             }
 
-            if (cliente.Agendamentos.Count == ok)
+            if (cliente.Agendamentos.Count == agendamentosCadastrados)
             {
                 return true;
             }
@@ -214,8 +214,19 @@ namespace Kstudio_v2.Core.Repositories
 
             for (int i = 0; i < cliente.Agendamentos.Count; i++)
             {
-                command.CommandText = string.Format(Sql_SelectDisponibilidadeDeHorario, cliente.Agendamentos[i].Data, cliente.Agendamentos[i].HorarioInicio);
+                command.CommandText = string.Format(Sql_SelectDisponibilidadeDeHorario, cliente.Agendamentos[i].Data, cliente.Agendamentos[i].HorarioInicio, cliente.Agendamentos[i].HorarioFinal);
 
+                var result = new List<Cliente>();
+                result.Add(new Cliente());
+
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        var horario = Parse(reader);
+                        result.Add(horario);
+                    }
+                }
             }
 
 
