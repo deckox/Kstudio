@@ -22,7 +22,7 @@ namespace Kstudio_v2.Core.Repositories
         private const string Sql_SelectByIdCliente = "SELECT a.*, c.* FROM Agendamentos a INNER JOIN Clientes c ON a.IdCliente = c.Id WHERE a.IdCliente={0}";
         private const string Sql_SelectJoin = "SELECT a.*, c.* FROM Agendamentos a INNER JOIN Clientes c ON a.IdCliente = c.Id";
         private const string Sql_SelectBandaResponsavel = "SELECT * FROM CLIENTES WHERE Banda LIKE '%{0}%' OR Responsavel LIKE '%{0}%'";
-        private const string Sql_SelectDisponibilidadeDeHorario = "SELECT * FROM agendamentos WHERE HorarioFim BETWEEN '%{0}%' AND '%{0}%' AND Data = '%{0}%'";
+        private const string Sql_SelectDisponibilidadeDeHorario = "SELECT * FROM agendamentos WHERE HorarioFim BETWEEN '{0}' AND '{1}' AND Data='{2}'";
 
         public bool Excluir(int id)
         {
@@ -211,24 +211,32 @@ namespace Kstudio_v2.Core.Repositories
             var connection = GetConnection();
             connection.Open();
             var command = new SQLiteCommand(connection);
+            var result = 0;
 
             for (int i = 0; i < cliente.Agendamentos.Count; i++)
             {
-                command.CommandText = string.Format(Sql_SelectDisponibilidadeDeHorario, cliente.Agendamentos[i].Data, cliente.Agendamentos[i].HorarioInicio, cliente.Agendamentos[i].HorarioFinal);
+                var data = DateTime.Parse(cliente.Agendamentos[i].Data.ToString());
+                var dataConvertida = data.ToString("yyyy-MM-dd");
+                var horaInicio = cliente.Agendamentos[i].HorarioInicio.ToString("HH:mm:ss");
+                var horaFim = cliente.Agendamentos[i].HorarioFinal.ToString("HH:mm:ss");
 
-                var result = new List<Cliente>();
-                result.Add(new Cliente());
+                command.CommandText = string.Format(Sql_SelectDisponibilidadeDeHorario, horaInicio, horaFim, dataConvertida);
+               
 
                 using (var reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        var horario = Parse(reader);
-                        result.Add(horario);
+                        result++;
+                        break;
                     }
                 }
             }
 
+            if (result > 0)
+            {
+                return false;
+            }
 
             return true;
         }

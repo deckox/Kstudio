@@ -26,7 +26,7 @@ namespace Kstudio_v2.Helper
                 var calculoIntervaloDeHoras = TimeSpan.Parse(clienteViewModel.AgendamentosViewModel[i].HorarioFinal) - TimeSpan.Parse(clienteViewModel.AgendamentosViewModel[i].HorarioInicio);
 
 
-                if (calculoIntervaloDeHoras.TotalHours > 1 &&
+                if (calculoIntervaloDeHoras.TotalHours >= 1 &&
                     DateTime.Parse(clienteViewModel.AgendamentosViewModel[i].HorarioInicio) < DateTime.Parse("22:00") &&
                     DateTime.Parse(clienteViewModel.AgendamentosViewModel[i].HorarioFinal) <= DateTime.Parse("22:00") &&
                     DateTime.Parse(clienteViewModel.AgendamentosViewModel[i].HorarioInicio) >= DateTime.Parse("8:00") && 

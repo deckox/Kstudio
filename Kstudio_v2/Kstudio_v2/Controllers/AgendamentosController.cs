@@ -72,7 +72,7 @@ namespace Kstudio_v2.Controllers
 
               
 
-                if (agendamentoRepository.Salvar(convertToCliente))
+                if (resultDisponivel && agendamentoRepository.Salvar(convertToCliente))
                 {
                     ViewData["mensagem"] = "<h1>Agendamento Cadastrado com sucesso!</h1>";
                     return RedirectToAction("Index");
