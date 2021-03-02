@@ -70,7 +70,7 @@ namespace Kstudio_v2.Controllers
                     return View(clienteViewModel);
                 }
 
-              
+
 
                 if (resultDisponivel && agendamentoRepository.Salvar(convertToCliente))
                 {
@@ -83,7 +83,7 @@ namespace Kstudio_v2.Controllers
                     return RedirectToAction("Index");
                 }
 
-             
+
             }
             catch (Exception ex)
             {
@@ -143,7 +143,7 @@ namespace Kstudio_v2.Controllers
                 var agendamentoRepository = new AgendamentosRepository();
                 var dadosCliente = agendamentoRepository.Carregar(id);
                 cliente = dadosCliente;
-               // var result = agendamentoRepository.CarregarLista(cliente);
+                // var result = agendamentoRepository.CarregarLista(cliente);
                 ViewBag.id = id;
 
                 return View();
@@ -200,7 +200,7 @@ namespace Kstudio_v2.Controllers
 
                 throw;
             }
-           
+
         }
 
         public string BuscarClientesAutocomplete(string value)
@@ -235,7 +235,27 @@ namespace Kstudio_v2.Controllers
                 var listaDeClientesDoBD = agendamentoRepository.BuscarIdDaBanda(id);
 
                 var jsonResult = JsonConvert.SerializeObject(listaDeClientesDoBD);
-               
+
+
+                return jsonResult;
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+        }
+
+        public string BuscarAgendamentosPorData(string value)
+        {
+            try
+            {
+                var agendamentoRepository = new AgendamentosRepository();
+
+                var listaAgendamentosDoBD = agendamentoRepository.BuscarAgendamentosPorData(value);
+
+                var jsonResult = JsonConvert.SerializeObject(listaAgendamentosDoBD);
+
 
                 return jsonResult;
             }
@@ -246,4 +266,5 @@ namespace Kstudio_v2.Controllers
             }
         }
     }
+
 }

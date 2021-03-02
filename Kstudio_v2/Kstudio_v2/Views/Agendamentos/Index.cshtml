@@ -22,7 +22,6 @@
                 @Html.Label("Lista de Agendamentos")
                 @Html.ActionLink("Cadastrar Agendamento", "Cadastro")
                 <input type="hidden" id="Id" />
-                <input type="button" id="button1" value="HI" onclick="teste()" />
             </div>
         </div>
         <div class="form-group">
@@ -31,8 +30,8 @@
                 <input type="text" list="autocompleteCliente" id="pesquisa" name="campopesquisa" autocomplete="off" onchange="buscarAgendamentos()" />
                 <datalist id="autocompleteCliente"></datalist>
                 @Html.Label("Procurar por data: ")
-                <input type="text" id="pesquisadata" name="campopesquisadata" autocomplete="off" />
-                <input type="button" value="Pesquisar" />
+                <input type="date" id="pesquisadata" name="campodata" />
+                <input type="button" value="Pesquisar" onclick="buscarAgendamentosData()" />
             </div>
         </div>
 
