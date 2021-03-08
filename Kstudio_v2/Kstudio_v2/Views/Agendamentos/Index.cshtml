@@ -27,8 +27,9 @@
         <div class="form-group">
             <div class="col-md-10">
                 @Html.Label("Pesquisar: ")
-                <input type="text" list="autocompleteCliente" id="pesquisa" name="campopesquisa" autocomplete="off" onchange="buscarAgendamentos()" />
+                <input type="text" list="autocompleteCliente" id="pesquisa" name="campopesquisa" autocomplete="off" />
                 <datalist id="autocompleteCliente"></datalist>
+                <input type="button" value="Pesquisar" onclick="buscarAgendamentos()" />
                 @Html.Label("Procurar por data: ")
                 <input type="date" id="pesquisadata" name="campodata" />
                 <input type="button" value="Pesquisar" onclick="buscarAgendamentosData()" />
@@ -71,7 +72,7 @@
                         @Html.DisplayTextFor(modelItem => item.Responsavel)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Agendamentos[index].Data, "ShortDateTime")
+                        @Html.DisplayFor(modelItem => item.Agendamentos[index].Data)
                         @*@String.Format("{0:dd/MM/yyyy}", item.Agendamentos[index].Data)*@
                     <td>
                         @Html.DisplayTextFor(modelItem => item.Agendamentos[index].HorarioInicio.TimeOfDay)

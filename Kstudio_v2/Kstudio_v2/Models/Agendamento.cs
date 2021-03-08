@@ -13,6 +13,8 @@ namespace Kstudio_v2.Models
     {
         public int Id { get; set; }
         public Cliente Cliente { get; set; }
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
+        [DataType(DataType.Date, ErrorMessage = "Data em formato inválido")]
         public DateTime Data { get; set; }
         [Display(Name = "Horário")]
         public DateTime HorarioInicio { get; set; }
