@@ -168,9 +168,11 @@
     <Compile Include="Controllers\AgendamentosController.cs" />
     <Compile Include="Controllers\ClientesController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\ComandaController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
     <Compile Include="Controllers\ProdutosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Core\Repositories\ComandasRepository.cs" />
     <Compile Include="Core\Repositories\AgendamentosRepository.cs" />
     <Compile Include="Core\Repositories\BaseRepository.cs" />
     <Compile Include="Core\Repositories\ClientesRepository.cs" />
@@ -184,6 +186,7 @@
     <Compile Include="Models\AgendamentoViewModel.cs" />
     <Compile Include="Models\Cliente.cs" />
     <Compile Include="Models\ClienteViewModel.cs" />
+    <Compile Include="Models\ComandaViewModel.cs" />
     <Compile Include="Models\Comanda.cs" />
     <Compile Include="Models\DetalheComanda.cs" />
     <Compile Include="Models\PesquisaCliente.cs" />
@@ -200,6 +203,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\Agendamentos\editar.js" />
     <Content Include="Scripts\Agendamentos\cadastro.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -255,6 +259,7 @@
     <Content Include="Views\Agendamentos\Deletar.cshtml" />
     <Content Include="Views\Agendamentos\Detalhes.cshtml" />
     <Content Include="Views\Agendamentos\Editar.cshtml" />
+    <Content Include="Views\Comanda\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

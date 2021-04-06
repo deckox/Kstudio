@@ -1,4 +1,5 @@
-﻿@model Kstudio_v2.Models.Cliente
+﻿@using System.Linq
+@model Kstudio_v2.Models.ClienteViewModel
 
 @{
     ViewBag.Title = "Deletar";
@@ -14,10 +15,10 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Agendamentos[0].Id)
+            @Html.DisplayNameFor(model => model.AgendamentosViewModel.FirstOrDefault().Id)
         </dt>
         <dd>
-            @Html.DisplayTextFor(model => model.Agendamentos[0].Id)
+            @Html.DisplayTextFor(model => model.AgendamentosViewModel.FirstOrDefault().Id)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Banda)
@@ -32,22 +33,22 @@
             @Html.DisplayTextFor(model => model.Responsavel)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Agendamentos[0].Data)
+            @Html.DisplayNameFor(model => model.AgendamentosViewModel.FirstOrDefault().Data)
         </dt>
         <dd>
-            @Html.DisplayTextFor(model => model.Agendamentos[0].Data)
+            @Html.DisplayTextFor(model => model.AgendamentosViewModel.FirstOrDefault().Data)
         </dd>
         <dt>
-           @Html.DisplayNameFor(model => model.Agendamentos[0].HorarioInicio)
+           @Html.DisplayNameFor(model => model.AgendamentosViewModel.FirstOrDefault().HorarioInicio)
         </dt>
         <dd>
-            @Html.DisplayTextFor(model => model.Agendamentos[0].HorarioInicio)
+            @Html.DisplayTextFor(model => model.AgendamentosViewModel.FirstOrDefault().HorarioInicio)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Agendamentos[0].HorarioFinal)
+            @Html.DisplayNameFor(model => model.AgendamentosViewModel.FirstOrDefault().HorarioFinal)
         </dt>
         <dd>
-            @Html.DisplayTextFor(model => model.Agendamentos[0].HorarioFinal)
+            @Html.DisplayTextFor(model => model.AgendamentosViewModel.FirstOrDefault().HorarioFinal)
         </dd>
     </dl>
 

@@ -1,69 +1,96 @@
-﻿@model Kstudio_v2.Models.Cliente
+﻿@model Kstudio_v2.Models.ClienteViewModel
 @{
     ViewBag.Title = "Editar";
     Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Scripts{
+    <script type="text/javascript" src='@Url.Content("~/Scripts/Agendamentos/editar.js?v3")' asp-append-version="true"></script>
+
 }
 
 <h2>Editar</h2>
 
 @using (Html.BeginForm())
 {
-    @Html.AntiForgeryToken();
-
+    @Html.AntiForgeryToken()
+    
     <div class="form-horizontal">
-        <h4>Agenda:</h4>
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @*@Html.HiddenFor(model => model.Id)*@
+       
+        <h4>Cliente</h4>
+        <hr/>
+        @Html.ValidationSummary(true, "", new {@class = "text-danger"})
+        @Html.HiddenFor(model => model.Id)
 
-    <div class="form-group">
-        @* @Html.LabelFor(model => model.Id, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Id, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
-            @Html.ValidationMessageFor(model => model.Telefone, "", new { @class = "text-danger" })
-        </div>*@
-        @Html.EditorFor(model => model.Id)
-        @Html.LabelFor(model => model.Id, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Id, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
-            @Html.ValidationMessageFor(model => model.Id, "", new { @class = "text-danger" })
-        </div>
-        @Html.LabelFor(model => model.Banda, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Banda, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
-            @Html.ValidationMessageFor(model => model.Banda, "", new { @class = "text-danger" })
-        </div>
-        @Html.LabelFor(model => model.Responsavel, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Responsavel, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
-            @Html.ValidationMessageFor(model => model.Responsavel, "", new { @class = "text-danger" })
-        </div>
-        @Html.LabelFor(model => model.Agendamentos[0].Data, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Agendamentos[0].Data, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Agendamentos[0].Data, "", new { @class = "text-danger" })
-        </div>
-        @Html.LabelFor(model => model.Agendamentos[0].HorarioInicio, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Agendamentos[0].HorarioInicio, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Agendamentos[0].HorarioInicio, "", new { @class = "text-danger" })
-        </div>
-        @Html.LabelFor(model => model.Agendamentos[0].HorarioFinal, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Agendamentos[0].HorarioFinal, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Agendamentos[0].HorarioFinal, "", new { @class = "text-danger" })
-        </div>
 
+        <div class="form-group">
+            @Html.LabelFor(model => model.Banda, htmlAttributes: new {@class = "control-label col-md-2"})
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Banda, new {htmlAttributes = new {@class = "form-control", disabled = "disabled"}})
+                @Html.ValidationMessageFor(model => model.Banda, "", new {@class = "text-danger"})
+            </div>
+            @Html.LabelFor(model => model.Responsavel, htmlAttributes: new {@class = "control-label col-md-2"})
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Responsavel, new {htmlAttributes = new {@class = "form-control", disabled = "disabled"}})
+                @Html.ValidationMessageFor(model => model.Responsavel, "", new {@class = "text-danger"})
+            </div>
+            @Html.LabelFor(model => model.AgendamentosViewModel[0].Data, htmlAttributes: new {@class = "control-label col-md-2"})
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.AgendamentosViewModel[0].Data, new {htmlAttributes = new {@class = "form-control"}})
+                @Html.ValidationMessageFor(model => model.AgendamentosViewModel[0].Data, "", new {@class = "text-danger"})
+            </div>
+            @Html.LabelFor(model => model.AgendamentosViewModel[0].HorarioInicio, htmlAttributes: new {@class = "control-label col-md-2"})
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.AgendamentosViewModel[0].HorarioInicio, new {htmlAttributes = new {@class = "form-control"}})
+                @Html.ValidationMessageFor(model => model.AgendamentosViewModel[0].HorarioInicio, "", new {@class = "text-danger"})
+            </div>
+            @Html.LabelFor(model => model.AgendamentosViewModel[0].HorarioFinal, htmlAttributes: new {@class = "control-label col-md-2"})
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.AgendamentosViewModel[0].HorarioFinal, new {htmlAttributes = new {@class = "form-control"}})
+                @Html.ValidationMessageFor(model => model.AgendamentosViewModel[0].HorarioFinal, "", new {@class = "text-danger"})
+            </div>
+        </div>
 
         @using (Html.BeginForm())
         {
             @Html.AntiForgeryToken()
-
             <div class="form-actions no-color">
-                <input type="submit" value="Salvar" class="btn btn-default" />
-                @*@Html.ActionLink("Back to List", "Index")*@
+                <input type="submit" value="Salvar" class="btn btn-default"/>
+                @Html.ActionLink("Back to List", "Index")
             </div>
         }
+
+        <div>
+            <h5>Todos os Agendamentos</h5>
+            <input type="button" value="chamar" id="botao" onclick="buscarAgendamentos()"/>
+            <table class="table" id="agendamentosDoCliente">
+                <tr id="tablelabel">
+                    <th>
+                        @Html.LabelForModel("Id")
+                    </th>
+                    <th>
+                        @Html.LabelForModel("Banda")
+                    </th>
+                    <th>
+                        @Html.LabelForModel("Responsável")
+                    </th>
+                    <th>
+                        @Html.LabelForModel("Data")
+                    </th>
+                    <th>
+                        @Html.LabelForModel("Horario Inicio")
+                    </th>
+                    <th>
+                        @Html.LabelForModel("Horario Final")
+                    </th>
+                </tr>
+            </table>
+        </div>
+
+
     </div>
-    </div>
+
 }
+
+
 

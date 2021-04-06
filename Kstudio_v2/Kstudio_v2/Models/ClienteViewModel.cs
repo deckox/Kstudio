@@ -17,7 +17,6 @@ namespace Kstudio_v2.Models
 
         public ClienteViewModel()
         {
-           
             AgendamentosViewModel = new List<AgendamentoViewModel>();
         }
     }

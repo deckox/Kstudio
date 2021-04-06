@@ -19,8 +19,8 @@
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
             <div class="col-md-10">
-                @Html.Label("Lista de Agendamentos")
-                @Html.ActionLink("Cadastrar Agendamento", "Cadastro")
+                @Html.Label("Lista de Comandas")
+                @Html.ActionLink("Cadastrar/Abrir Comanda", "Cadastro")
                 <input type="hidden" id="Id" />
             </div>
         </div>
@@ -60,7 +60,7 @@
 
             @foreach (var item in Model.AgendamentosViewModel)
             {
-               
+                var index = 0;
                 <tr id="trId">
                     <td>
                         @Html.DisplayTextFor(modelItem => item.ClienteViewModel.Id)
@@ -72,18 +72,19 @@
                         @Html.DisplayTextFor(modelItem => item.ClienteViewModel.Responsavel)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Data)
+                        @Html.DisplayFor(modelItem => item.Data[index])
+                        @*@String.Format("{0:dd/MM/yyyy}", item.Agendamentos[index].Data)*@
                     <td>
-                        @Html.DisplayTextFor(modelItem => item.HorarioInicio)
+                        @Html.DisplayTextFor(modelItem => item.HorarioInicio[index])
                     </td>
                     <td>
-                        @Html.DisplayTextFor(modelItem => item.HorarioFinal)
+                        @Html.DisplayTextFor(modelItem => item.HorarioFinal[index])
                     </td>
-                    <td>
-                        @Html.ActionLink("Editar", "Editar", new { id = item.Id })
-                        @Html.ActionLink("Detalhes", "Detalhes", new { id = item.Id })
-                        @Html.ActionLink("Deletar", "Deletar", new { id = item.Id })
-                    </td>
+                    @*<td>
+                        @Html.ActionLink("Editar", "Editar", new { id = item[0] })
+                        @Html.ActionLink("Detalhes", "Detalhes", new { id = item.AgendamentosViewModel[0] })
+                        @Html.ActionLink("Deletar", "Deletar", new { id = item.AgendamentosViewModel[0] })
+                    </td>*@
                 </tr>
             }
         </table>

@@ -20,10 +20,15 @@ namespace Kstudio_v2.Controllers
             try
             {
                 var agendamentoRepository = new AgendamentosRepository();
-
                 var listaDeAgendamentosDoBD = agendamentoRepository.Listar();
 
-                return View(listaDeAgendamentosDoBD);
+                var clientViewModelParser = new ClienteViewModelParser();
+
+                var model = new ClienteViewModel();
+                model.AgendamentosViewModel = clientViewModelParser.ConvertClientToClienteViewModelList(listaDeAgendamentosDoBD);
+                return View(model);
+
+               
             }
             catch (Exception ex)
             {
@@ -99,7 +104,11 @@ namespace Kstudio_v2.Controllers
                 var agendamentoRepository = new AgendamentosRepository();
                 var result = agendamentoRepository.Carregar(id);
 
-                return View(result);
+                var clientViewModelParser = new ClienteViewModelParser();
+                var clientParsed = clientViewModelParser.clienteParser(result);
+
+
+                return View(clientParsed);
             }
             catch (Exception e)
             {
@@ -110,14 +119,20 @@ namespace Kstudio_v2.Controllers
         }
 
         [HttpPost]
-        public ActionResult Editar(Cliente cliente, int id)
+        public ActionResult Editar(ClienteViewModel clienteViewModel)
         {
             try
             {
-                cliente.Agendamentos[0].Id = cliente.Id;
+                var newclienteViewModel = new ClienteViewModelParser();
+                var convertToCliente = newclienteViewModel.clienteViewModelParser(clienteViewModel);
                 var agendamentoRepository = new AgendamentosRepository();
 
-                if (agendamentoRepository.Salvar(cliente) == true)
+                if (convertToCliente.Banda == null || convertToCliente.Agendamentos.Count == 0)
+                {
+                    ViewData["mensagem"] = "<h1>DEU RUIM</h1>";
+                }
+
+                else if (agendamentoRepository.Salvar(convertToCliente))
                 {
                     ViewData["mensagem"] = "<h1>Agendamento alterado com sucesso!</h1>";
                 }
@@ -136,17 +151,21 @@ namespace Kstudio_v2.Controllers
 
         }
 
-        public ActionResult Detalhes(Cliente cliente, int id)
+        public ActionResult Detalhes(int id)
         {
             try
             {
                 var agendamentoRepository = new AgendamentosRepository();
                 var dadosCliente = agendamentoRepository.Carregar(id);
-                cliente = dadosCliente;
-                // var result = agendamentoRepository.CarregarLista(cliente);
-                ViewBag.id = id;
 
-                return View();
+                var clientViewModelParser = new ClienteViewModelParser();
+                var clientParsed = clientViewModelParser.clienteParser(dadosCliente);
+
+                //  cliente = dadosCliente;
+                // var result = agendamentoRepository.CarregarLista(cliente);
+                // ViewBag.id = id;
+
+                return View(clientParsed);
             }
             catch (Exception e)
             {
@@ -164,7 +183,10 @@ namespace Kstudio_v2.Controllers
 
                 var result = agendamentoRepository.Carregar(id);
 
-                return View(result);
+                var clientViewModelParser = new ClienteViewModelParser();
+                var clientParsed = clientViewModelParser.clienteParser(result);
+
+                return View(clientParsed);
             }
             catch (Exception e)
             {
@@ -228,7 +250,18 @@ namespace Kstudio_v2.Controllers
             try
             {
                 var split = value.Split('-');
-                var id = int.Parse(split[0]);
+                int id;
+
+                if (split.Length > 0)
+                {
+                    id = int.Parse(split[0]);
+                }
+
+                else
+                {
+                    id = int.Parse(value);
+                }
+              
 
                 var agendamentoRepository = new AgendamentosRepository();
 

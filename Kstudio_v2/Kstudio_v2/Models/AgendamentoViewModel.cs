@@ -18,7 +18,7 @@ namespace Kstudio_v2.Models
  
         [Display(Name = "Horário")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:HH:mm tt}")]
-        [DataType(DataType.Time)]
+        [DataType(DataType.Time, ErrorMessage = "Data em formato inválido")]
         public string HorarioInicio { get; set; }
 
          
@@ -26,6 +26,8 @@ namespace Kstudio_v2.Models
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:HH:mm tt}")]
         [DataType(DataType.Time)]
         public string HorarioFinal { get; set; }
+
+        public int Id { get; set; }
         public AgendamentoViewModel()
         {
             ClienteViewModel = new ClienteViewModel();

@@ -1,9 +1,7 @@
-﻿@model Kstudio_v2.Models.Cliente
+﻿@model Kstudio_v2.Models.ClienteViewModel
 
-@{
-    ViewBag.Title = "Details";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
+@{ ViewBag.Title = "Details";
+                Layout = "~/Views/Shared/_Layout.cshtml"; }
 
 <div class="topnav">
     <a onclick="location.href='@Url.Action("Cadastro", "Clientes" )'">Cadastro</a>
@@ -15,65 +13,73 @@
 
 <h2>Detalhes do Agendamento</h2>
 
-
-
 <div>
-    @for (int i = 0; i < Model.Agendamentos.Count; i++)
-    {
-        var idNumber = (int)ViewBag.id;
-        if (Model.Agendamentos[0].Id == idNumber)
-        {
-            <dl class="dl-horizontal">
-                <dt>
-                    @Html.DisplayNameFor(model => model.Id)
-                </dt>
+    <dl class="dl-horizontal">
 
-                <dd>
-                    @Html.DisplayTextFor(model => model.Id)
-                </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Banda)
+        </dt>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.Banda)
-                </dt>
+        <dd>
+            @Html.DisplayTextFor(model => model.Banda)
+        </dd>
 
-                <dd>
-                    @Html.DisplayTextFor(model => model.Banda)
-                </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Responsavel)
+        </dt>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.Responsavel)
-                </dt>
+        <dd>
+            @Html.DisplayTextFor(model => model.Responsavel)
+        </dd>
 
-                <dd>
-                    @Html.DisplayTextFor(model => model.Responsavel)
-                </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EstiloMusical)
+        </dt>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.Agendamentos[i].Data)
-                </dt>
+        <dd>
+            @Html.DisplayTextFor(model => model.EstiloMusical)
+        </dd>
 
-                <dd>
-                    @Html.DisplayTextFor(model => model.Agendamentos[i].Data)
-                </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.Agendamentos[i].HorarioInicio)
-                </dt>
+        <dd>
+            @Html.DisplayTextFor(model => model.Email)
+        </dd>
 
-                <dd>
-                    @Html.DisplayTextFor(model => model.Agendamentos[i].HorarioInicio)
-                </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefone)
+        </dt>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.Agendamentos[i].HorarioFinal)
-                </dt>
+        <dd>
+            @Html.DisplayTextFor(model => model.Telefone)
+        </dd>
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.AgendamentosViewModel.FirstOrDefault().Data)
+        </dt>
 
-                <dd>
-                    @Html.DisplayTextFor(model => model.Agendamentos[i].HorarioFinal)
-                </dd>
-          </dl>
-        }
-    }
+        <dd>
+            @Html.DisplayTextFor(model => model.AgendamentosViewModel.FirstOrDefault().Data)
+        </dd>
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.AgendamentosViewModel.FirstOrDefault().HorarioInicio)
+        </dt>
+
+        <dd>
+            @Html.DisplayTextFor(model => model.AgendamentosViewModel.FirstOrDefault().HorarioInicio)
+        </dd>
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.AgendamentosViewModel.FirstOrDefault().HorarioFinal)
+        </dt>
+
+        <dd>
+            @Html.DisplayTextFor(model => model.AgendamentosViewModel.FirstOrDefault().HorarioFinal)
+        </dd>
+    </dl>
 </div>
 
 <h3>Todos Agendamentos Ativos</h3>
@@ -103,33 +109,33 @@
         </tr>
 
         @*@foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayTextFor(modelItem => item.Id)
-                </td>
-                <td>
-                    @Html.DisplayTextFor(modelItem => item.)
-                </td>
-                <td>
-                    @Html.DisplayTextFor(modelItem => item.Cliente.Responsavel)
-                </td>
-                <td>
-                    @Html.DisplayTextFor(modelItem => item.Data)
-                </td>
-                <td>
-                    @Html.DisplayTextFor(modelItem => item.HorarioInicio)
-                </td>
-                <td>
-                    @Html.DisplayTextFor(modelItem => item.HorarioFinal)
-                </td>
-                <td>
-                    @Html.ActionLink("Editar", "Editar", new { id = item.Id })
-                    @Html.ActionLink("Detalhes", "Detalhes", new { id = item.Id })
-                    @Html.ActionLink("Deletar", "Deletar", new { id = item.Id })
-                </td>
-            </tr>
-        }*@
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayTextFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayTextFor(modelItem => item.)
+                    </td>
+                    <td>
+                        @Html.DisplayTextFor(modelItem => item.Cliente.Responsavel)
+                    </td>
+                    <td>
+                        @Html.DisplayTextFor(modelItem => item.Data)
+                    </td>
+                    <td>
+                        @Html.DisplayTextFor(modelItem => item.HorarioInicio)
+                    </td>
+                    <td>
+                        @Html.DisplayTextFor(modelItem => item.HorarioFinal)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Editar", "Editar", new { id = item.Id })
+                        @Html.ActionLink("Detalhes", "Detalhes", new { id = item.Id })
+                        @Html.ActionLink("Deletar", "Deletar", new { id = item.Id })
+                    </td>
+                </tr>
+            }*@
     </table>
 </div>
 

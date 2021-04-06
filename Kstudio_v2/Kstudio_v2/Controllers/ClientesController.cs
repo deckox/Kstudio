@@ -50,7 +50,7 @@ namespace Kstudio_v2.Controllers
             {
                 result = clientesRepository.Salvar(cliente);
 
-                if (result == true)
+                if (result)
                 {
                     ViewData["mensagem"] = "<h3> Cliente cadastrado com sucesso!</h3>";
                 }
