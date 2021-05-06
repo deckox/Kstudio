@@ -30,7 +30,7 @@ namespace Kstudio_v2.Core.Repositories
         {
             var result = false;
 
-            if (ValidarProdutoJaCadastrado(produto) == true)
+            if (ValidarProdutoJaCadastrado(produto))
             {
                 return result;
             }
@@ -104,7 +104,7 @@ namespace Kstudio_v2.Core.Repositories
 
         private Produto Parse(SQLiteDataReader reader)
         {
-            var produto = new Produto()
+            var produto = new Produto
             {
                   Id = int.Parse(reader["Id"].ToString()),
                   Nome = reader["Nome"].ToString(),
@@ -166,6 +166,28 @@ namespace Kstudio_v2.Core.Repositories
             }
 
             return result; 
+        }
+
+        public Produto BuscarProdutoPorId(int id)
+        {
+
+            var connection = GetConnection();
+            connection.Open();
+            var command = new SQLiteCommand(connection);
+
+            command.CommandText = string.Format(Sql_SelectOne, id);
+
+            var result = new Produto();
+
+            using (var reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    result = Parse(reader);
+                }
+            }
+
+            return result;
         }
 
     }

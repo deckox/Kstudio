@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace Kstudio_v2.Controllers
 {
-    public class ComandaController : Controller
+    public class ComandasController : Controller
     {
         public ActionResult Index()
         {
@@ -45,10 +45,10 @@ namespace Kstudio_v2.Controllers
 
         }
 
-        //public ActionResult Cadastro()
-        //{
-        //    return View();
-        //}
+        public ActionResult Cadastro()
+        {
+            return View();
+        }
 
         //[HttpPost]
         //public ActionResult Cadastro(Usuario usuario)
@@ -73,7 +73,7 @@ namespace Kstudio_v2.Controllers
 
         //        throw;
         //    }
-           
+
         //}
 
         //public ActionResult Editar(int id)
@@ -139,8 +139,8 @@ namespace Kstudio_v2.Controllers
 
         //        throw;
         //    }
-      
-           
+
+
         //}
 
         //[HttpPost]
@@ -167,7 +167,7 @@ namespace Kstudio_v2.Controllers
         //    }
         //}
 
-       
+
     }
 
 }

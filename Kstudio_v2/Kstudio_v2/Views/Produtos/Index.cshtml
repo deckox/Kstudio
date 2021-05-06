@@ -5,6 +5,13 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+
+@section Scripts{
+    <script type="text/javascript" src='@Url.Content("~/Scripts/Produtos/cadastro.js?v3")' asp-append-version="true"></script>
+
+}
+
+
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
@@ -19,15 +26,16 @@
             </div>
         </div>
         <div class="form-group">
-            <div class="col-md-10">
+            <div class="col-md-">
                 @Html.Label("Pesquisar")
-                <input type="text" name="campoPesquisar" />
-                <input type="submit" value="Buscar" class="btn btn-default" />
+                <input type="text" list="autocompleteCliente" id="pesquisaProdutos" name="campopesquisa" autocomplete="off" required="" />
+                <datalist id="autocompleteCliente"></datalist>
+                <input type="button" value="Pesquisar" onclick="buscarProdutos()" />
             </div>
         </div>
 
-        <table class="table">
-            <tr>
+        <table class="table" id="tabelaInformacaoDoProduto">
+            <tr id="tableLabel">
                 <th>
                     @Html.LabelForModel("Id")
                 </th>
@@ -36,6 +44,12 @@
                 </th>
                 <th>
                     @Html.LabelForModel("Preço")
+                </th>
+                <th>
+                    @Html.LabelForModel("Preço de Custo")
+                </th>
+                <th>
+                    @Html.LabelForModel("Preço de Venda")
                 </th>
             </tr>
 
@@ -48,6 +62,12 @@
                     </td>
                     <td>
                         @Html.DisplayTextFor(modelItem => item.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayTextFor(modelItem => item.Preco)
+                    </td>
+                    <td>
+                        @Html.DisplayTextFor(modelItem => item.PrecoDeCusto)
                     </td>
                     <td>
                         @Html.DisplayTextFor(modelItem => item.PrecoDeVenda)

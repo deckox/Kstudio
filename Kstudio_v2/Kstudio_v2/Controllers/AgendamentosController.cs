@@ -250,18 +250,7 @@ namespace Kstudio_v2.Controllers
             try
             {
                 var split = value.Split('-');
-                int id;
-
-                if (split.Length > 0)
-                {
-                    id = int.Parse(split[0]);
-                }
-
-                else
-                {
-                    id = int.Parse(value);
-                }
-              
+                var id = int.Parse(split[0]);
 
                 var agendamentoRepository = new AgendamentosRepository();
 
@@ -288,6 +277,27 @@ namespace Kstudio_v2.Controllers
                 var listaAgendamentosDoBD = agendamentoRepository.BuscarAgendamentosPorData(value);
 
                 var jsonResult = JsonConvert.SerializeObject(listaAgendamentosDoBD);
+
+
+                return jsonResult;
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+        }
+
+        public string BuscarAgendamentosDiariosAutocomplete()
+        {
+            try
+            {
+
+                var agendamentoRepository = new AgendamentosRepository();
+
+                var listaDeClientesDoBD = agendamentoRepository.BuscarAgendamentoDoDia();
+
+                var jsonResult = JsonConvert.SerializeObject(listaDeClientesDoBD);
 
 
                 return jsonResult;

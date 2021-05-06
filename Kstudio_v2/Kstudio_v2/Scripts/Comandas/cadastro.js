@@ -1,17 +1,21 @@
 ﻿window.onload = function () {
 
     //Devinindo um evento que é disparado toda vez que o usuario digita alguma letra nova no campo de pesquisa
-    document.getElementById("pesquisa").onkeyup = pesquisaHandler;
-
+    document.getElementById("pesquisa").onfocus = pesquisaHandler;
+    document.getElementById("pesquisaProduto").onkeyup = pesquisaProdutoHandler;
+    //document.getElementById("pesquisaProduto1").onkeyup = pesquisaProdutoHandler;
+    //document.getElementById("pesquisaProduto2").onkeyup = pesquisaProdutoHandler;
 
     function pesquisaHandler() {
+
+        
 
         //Obtem o texto digitado no campo de pesquisa
         var value = document.getElementById("pesquisa").value;
 
         //Faz uma requisição Ajax de GET no controller na action BuscarClientesAutocomplete passando o valor digitado no campo como parametro
         var request = $.ajax({
-            url: 'BuscarClientesAutocomplete',
+            url: '/Agendamentos/BuscarAgendamentosDiariosAutocomplete',
             type: 'GET',
             data: { value },
             contentType: 'application/json; charset=utf-8'
@@ -29,6 +33,121 @@
 
                 var sugestion = cliente.Id + '-' + cliente.Banda + '-' + cliente.Responsavel;
                 options += '<option data-id="' + cliente.Id + '"> ' + sugestion + ' </option>';
+            });
+
+            //adiciona as opções na tela
+            document.getElementById("autocompleteCliente").innerHTML = options;
+
+        });
+
+      
+
+        //Verifica se alguma opção está selecionada
+        var selectedOption = '';
+        var options = document.querySelectorAll("option");
+        if (options.length > 0) {
+
+            var selecionado = $('#pesquisa').val();
+
+            options.forEach(function (opt) {
+
+                if (opt.value === selecionado) {
+                    var idCliente = opt.getAttribute("data-id");
+                    selectedOption = idCliente;
+                }
+            });
+
+        }
+
+        //Se alguma opção estiver selecionada, jopa o id do clienteescolhido no campo hidden que sera enviado comos dados ao salvar
+        if (selectedOption != '') {
+
+            document.getElementById("Id").value = selectedOption;
+
+        }
+
+    }
+
+    function pesquisaProdutoHandler() {
+
+        //Obtem o texto digitado no campo de pesquisa
+        var value = document.getElementById("pesquisaProduto").value;
+
+        //Faz uma requisição Ajax de GET no controller na action BuscarClientesAutocomplete passando o valor digitado no campo como parametro
+        var request = $.ajax({
+            url: '/Produtos/BuscarProdutosAutocomplete',
+            type: 'GET',
+            data: { value },
+            contentType: 'application/json; charset=utf-8'
+        });
+
+        //Recebe a resposta da requisição Ajax
+        request.done(function (data) {
+
+            //Converte o valor recebido pelo controller em um objeto Json
+            var jsondata = JSON.parse(data);
+
+            //Pega cada um dos clientes e cria as options para gerar o autocomplete
+            var options = '';
+            jsondata.forEach(function (produto) {
+
+                var sugestion = produto.Id + '-' + produto.Nome;
+                options += '<option data-id="' + produto.Id + '"> ' + sugestion + ' </option>';
+            });
+
+            //adiciona as opções na tela
+            document.getElementById("autocompleteProduto").innerHTML = options;
+        });
+
+
+        //Verifica se alguma opção está selecionada
+        var selectedOption = '';
+        var options = document.querySelectorAll("option");
+        if (options.length > 0) {
+
+            var selecionado = $('#pesquisa').val();
+
+            options.forEach(function (opt) {
+
+                if (opt.value === selecionado) {
+                    var idCliente = opt.getAttribute("data-id");
+                    selectedOption = idCliente;
+                }
+            });
+        }
+
+        //Se alguma opção estiver selecionada, jopa o id do clienteescolhido no campo hidden que sera enviado comos dados ao salvar
+        if (selectedOption != '') {
+            document.getElementById("Id").value = selectedOption;
+        }
+
+    }
+
+    function pesquisaProdutoHandler1() {
+
+        //Obtem o texto digitado no campo de pesquisa
+        var value = document.getElementById("pesquisaProduto1").value;
+
+        //Faz uma requisição Ajax de GET no controller na action BuscarClientesAutocomplete passando o valor digitado no campo como parametro
+        var request = $.ajax({
+            url: '/Produtos/BuscarProdutosAutocomplete',
+            type: 'GET',
+            data: { value },
+            contentType: 'application/json; charset=utf-8'
+        });
+
+        //Recebe a resposta da requisição Ajax
+        request.done(function (data) {
+
+            //Converte o valor recebido pelo controller em um objeto Json
+            var jsondata = JSON.parse(data);
+
+            //Pega cada um dos clientes e cria as options para gerar o autocomplete
+            var options = '';
+            jsondata.forEach(function (produto) {
+
+                var sugestion = produto.Id + '-' + produto.Nome;
+                options += '<option data-id="' + produto.Id + '"> ' + sugestion + ' </option>';
             });
 
             //adiciona as opções na tela
@@ -59,47 +178,76 @@
 
     }
 
+    function pesquisaProdutoHandler2() {
+
+        //Obtem o texto digitado no campo de pesquisa
+        var value = document.getElementById("pesquisaProduto2").value;
+
+        //Faz uma requisição Ajax de GET no controller na action BuscarClientesAutocomplete passando o valor digitado no campo como parametro
+        var request = $.ajax({
+            url: '/Produtos/BuscarProdutosAutocomplete',
+            type: 'GET',
+            data: { value },
+            contentType: 'application/json; charset=utf-8'
+        });
+
+        //Recebe a resposta da requisição Ajax
+        request.done(function (data) {
+
+            //Converte o valor recebido pelo controller em um objeto Json
+            var jsondata = JSON.parse(data);
+
+            //Pega cada um dos clientes e cria as options para gerar o autocomplete
+            var options = '';
+            jsondata.forEach(function (produto) {
+
+                var sugestion = produto.Id + '-' + produto.Nome;
+                options += '<option data-id="' + produto.Id + '"> ' + sugestion + ' </option>';
+            });
+
+            //adiciona as opções na tela
+            document.getElementById("autocompleteCliente").innerHTML = options;
+        });
+
+
+        //Verifica se alguma opção está selecionada
+        var selectedOption = '';
+        var options = document.querySelectorAll("option");
+        if (options.length > 0) {
+
+            var selecionado = $('#pesquisa').val();
+
+            options.forEach(function (opt) {
+
+                if (opt.value === selecionado) {
+                    var idCliente = opt.getAttribute("data-id");
+                    selectedOption = idCliente;
+                }
+            });
+        }
+
+        //Se alguma opção estiver selecionada, jopa o id do clienteescolhido no campo hidden que sera enviado comos dados ao salvar
+        if (selectedOption != '') {
+            document.getElementById("Id").value = selectedOption;
+        }
+
+    }
 };
 
-function addFieldsAgendamento() {
+function addFieldsProdutos() {
 
    
-    var detalhes = document.getElementById("agendamentosDoCliente").getElementsByTagName('tbody')[0];
-    var index = document.getElementById("agendamentosDoCliente").getElementsByTagName('tr').length - 1;
-    var detalhe = document.createElement("tr");
-    detalhe.setAttribute("id", "detalhe_" + index);
-    var templateData = document.getElementById("modeloData");
-    var templateHorario = document.getElementById("modeloHorarioInicio");
-    var templateAte = document.getElementById("modeloHorarioFim");
-    //var index = document.getElementById("modeloData").querySelectorAll('div[name=detalhe]').length + 1;
+    var detalhes = document.getElementById("tabelaProdutos").getElementsByTagName('tbody')[0];
+    var index = document.getElementById("tabelaProdutos").getElementsByTagName('tr').length;
+    var modeloCloneTr = document.getElementById("modeloTr");
+    var modeloTr = modeloCloneTr.cloneNode(true);
+
+    modeloTr.setAttribute("id", "tr" + index);
+    modeloTr.children[0].children[0].children[1].children.pesquisaProduto.id = "pesquisaProduto"+index;
+
+    detalhes.appendChild(modeloTr);
+
    
-
-    var data = templateData.cloneNode(true);   // clona a div abaixo:
-    
-    data.className = "form-group";  //<div id="template" class="form-group hide" >
-    //data.querySelector("label").innerHTML = "Data";  //<label class="control-label col-md-2">Descrição</label>
-    //data.querySelector("label").setAttribute("for", "AgendamentosViewModel_" + index + "__Data"); // <label class="control-label col-md-2" for="Detalhes_[index]__Descricao">Descrição</label>
-    data.querySelector("input").setAttribute("name", "AgendamentosViewModel[" + index + "].Data"); // <input class="form-control text-box single-line" type="text" value="" name="Detalhes[index].Descricao">
-    data.querySelector("input").id = "AgendamentosViewModel_" + index + "__Data"; // <input class="form-control text-box single-line" type="text" value="" name="Detalhes[index].Descricao" id="Detalhes_1__Descricao">
-
-    var horario = templateHorario.cloneNode(true);
-    horario.className = "form-group";
-    //horario.querySelector("label").innerHTML = "Horário";
-    //horario.querySelector("label").setAttribute("for", "AgendamentosViewModel_" + index + "__HorarioInicio");
-    horario.querySelector("input").setAttribute("name", "AgendamentosViewModel[" + index + "].HorarioInicio");
-    horario.querySelector("input").id = "AgendamentosViewModel_" + index + "__HorarioInicio";
-
-    var ate = templateAte.cloneNode(true);
-    ate.className = "form-group";
-    //ate.querySelector("label").innerHTML = "Até";
-    //ate.querySelector("label").setAttribute("for", "AgendamentosViewModel_" + index + "__HorarioFinal");
-    ate.querySelector("input").setAttribute("name", "AgendamentosViewModel[" + index + "].HorarioFinal");
-    ate.querySelector("input").id = "AgendamentosViewModel_" + index + "__HorarioFinal";
-
-    detalhe.appendChild(data);
-    detalhe.appendChild(horario);
-    detalhe.appendChild(ate);
-    detalhes.appendChild(detalhe);
 }
 
 function removeFieldsAgendamento() {
@@ -266,7 +414,6 @@ function buscarAgendamentos() {
         var tableLabelId = document.getElementById("tablelabel");
         var copy = tableLabelId.cloneNode(true);
         tableId.innerHTML = copy.outerHTML;
-        var tbody = document.getElementsByTagName("tbody")[0];
 
 
         jsondata.forEach(function (cliente) {
@@ -283,7 +430,7 @@ function buscarAgendamentos() {
 
                 var trCreate = document.createElement("tr");
                 trCreate.setAttribute("id", "tr" + i);
-                tbody.appendChild(trCreate);
+                tableId.appendChild(trCreate);
 
                 tdCreate = document.createElement("td");
 
@@ -369,4 +516,60 @@ function teste() {
     tbody.appendChild(divcreate);
 
 
+}
+
+function buscarProdutos()
+{
+    var value = document.getElementById("pesquisaProduto").value;
+
+    var request = $.ajax({
+        url: 'BuscarProdutoAutocomplete',
+        type: 'GET',
+        data: { value },
+        contentType: 'application/json; charset=utf-8'
+    });
+}
+
+function preencheCamposDeAgendamento() {
+
+    var value = document.getElementById("pesquisa").value;
+
+    if (value != "")
+    {
+        var request = $.ajax({
+            url: '/Agendamentos/BuscarAgendamentosAutocomplete',
+            type: 'GET',
+            data: { value },
+            contentType: 'application/json; charset=utf-8'
+        });
+
+        request.done(function (data) {
+
+                var jsondata = JSON.parse(data);
+
+
+                var data = new Date(jsondata[0].Agendamentos[0].Data);
+                var dataConvertida = data.getFullYear() + "-" + data.getMonth() + "-" + data.getDate();
+
+                var horasInicio = new Date(jsondata[0].Agendamentos[0].HorarioInicio);
+                var horaInicioConvertida = horasInicio.toLocaleTimeString();
+
+                var horasFinal = new Date(jsondata[0].Agendamentos[0].HorarioFinal);
+                var horaFinalConvertida = horasFinal.toLocaleTimeString();
+
+                var diff = horasFinal.getTime() - horasInicio.getTime();
+                var horaTotalDeEnsaio = Math.floor((diff / (1000 * 60 * 60)) % 24);
+
+               
+                document.getElementById("Data").value = dataConvertida;
+                document.getElementById("HoraDeInicio").value = horaInicioConvertida;
+                document.getElementById("HorarioFinal").value = horaFinalConvertida;
+                document.getElementById("HorasDeEnsaio").value = horaTotalDeEnsaio;
+
+
+            }
+        )
+    }
+
+   
 }

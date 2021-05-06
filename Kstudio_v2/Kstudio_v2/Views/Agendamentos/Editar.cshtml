@@ -14,82 +14,79 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-       
-        <h4>Cliente</h4>
-        <hr/>
-        @Html.ValidationSummary(true, "", new {@class = "text-danger"})
-        @Html.HiddenFor(model => model.Id)
 
+    <body onload="buscarAgendamentos()">
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Banda, htmlAttributes: new {@class = "control-label col-md-2"})
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Banda, new {htmlAttributes = new {@class = "form-control", disabled = "disabled"}})
-                @Html.ValidationMessageFor(model => model.Banda, "", new {@class = "text-danger"})
-            </div>
-            @Html.LabelFor(model => model.Responsavel, htmlAttributes: new {@class = "control-label col-md-2"})
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Responsavel, new {htmlAttributes = new {@class = "form-control", disabled = "disabled"}})
-                @Html.ValidationMessageFor(model => model.Responsavel, "", new {@class = "text-danger"})
-            </div>
-            @Html.LabelFor(model => model.AgendamentosViewModel[0].Data, htmlAttributes: new {@class = "control-label col-md-2"})
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.AgendamentosViewModel[0].Data, new {htmlAttributes = new {@class = "form-control"}})
-                @Html.ValidationMessageFor(model => model.AgendamentosViewModel[0].Data, "", new {@class = "text-danger"})
-            </div>
-            @Html.LabelFor(model => model.AgendamentosViewModel[0].HorarioInicio, htmlAttributes: new {@class = "control-label col-md-2"})
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.AgendamentosViewModel[0].HorarioInicio, new {htmlAttributes = new {@class = "form-control"}})
-                @Html.ValidationMessageFor(model => model.AgendamentosViewModel[0].HorarioInicio, "", new {@class = "text-danger"})
-            </div>
-            @Html.LabelFor(model => model.AgendamentosViewModel[0].HorarioFinal, htmlAttributes: new {@class = "control-label col-md-2"})
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.AgendamentosViewModel[0].HorarioFinal, new {htmlAttributes = new {@class = "form-control"}})
-                @Html.ValidationMessageFor(model => model.AgendamentosViewModel[0].HorarioFinal, "", new {@class = "text-danger"})
-            </div>
-        </div>
+        <div class="form-horizontal">
 
-        @using (Html.BeginForm())
-        {
-            @Html.AntiForgeryToken()
+            <h4>Cliente</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <input type="hidden" id="Id" value="@Model.Id.ToString()" />
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Banda, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Banda, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                    @Html.ValidationMessageFor(model => model.Banda, "", new { @class = "text-danger" })
+                </div>
+                @Html.LabelFor(model => model.Responsavel, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Responsavel, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                    @Html.ValidationMessageFor(model => model.Responsavel, "", new { @class = "text-danger" })
+                </div>
+                @Html.LabelFor(model => model.AgendamentosViewModel[0].Data, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.AgendamentosViewModel[0].Data, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.AgendamentosViewModel[0].Data, "", new { @class = "text-danger" })
+                </div>
+                @Html.LabelFor(model => model.AgendamentosViewModel[0].HorarioInicio, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.AgendamentosViewModel[0].HorarioInicio, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.AgendamentosViewModel[0].HorarioInicio, "", new { @class = "text-danger" })
+                </div>
+                @Html.LabelFor(model => model.AgendamentosViewModel[0].HorarioFinal, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.AgendamentosViewModel[0].HorarioFinal, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.AgendamentosViewModel[0].HorarioFinal, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
             <div class="form-actions no-color">
-                <input type="submit" value="Salvar" class="btn btn-default"/>
+                <input type="submit" value="Salvar" class="btn btn-default" />
                 @Html.ActionLink("Back to List", "Index")
             </div>
-        }
 
-        <div>
-            <h5>Todos os Agendamentos</h5>
-            <input type="button" value="chamar" id="botao" onclick="buscarAgendamentos()"/>
-            <table class="table" id="agendamentosDoCliente">
-                <tr id="tablelabel">
-                    <th>
-                        @Html.LabelForModel("Id")
-                    </th>
-                    <th>
-                        @Html.LabelForModel("Banda")
-                    </th>
-                    <th>
-                        @Html.LabelForModel("Responsável")
-                    </th>
-                    <th>
-                        @Html.LabelForModel("Data")
-                    </th>
-                    <th>
-                        @Html.LabelForModel("Horario Inicio")
-                    </th>
-                    <th>
-                        @Html.LabelForModel("Horario Final")
-                    </th>
-                </tr>
-            </table>
+         
+
+            <div>
+                <h2>Todos os Agendamentos de @Model.Banda.ToString()</h2>
+
+                <table class="table" id="agendamentosDoCliente">
+                    <tr id="tablelabel">
+                        <th>
+                            @Html.LabelForModel("Id")
+                        </th>
+                        <th>
+                            @Html.LabelForModel("Banda")
+                        </th>
+                        <th>
+                            @Html.LabelForModel("Responsável")
+                        </th>
+                        <th>
+                            @Html.LabelForModel("Data")
+                        </th>
+                        <th>
+                            @Html.LabelForModel("Horario Inicio")
+                        </th>
+                        <th>
+                            @Html.LabelForModel("Horario Final")
+                        </th>
+                    </tr>
+                </table>
+            </div>
         </div>
-
-
-    </div>
-
+    </body>
 }
 
 

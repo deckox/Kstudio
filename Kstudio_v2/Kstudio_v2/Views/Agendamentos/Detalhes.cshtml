@@ -1,141 +1,112 @@
 ﻿@model Kstudio_v2.Models.ClienteViewModel
 
 @{ ViewBag.Title = "Details";
-                Layout = "~/Views/Shared/_Layout.cshtml"; }
+    Layout = "~/Views/Shared/_Layout.cshtml"; }
 
-<div class="topnav">
-    <a onclick="location.href='@Url.Action("Cadastro", "Clientes" )'">Cadastro</a>
-    <a onclick="location.href='@Url.Action("Comanda", "Clientes" )'">Comanda</a>
-    <a onclick="location.href='@Url.Action("Pesquisa", "Clientes" )'">Pesquisa</a>
-    <a onclick="location.href='@Url.Action("Estoque", "Clientes" )'">Estoque</a>
-    <a onclick="location.href='@Url.Action("Site", "Clientes" )'">Site</a>
-</div>
+@section Scripts{
+    <script type="text/javascript" src='@Url.Content("~/Scripts/Agendamentos/editar.js?v3")' asp-append-version="true"></script>
+
+}
 
 <h2>Detalhes do Agendamento</h2>
 
-<div>
-    <dl class="dl-horizontal">
+<body onload="buscarAgendamentos()">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Banda)
-        </dt>
 
-        <dd>
-            @Html.DisplayTextFor(model => model.Banda)
-        </dd>
+    <div>
+        <dl class="dl-horizontal">
+            <input type="hidden" id="Id" value="@Model.Id.ToString()" />
+            <dt>
+                @Html.DisplayNameFor(model => model.Banda)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Responsavel)
-        </dt>
+            <dd>
+                @Html.DisplayTextFor(model => model.Banda)
+            </dd>
 
-        <dd>
-            @Html.DisplayTextFor(model => model.Responsavel)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Responsavel)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.EstiloMusical)
-        </dt>
+            <dd>
+                @Html.DisplayTextFor(model => model.Responsavel)
+            </dd>
 
-        <dd>
-            @Html.DisplayTextFor(model => model.EstiloMusical)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.EstiloMusical)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
+            <dd>
+                @Html.DisplayTextFor(model => model.EstiloMusical)
+            </dd>
 
-        <dd>
-            @Html.DisplayTextFor(model => model.Email)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Telefone)
-        </dt>
+            <dd>
+                @Html.DisplayTextFor(model => model.Email)
+            </dd>
 
-        <dd>
-            @Html.DisplayTextFor(model => model.Telefone)
-        </dd>
-        
-        <dt>
-            @Html.DisplayNameFor(model => model.AgendamentosViewModel.FirstOrDefault().Data)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Telefone)
+            </dt>
 
-        <dd>
-            @Html.DisplayTextFor(model => model.AgendamentosViewModel.FirstOrDefault().Data)
-        </dd>
-        
-        <dt>
-            @Html.DisplayNameFor(model => model.AgendamentosViewModel.FirstOrDefault().HorarioInicio)
-        </dt>
+            <dd>
+                @Html.DisplayTextFor(model => model.Telefone)
+            </dd>
 
-        <dd>
-            @Html.DisplayTextFor(model => model.AgendamentosViewModel.FirstOrDefault().HorarioInicio)
-        </dd>
-        
-        <dt>
-            @Html.DisplayNameFor(model => model.AgendamentosViewModel.FirstOrDefault().HorarioFinal)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.AgendamentosViewModel.FirstOrDefault().Data)
+            </dt>
 
-        <dd>
-            @Html.DisplayTextFor(model => model.AgendamentosViewModel.FirstOrDefault().HorarioFinal)
-        </dd>
-    </dl>
-</div>
+            <dd>
+                @Html.DisplayTextFor(model => model.AgendamentosViewModel.FirstOrDefault().Data)
+            </dd>
 
-<h3>Todos Agendamentos Ativos</h3>
+            <dt>
+                @Html.DisplayNameFor(model => model.AgendamentosViewModel.FirstOrDefault().HorarioInicio)
+            </dt>
 
-<div>
-    <hr />
-    <table class="table">
-        <tr>
-            <th>
-                @Html.LabelForModel("Id")
-            </th>
-            <th>
-                @Html.LabelForModel("Banda")
-            </th>
-            <th>
-                @Html.LabelForModel("Responsável")
-            </th>
-            <th>
-                @Html.LabelForModel("Data")
-            </th>
-            <th>
-                @Html.LabelForModel("Horario Inicio")
-            </th>
-            <th>
-                @Html.LabelForModel("Horario Final")
-            </th>
-        </tr>
+            <dd>
+                @Html.DisplayTextFor(model => model.AgendamentosViewModel.FirstOrDefault().HorarioInicio)
+            </dd>
 
-        @*@foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayTextFor(modelItem => item.Id)
-                    </td>
-                    <td>
-                        @Html.DisplayTextFor(modelItem => item.)
-                    </td>
-                    <td>
-                        @Html.DisplayTextFor(modelItem => item.Cliente.Responsavel)
-                    </td>
-                    <td>
-                        @Html.DisplayTextFor(modelItem => item.Data)
-                    </td>
-                    <td>
-                        @Html.DisplayTextFor(modelItem => item.HorarioInicio)
-                    </td>
-                    <td>
-                        @Html.DisplayTextFor(modelItem => item.HorarioFinal)
-                    </td>
-                    <td>
-                        @Html.ActionLink("Editar", "Editar", new { id = item.Id })
-                        @Html.ActionLink("Detalhes", "Detalhes", new { id = item.Id })
-                        @Html.ActionLink("Deletar", "Deletar", new { id = item.Id })
-                    </td>
-                </tr>
-            }*@
-    </table>
-</div>
+            <dt>
+                @Html.DisplayNameFor(model => model.AgendamentosViewModel.FirstOrDefault().HorarioFinal)
+            </dt>
 
+            <dd>
+                @Html.DisplayTextFor(model => model.AgendamentosViewModel.FirstOrDefault().HorarioFinal)
+            </dd>
+        </dl>
+    </div>
+
+    <div>
+        <h2>Todos os Agendamentos de @Model.Banda.ToString()</h2>
+
+        <table class="table" id="agendamentosDoCliente">
+            <tr id="tablelabel">
+                <th>
+                    @Html.LabelForModel("Id")
+                </th>
+                <th>
+                    @Html.LabelForModel("Banda")
+                </th>
+                <th>
+                    @Html.LabelForModel("Responsável")
+                </th>
+                <th>
+                    @Html.LabelForModel("Data")
+                </th>
+                <th>
+                    @Html.LabelForModel("Horario Inicio")
+                </th>
+                <th>
+                    @Html.LabelForModel("Horario Final")
+                </th>
+            </tr>
+        </table>
+    </div>
+
+</body>

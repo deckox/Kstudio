@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Kstudio_v2.Core.Repositories;
 using Kstudio_v2.Models;
+using Newtonsoft.Json;
 
 namespace Kstudio_v2.Controllers
 {
@@ -23,7 +24,7 @@ namespace Kstudio_v2.Controllers
             {
                 throw;
             }
-           
+
         }
 
         [HttpPost]
@@ -42,7 +43,7 @@ namespace Kstudio_v2.Controllers
 
                 throw;
             }
-           
+
         }
 
         public ActionResult Cadastro()
@@ -73,7 +74,7 @@ namespace Kstudio_v2.Controllers
 
                 throw;
             }
-           
+
         }
 
         public ActionResult Deletar(int id)
@@ -90,7 +91,7 @@ namespace Kstudio_v2.Controllers
 
                 throw;
             }
-         
+
         }
 
         [HttpPost]
@@ -99,7 +100,7 @@ namespace Kstudio_v2.Controllers
             try
             {
                 var produtoRepository = new ProdutosRepository();
-                if (produtoRepository.Excluir(Id) == true) 
+                if (produtoRepository.Excluir(Id) == true)
                 {
                     ViewData["mensagem"] = "<h1>Usuario cadastrado com sucesso!</h1>";
                     return RedirectToAction("index");
@@ -110,7 +111,7 @@ namespace Kstudio_v2.Controllers
                     ViewData["mensagem"] = "<h1>DEU RUIM</h1>";
                     return View();
                 }
-              
+
             }
             catch (Exception ex)
             {
@@ -118,7 +119,7 @@ namespace Kstudio_v2.Controllers
                 throw;
             }
 
-          
+
         }
 
         public ActionResult Editar(int Id)
@@ -143,7 +144,7 @@ namespace Kstudio_v2.Controllers
             {
                 var produtoRepository = new ProdutosRepository();
 
-                if (produtoRepository.Salvar(produto) == true)
+                if (produtoRepository.Salvar(produto))
                 {
                     ViewData["mensagem"] = "<h1>Usuario cadastrado com sucesso!</h1>";
                     return RedirectToAction("index");
@@ -169,6 +170,48 @@ namespace Kstudio_v2.Controllers
                 var produtoRepository = new ProdutosRepository();
                 var result = produtoRepository.Carregar(Id);
                 return View(result);
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+        }
+
+        public string BuscarProdutosAutocomplete(string value)
+        {
+            try
+            {
+                var produtosRepository = new ProdutosRepository();
+
+                var listaDeProdutosDoBD = produtosRepository.BuscarProdutos(value);
+
+                var jsonResult = JsonConvert.SerializeObject(listaDeProdutosDoBD);
+
+                return jsonResult;
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+        }
+
+        public string BuscarProdutos(string value)
+        {
+            try
+            {
+                var split = value.Split('-');
+                var id = int.Parse(split[0]);
+
+                var produtosRepository = new ProdutosRepository();
+
+                var produto = produtosRepository.BuscarProdutoPorId(id);
+
+                var jsonResult = JsonConvert.SerializeObject(produto);
+
+                return jsonResult;
+
             }
             catch (Exception ex)
             {

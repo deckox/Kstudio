@@ -230,6 +230,31 @@ namespace Kstudio_v2.Core.Repositories
             return result;
         }
 
+        public List<Cliente> BuscarAgendamentoDoDia()
+        {
+            var connection = GetConnection();
+            connection.Open();
+            var command = new SQLiteCommand(connection);
+            var data = DateTime.Today;
+            //var dataConvertida = data.ToString("yyyy-MM-dd");
+            var dataConvertida = data.ToString("2021-04-28");
+
+            command.CommandText = string.Format(Sql_SelectAgendamentoPorData, dataConvertida);
+
+            var result = new List<Cliente>();
+
+            using (var reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    var cliente = Parse(reader);
+                    result.Add(cliente);
+                }
+            }
+
+            return result;
+        }
+
         public bool ValidarHorarioDisponivel(Cliente cliente)
         {
             var connection = GetConnection();

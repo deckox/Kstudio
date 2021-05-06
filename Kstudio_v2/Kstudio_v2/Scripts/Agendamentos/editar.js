@@ -175,10 +175,11 @@ function buscarAgendamentosData() {
 
 function buscarAgendamentos() {
 
+   
     var value = document.getElementById("Id").value;
 
     var request = $.ajax({
-        url: 'BuscarAgendamentosAutocomplete',
+        url: '/Agendamentos/BuscarAgendamentosAutocomplete', //qnd coloca a barra antes ele assume que tem que voltar pra raiz
         type: 'GET',
         data: { value },
         contentType: 'application/json; charset=utf-8'
