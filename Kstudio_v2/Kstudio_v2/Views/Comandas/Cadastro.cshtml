@@ -50,7 +50,7 @@
                         </td>
                         <td class="col-md-5">
                             <div class="control-label col-md-5">
-                               <input type="button" value="Pesquisar" class="btn btn-default" onclick="preencheCamposDeAgendamento()" />
+                               <input type="button" value="Pesquisar" class="btn btn-default" onkeyup="preencheCamposDeAgendamento()" />
                             </div>
                         </td>
                     </tr>
@@ -115,7 +115,7 @@
                             <div class="form-group">
                                 @Html.LabelFor(model => model.Produto.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
                                 <div class="col-md-8">
-                                    <input type="text" list="autocompleteCliente" id="pesquisaProduto" name="campopesquisa" autocomplete="off" required="" class="form-control" />
+                                    <input type="text" list="autocompleteCliente" id="pesquisaProduto" name="campopesquisa" autocomplete="off" required="" class="form-control" onclick="pesquisaProdutoHandler()"/>
                                     <datalist id="autocompleteProduto"></datalist>
                                     @Html.HiddenFor(model => model.Produto)
                                 </div>
@@ -146,7 +146,7 @@
                             <div class="form-group">
                                 @Html.LabelFor(model => model.Produto.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
                                 <div class="col-md-8">
-                                    <input type="text" list="autocompleteCliente" id="pesquisaProduto1" name="campopesquisa" autocomplete="off" required="" class="form-control" />
+                                    <input type="text" list="autocompleteCliente" id="pesquisaProduto1" name="campopesquisa" autocomplete="off" required="" class="form-control" onclick="pesquisaProdutoHandler()" />
                                     <datalist id="autocompleteProduto"></datalist>
                                 </div>
                             </div>
@@ -175,7 +175,7 @@
                             <div class="form-group">
                                 @Html.LabelFor(model => model.Produto.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
                                 <div class="col-md-8">
-                                    <input type="text" list="autocompleteCliente" id="pesquisaProduto2" name="campopesquisa" autocomplete="off" required="" class="form-control" />
+                                    <input type="text" list="autocompleteCliente" id="pesquisaProduto2" name="campopesquisa" autocomplete="off" required="" class="form-control" onclick="pesquisaProdutoHandler()" />
                                     <datalist id="autocompleteProduto"></datalist>
                                 </div>
                             </div>

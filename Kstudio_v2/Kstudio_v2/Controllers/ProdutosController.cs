@@ -58,7 +58,7 @@ namespace Kstudio_v2.Controllers
             {
                 var produtoRepository = new ProdutosRepository();
 
-                if (produtoRepository.Salvar(produto) == true)
+                if (produtoRepository.Salvar(produto))
                 {
                     ViewData["mensagem"] = "<h1>Usuario cadastrado com sucesso!</h1>";
                 }
