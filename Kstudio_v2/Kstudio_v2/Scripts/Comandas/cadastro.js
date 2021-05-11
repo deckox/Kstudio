@@ -2,9 +2,6 @@
 
     //Devinindo um evento que é disparado toda vez que o usuario digita alguma letra nova no campo de pesquisa
     document.getElementById("pesquisa").onfocus = pesquisaHandler;
-   
-    //document.getElementById("pesquisaProduto1").onkeyup = pesquisaProdutoHandler;
-    //document.getElementById("pesquisaProduto2").onkeyup = pesquisaProdutoHandler;
 
     function pesquisaHandler() {
 
@@ -64,171 +61,6 @@
 
             document.getElementById("Id").value = selectedOption;
 
-        }
-
-    }
-
-    function pesquisaProdutoHandler() {
-
-        //Obtem o texto digitado no campo de pesquisa
-        var value = document.getElementById("pesquisaProduto").value;
-
-        //Faz uma requisição Ajax de GET no controller na action BuscarClientesAutocomplete passando o valor digitado no campo como parametro
-        var request = $.ajax({
-            url: '/Produtos/BuscarProdutosAutocomplete',
-            type: 'GET',
-            data: { value },
-            contentType: 'application/json; charset=utf-8'
-        });
-
-        //Recebe a resposta da requisição Ajax
-        request.done(function (data) {
-
-            //Converte o valor recebido pelo controller em um objeto Json
-            var jsondata = JSON.parse(data);
-
-            //Pega cada um dos clientes e cria as options para gerar o autocomplete
-            var options = '';
-            jsondata.forEach(function (produto) {
-
-                var sugestion = produto.Id + '-' + produto.Nome;
-                options += '<option data-id="' + produto.Id + '"> ' + sugestion + ' </option>';
-            });
-
-            //adiciona as opções na tela
-            document.getElementById("autocompleteProduto").innerHTML = options;
-        });
-
-
-        //Verifica se alguma opção está selecionada
-        var selectedOption = '';
-        var options = document.querySelectorAll("option");
-        if (options.length > 0) {
-
-            var selecionado = $('#pesquisa').val();
-
-            options.forEach(function (opt) {
-
-                if (opt.value === selecionado) {
-                    var idCliente = opt.getAttribute("data-id");
-                    selectedOption = idCliente;
-                }
-            });
-        }
-
-        //Se alguma opção estiver selecionada, jopa o id do clienteescolhido no campo hidden que sera enviado comos dados ao salvar
-        if (selectedOption != '') {
-            document.getElementById("Id").value = selectedOption;
-        }
-
-    }
-
-    function pesquisaProdutoHandler1() {
-
-        //Obtem o texto digitado no campo de pesquisa
-        var value = document.getElementById("pesquisaProduto1").value;
-
-        //Faz uma requisição Ajax de GET no controller na action BuscarClientesAutocomplete passando o valor digitado no campo como parametro
-        var request = $.ajax({
-            url: '/Produtos/BuscarProdutosAutocomplete',
-            type: 'GET',
-            data: { value },
-            contentType: 'application/json; charset=utf-8'
-        });
-
-        //Recebe a resposta da requisição Ajax
-        request.done(function (data) {
-
-            //Converte o valor recebido pelo controller em um objeto Json
-            var jsondata = JSON.parse(data);
-
-            //Pega cada um dos clientes e cria as options para gerar o autocomplete
-            var options = '';
-            jsondata.forEach(function (produto) {
-
-                var sugestion = produto.Id + '-' + produto.Nome;
-                options += '<option data-id="' + produto.Id + '"> ' + sugestion + ' </option>';
-            });
-
-            //adiciona as opções na tela
-            document.getElementById("autocompleteCliente").innerHTML = options;
-        });
-
-
-        //Verifica se alguma opção está selecionada
-        var selectedOption = '';
-        var options = document.querySelectorAll("option");
-        if (options.length > 0) {
-
-            var selecionado = $('#pesquisa').val();
-
-            options.forEach(function (opt) {
-
-                if (opt.value === selecionado) {
-                    var idCliente = opt.getAttribute("data-id");
-                    selectedOption = idCliente;
-                }
-            });
-        }
-
-        //Se alguma opção estiver selecionada, jopa o id do clienteescolhido no campo hidden que sera enviado comos dados ao salvar
-        if (selectedOption != '') {
-            document.getElementById("Id").value = selectedOption;
-        }
-
-    }
-
-    function pesquisaProdutoHandler2() {
-
-        //Obtem o texto digitado no campo de pesquisa
-        var value = document.getElementById("pesquisaProduto2").value;
-
-        //Faz uma requisição Ajax de GET no controller na action BuscarClientesAutocomplete passando o valor digitado no campo como parametro
-        var request = $.ajax({
-            url: '/Produtos/BuscarProdutosAutocomplete',
-            type: 'GET',
-            data: { value },
-            contentType: 'application/json; charset=utf-8'
-        });
-
-        //Recebe a resposta da requisição Ajax
-        request.done(function (data) {
-
-            //Converte o valor recebido pelo controller em um objeto Json
-            var jsondata = JSON.parse(data);
-
-            //Pega cada um dos clientes e cria as options para gerar o autocomplete
-            var options = '';
-            jsondata.forEach(function (produto) {
-
-                var sugestion = produto.Id + '-' + produto.Nome;
-                options += '<option data-id="' + produto.Id + '"> ' + sugestion + ' </option>';
-            });
-
-            //adiciona as opções na tela
-            document.getElementById("autocompleteCliente").innerHTML = options;
-        });
-
-
-        //Verifica se alguma opção está selecionada
-        var selectedOption = '';
-        var options = document.querySelectorAll("option");
-        if (options.length > 0) {
-
-            var selecionado = $('#pesquisa').val();
-
-            options.forEach(function (opt) {
-
-                if (opt.value === selecionado) {
-                    var idCliente = opt.getAttribute("data-id");
-                    selectedOption = idCliente;
-                }
-            });
-        }
-
-        //Se alguma opção estiver selecionada, jopa o id do clienteescolhido no campo hidden que sera enviado comos dados ao salvar
-        if (selectedOption != '') {
-            document.getElementById("Id").value = selectedOption;
         }
 
     }
@@ -585,10 +417,6 @@ function preencheCamposDeAgendamento() {
         })
     }
 }
-
-
-
-
 
 function pesquisaProdutoHandler() {
 
