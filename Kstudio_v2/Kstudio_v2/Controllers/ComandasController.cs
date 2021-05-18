@@ -47,34 +47,37 @@ namespace Kstudio_v2.Controllers
 
         public ActionResult Cadastro()
         {
-            return View();
+            var listaAgendamentos = new Comanda();
+            listaAgendamentos.Produto.Add(new Produto());       
+            return View(listaAgendamentos);
         }
 
-        //[HttpPost]
-        //public ActionResult Cadastro(Usuario usuario)
-        //{
-        //    try
-        //    {
-        //        var usuariosRepository = new UsuariosRepository();
+        [HttpPost]
+        public ActionResult Cadastro(Comanda comanda)
+        {
+            try
+            {
+                var comandaRepository = new ComandasRepository();
 
-        //        if (usuariosRepository.Salvar(usuario) == true)
-        //        {
-        //            ViewData["mensagem"] = "<h1>Usuario cadastrado com sucesso!</h1>";
-        //        }
-        //        else
-        //        {
-        //            ViewData["mensagem"] = "<h1>DEU RUIM</h1>";
-        //        }
+                if (comandaRepository.Salvar(comanda))
+                {
+                    ViewData["mensagem"] = "<h1>Usuario cadastrado com sucesso!</h1>";
+                }
+                else
+                {
+                    ViewData["mensagem"] = "<h1>DEU RUIM</h1>";
+                    return View(comanda);
+                }
 
-        //        return View();
-        //    }
-        //    catch (Exception)
-        //    {
+                return View();
+            }
+            catch (Exception)
+            {
 
-        //        throw;
-        //    }
+                throw;
+            }
 
-        //}
+        }
 
         //public ActionResult Editar(int id)
         //{

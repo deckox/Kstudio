@@ -411,7 +411,7 @@ function preencheCamposDeAgendamento() {
 
             document.getElementById("Data").value = dataConvertida;
             document.getElementById("HoraDeInicio").value = horaInicioConvertida;
-            document.getElementById("HorarioFinal").value = horaFinalConvertida;
+            document.getElementById("HoraFinal").value = horaFinalConvertida;
             document.getElementById("HorasDeEnsaio").value = horaTotalDeEnsaio;
 
         })

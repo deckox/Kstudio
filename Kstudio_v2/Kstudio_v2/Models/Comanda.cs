@@ -11,23 +11,24 @@ namespace Kstudio_v2.Models
     public class Comanda
     {
         public int Id { get; set; }
-        public Cliente Banda { get; set; }
-        public DateTime Data { get; set; }
+        public string Banda { get; set; }
+        public string Data { get; set; }
         [Display(Name = "Hora De Inicio")]
-        public decimal HoraDeInicio { get; set; }
+        public string HoraDeInicio { get; set; }
+        [Display(Name = "Hora Final")]
+        public string HoraFinal { get; set; }
         [Display(Name = "Hora De Ensaio")]
         public decimal HorasDeEnsaio { get; set; }
         [Display(Name = "Valor de Horas")]
         public decimal ValorDeHoras { get; set; }
-        public List<DetalheComanda> Detalhes { get; set; }
-
         public ClienteViewModel ClienteViewModel { get; set; }
-
-        public  Produto Produto { get; set; }
+        public List<Produto> Produto { get; set; }
+        public List<Produto> ListaDeProdutos { get; set; }
 
         public Comanda()
         {
             ClienteViewModel = new ClienteViewModel();
+            Produto = new List<Produto>();
         }
     }
 }

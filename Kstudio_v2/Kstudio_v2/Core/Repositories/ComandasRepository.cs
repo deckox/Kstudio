@@ -32,42 +32,42 @@ namespace Kstudio_v2.Core.Repositories
             return ExecuteCommand(sql);
         }
 
-        public bool Salvar(Cliente cliente)
+        public bool Salvar(Comanda comanda)
         {
             var listSql = new List<string>();
             var agendamentosCadastrados = 0;
             string sql;
 
-            for (int i = 0; i < cliente.Agendamentos.Count; i++)
-            {
-                var data = DateTime.Parse(cliente.Agendamentos[i].Data.ToString());
-                var dataConvertida = data.ToString("yyyy-MM-dd");
-                var horaInicio = cliente.Agendamentos[i].HorarioInicio.ToString("HH:mm:ss");
-                var horaFim = cliente.Agendamentos[i].HorarioFinal.ToString("HH:mm:ss");
+            //for (int i = 0; i < cliente.Agendamentos.Count; i++)
+            //{
+            //    var data = DateTime.Parse(cliente.Agendamentos[i].Data.ToString());
+            //    var dataConvertida = data.ToString("yyyy-MM-dd");
+            //    var horaInicio = cliente.Agendamentos[i].HorarioInicio.ToString("HH:mm:ss");
+            //    var horaFim = cliente.Agendamentos[i].HorarioFinal.ToString("HH:mm:ss");
 
-                if (cliente.Agendamentos[i].Id == 0) //Se o Id for 0 o usuario e Novo, entao deve Inserir
-                {
-                    sql = string.Format(Sql_Insert, cliente.Id, dataConvertida, horaInicio, horaFim);
-                }
+            //    if (cliente.Agendamentos[i].Id == 0) //Se o Id for 0 o usuario e Novo, entao deve Inserir
+            //    {
+            //        sql = string.Format(Sql_Insert, cliente.Id, dataConvertida, horaInicio, horaFim);
+            //    }
 
-                else //Usuario com Id entao os dados devem ser alterados
-                {
-                    sql = string.Format(Sql_Update, cliente.Agendamentos[i].Id, dataConvertida, horaInicio, horaFim);
-                }
+            //    else //Usuario com Id entao os dados devem ser alterados
+            //    {
+            //        sql = string.Format(Sql_Update, cliente.Agendamentos[i].Id, dataConvertida, horaInicio, horaFim);
+            //    }
 
-                listSql.Add(sql);
+            //    listSql.Add(sql);
                 
 
-                if (ExecuteCommand(listSql[i]))
-                {
-                    agendamentosCadastrados++;
-                }
-            }
+            //    if (ExecuteCommand(listSql[i]))
+            //    {
+            //        agendamentosCadastrados++;
+            //    }
+            //}
 
-            if (cliente.Agendamentos.Count == agendamentosCadastrados)
-            {
-                return true;
-            }
+            //if (cliente.Agendamentos.Count == agendamentosCadastrados)
+            //{
+            //    return true;
+            //}
 
             return false;
         }
