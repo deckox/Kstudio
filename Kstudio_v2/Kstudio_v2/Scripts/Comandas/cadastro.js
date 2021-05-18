@@ -75,9 +75,12 @@ function addFieldsProdutos() {
     var modeloTr = modeloCloneTr.cloneNode(true);
 
     modeloTr.setAttribute("id", "tr" + index);
-    modeloTr.children[0].children[0].children[1].children.pesquisaProduto.id = "pesquisaProduto" + index;
-    modeloTr.children[1].children[0].children[1].children.Produto_Id.id = "Produto_Id" + index;
-    modeloTr.children[2].children[0].children[1].children.Produto_Preco.id = "Produto_Preco" + index;
+    modeloTr.children[0].children[0].children[1].children.pesquisaProduto.id = "pesquisaProduto_" + index;
+    modeloTr.children[1].children[0].children[1].children.Produto_Id.id = "Produto_Id_" + index;
+    modeloTr.children[2].children[0].children[1].children.Produto_Preco.id = "Produto_Preco_" + index;
+    modeloTr.children[0].children[0].children[1].children[0].name = "Produto[" + index + "].Nome";
+    modeloTr.children[1].children[0].children[1].children[0].name = "Produto[" + index + "].Id";
+    modeloTr.children[2].children[0].children[1].children[0].name = "Produto[" + index + "].Preco";
 
     detalhes.appendChild(modeloTr);
 
