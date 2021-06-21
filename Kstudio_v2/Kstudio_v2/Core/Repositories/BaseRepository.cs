@@ -17,8 +17,8 @@ namespace Kstudio_v2.Core.Repositories
         private const string Sql_CreateProdutos = "CREATE TABLE Produtos (Id INTEGER PRIMARY KEY AUTOINCREMENT, Nome varchar(255), PrecoDeCusto DECIMAL, PrecoDeVenda DECIMAL, Preco DECIMAL)";
         private const string Sql_Usuarios = "CREATE TABLE Usuarios (Id INTEGER PRIMARY KEY AUTOINCREMENT, Nome varchar(255), Login varchar(255), Senha varchar(255))";
         private const string Sql_Agendamentos = "CREATE TABLE Agendamentos (Id INTEGER PRIMARY KEY AUTOINCREMENT, IdCliente INTEGER FOREIGN KEY, Data DATETIME, HorarioInicio DECIMAL, HorarioFim DECIMAL)";
-        private const string Sql_Comanda = "CREATE TABLE Comandas (Id INTEGER PRIMARY KEY AUTOINCREMENT, idCliente INTEGER FOREIGN KEY, Data DATETIME, HorasEnsaiadas DECIMAL, ValorDasHoras DECIMAL, Status TINYINT)";
-        private const string Sql_DetalheComanda = "CREATE TABLE DetalhesComanda (Id INTEGER PRIMARY KEY AUTOINCREMENT, Data DATETIME, HorarioInicio DECIMAL, HorarioFim DECIMAL, IdCliente INTEGER, FOREIGN KEY(IdCliente) REFERENCES Clientes(id))";
+        private const string Sql_Comandas = "CREATE TABLE Comandas (Id INTEGER PRIMARY KEY AUTOINCREMENT, Data DATETIME, HorarioDeInicio DECIMAL, HorarioFinal DECIMAL, HorasDeEnsaio DECIMAL, ValorDasHoras DECIMAL, ValorTotalDaComanda DECIMAL, IdCliente INTEGER, Status BOOL,FOREIGN KEY(IdCliente) REFERENCES Clientes(id))";
+        private const string Sql_ComandaItens = "CREATE TABLE DetalhesComanda (Id INTEGER PRIMARY KEY AUTOINCREMENT, ProdutoNome STRING, ProdutoQuantidade INTEGER, ProdutoValor DECIMAL, IdComanda INTEGER, FOREIGN KEY (IdComanda) REFERENCES Comandas (id))";
    
         public BaseRepository()
         {
@@ -43,8 +43,8 @@ namespace Kstudio_v2.Core.Repositories
                 ExecuteCommand(Sql_CreateProdutos);
                 ExecuteCommand(Sql_Usuarios);
                 ExecuteCommand(Sql_Agendamentos);
-                ExecuteCommand(Sql_Comanda);
-                ExecuteCommand(Sql_DetalheComanda);
+                ExecuteCommand(Sql_Comandas);
+                ExecuteCommand(Sql_ComandaItens);
             }
  
         }

@@ -23,7 +23,8 @@ namespace Kstudio_v2.Models
         public decimal ValorDeHoras { get; set; }
         public ClienteViewModel ClienteViewModel { get; set; }
         public List<Produto> Produto { get; set; }
-        public List<Produto> ListaDeProdutos { get; set; }
+        public bool StatusComanda { get; set; }
+        public decimal ValorTotalDaComanda { get; set; }
 
         public Comanda()
         {

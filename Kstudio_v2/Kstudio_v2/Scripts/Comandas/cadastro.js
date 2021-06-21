@@ -68,18 +68,17 @@
 
 function addFieldsProdutos() {
 
-
     var detalhes = document.getElementById("tabelaProdutos").getElementsByTagName('tbody')[0];
     var index = document.getElementById("tabelaProdutos").getElementsByTagName('tr').length;
     var modeloCloneTr = document.getElementById("modeloTr");
     var modeloTr = modeloCloneTr.cloneNode(true);
 
     modeloTr.setAttribute("id", "tr" + index);
-    modeloTr.children[0].children[0].children[1].children.pesquisaProduto.id = "pesquisaProduto_" + index;
-    modeloTr.children[1].children[0].children[1].children.Produto_Id.id = "Produto_Id_" + index;
-    modeloTr.children[2].children[0].children[1].children.Produto_Preco.id = "Produto_Preco_" + index;
+    modeloTr.children[0].children[0].children[1].children.pesquisaProduto_0.id = "pesquisaProduto_" + index;
+    modeloTr.children[1].children[0].children[1].children.Produto_Quantidade_0.id = "Produto_Quantidade_" + index;
+    modeloTr.children[2].children[0].children[1].children.Produto_Preco_0.id = "Produto_Preco_" + index;
     modeloTr.children[0].children[0].children[1].children[0].name = "Produto[" + index + "].Nome";
-    modeloTr.children[1].children[0].children[1].children[0].name = "Produto[" + index + "].Id";
+    modeloTr.children[1].children[0].children[1].children[0].name = "Produto[" + index + "].Quantidade";
     modeloTr.children[2].children[0].children[1].children[0].name = "Produto[" + index + "].Preco";
 
     detalhes.appendChild(modeloTr);
@@ -449,7 +448,7 @@ function pesquisaProdutoHandler() {
         var options = '';
         jsondata.forEach(function (produto) {
 
-            var sugestion = produto.Id + '-' + produto.Nome;
+            var sugestion = produto.Nome;
             options += '<option data-id="' + produto.Id + '"> ' + sugestion + ' </option>';
         });
 
@@ -479,4 +478,37 @@ function pesquisaProdutoHandler() {
         document.getElementById("Id").value = selectedOption;
     }
 
+}
+
+function valorCalculadoDaComanda() {
+
+    var valorHoras = parseFloat(document.getElementById("ValorDeHoras").value);
+    var contagemDeProdutos = document.getElementById("tabelaProdutos").rows.length;
+    var total = 0;
+    var quantidade;
+    var preco;
+    var valorTotalId = document.getElementById("valorTotalId");
+    //var statusAberto = document.getElementById("statusaberto").checked;
+    var statusPago = document.getElementById("statusfechado").checked;
+
+    for (var i = 0; i < contagemDeProdutos; i++) {
+
+        quantidade = document.getElementById("Produto_Quantidade_" + i).value;
+        preco = document.getElementById("Produto_Preco_" + i).value;
+
+        total = total + quantidade * preco;
+
+    }
+
+    if (statusPago) {
+        document.getElementById("StatusComanda").value = true;
+    } else {
+        document.getElementById("StatusComanda").value = false;
+    }
+
+    total = total + valorHoras;
+
+    document.getElementById("ValorTotalDaComanda").value = total;
+
+    valorTotalId.innerHTML = "Valor Total = R$" + total;
 }

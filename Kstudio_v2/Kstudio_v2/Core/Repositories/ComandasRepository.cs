@@ -38,36 +38,45 @@ namespace Kstudio_v2.Core.Repositories
             var agendamentosCadastrados = 0;
             string sql;
 
-            //for (int i = 0; i < cliente.Agendamentos.Count; i++)
-            //{
-            //    var data = DateTime.Parse(cliente.Agendamentos[i].Data.ToString());
-            //    var dataConvertida = data.ToString("yyyy-MM-dd");
-            //    var horaInicio = cliente.Agendamentos[i].HorarioInicio.ToString("HH:mm:ss");
-            //    var horaFim = cliente.Agendamentos[i].HorarioFinal.ToString("HH:mm:ss");
+            if (comanda.Id == 0) //Se o Id for 0 o usuario e Novo, entao deve Inserir
+            {
+                sql = string.Format(Sql_Insert, comanda.Id, comanda.Banda, comanda.Data, comanda.HoraDeInicio,
+                    comanda.HoraFinal, comanda.HorasDeEnsaio, comanda.ValorDeHoras, comanda.StatusComanda,
+                    comanda.ValorTotalDaComanda);
 
-            //    if (cliente.Agendamentos[i].Id == 0) //Se o Id for 0 o usuario e Novo, entao deve Inserir
-            //    {
-            //        sql = string.Format(Sql_Insert, cliente.Id, dataConvertida, horaInicio, horaFim);
-            //    }
+                for (int i = 0; i < comanda.Produto.Count; i++)
+                {
 
-            //    else //Usuario com Id entao os dados devem ser alterados
-            //    {
-            //        sql = string.Format(Sql_Update, cliente.Agendamentos[i].Id, dataConvertida, horaInicio, horaFim);
-            //    }
+                    //    var data = DateTime.Parse(cliente.Agendamentos[i].Data.ToString());
+                    //    var dataConvertida = data.ToString("yyyy-MM-dd");
+                    //    var horaInicio = cliente.Agendamentos[i].HorarioInicio.ToString("HH:mm:ss");
+                    //    var horaFim = cliente.Agendamentos[i].HorarioFinal.ToString("HH:mm:ss");
 
-            //    listSql.Add(sql);
-                
+                    if (comanda.Produto[i].Id == 0) //Se o Id for 0 o usuario e Novo, entao deve Inserir
+                    {
+                        sql = string.Format(Sql_Insert, comanda.Produto[i].Id, comanda.Produto[i].Nome, comanda.Produto[i].Quantidade, comanda.Produto[i].Preco);
+                    }
 
-            //    if (ExecuteCommand(listSql[i]))
-            //    {
-            //        agendamentosCadastrados++;
-            //    }
-            //}
+                    //    else //Usuario com Id entao os dados devem ser alterados
+                    //    {
+                    //        sql = string.Format(Sql_Update, cliente.Agendamentos[i].Id, dataConvertida, horaInicio, horaFim);
+                    //    }
 
-            //if (cliente.Agendamentos.Count == agendamentosCadastrados)
-            //{
-            //    return true;
-            //}
+                    //    listSql.Add(sql);
+
+
+                    //    if (ExecuteCommand(listSql[i]))
+                    //    {
+                    //        agendamentosCadastrados++;
+                    //    }
+                    //}
+
+                    //if (cliente.Agendamentos.Count == agendamentosCadastrados)
+                    //{
+                    //    return true;
+                    //}
+                }
+            }
 
             return false;
         }

@@ -17,6 +17,7 @@ namespace Kstudio_v2.Models
         public decimal PrecoDeVenda { get; set; }
         [Display(Name = "Preço")]
         public decimal Preco { get; set; }
+        public int Quantidade { get; set; }
 
     }
 }
