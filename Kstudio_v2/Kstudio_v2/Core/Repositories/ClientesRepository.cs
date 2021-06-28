@@ -28,7 +28,7 @@ namespace Kstudio_v2.Core.Repositories
         {
             var validateField = IsAnyFieldOnCadastroNullOrEmpty(cliente);
 
-            if (validateField == true)
+            if (validateField)
             {
                 return false;
             }

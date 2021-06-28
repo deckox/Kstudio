@@ -12,11 +12,11 @@ namespace Kstudio_v2.Models
     {
         public int Id { get; set; }
         public string Banda { get; set; }
-        public string Data { get; set; }
+        public DateTime Data { get; set; }
         [Display(Name = "Hora De Inicio")]
-        public string HoraDeInicio { get; set; }
+        public DateTime HoraDeInicio { get; set; }
         [Display(Name = "Hora Final")]
-        public string HoraFinal { get; set; }
+        public DateTime HoraFinal { get; set; }
         [Display(Name = "Hora De Ensaio")]
         public decimal HorasDeEnsaio { get; set; }
         [Display(Name = "Valor de Horas")]

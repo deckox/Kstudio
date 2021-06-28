@@ -484,7 +484,8 @@ function valorCalculadoDaComanda() {
 
     var valorHoras = parseFloat(document.getElementById("ValorDeHoras").value);
     var contagemDeProdutos = document.getElementById("tabelaProdutos").rows.length;
-    var total = 0;
+    var horasDeEnsaio = parseFloat(document.getElementById("HorasDeEnsaio").value)
+    var total = valorHoras * horasDeEnsaio;
     var quantidade;
     var preco;
     var valorTotalId = document.getElementById("valorTotalId");
@@ -505,8 +506,6 @@ function valorCalculadoDaComanda() {
     } else {
         document.getElementById("StatusComanda").value = false;
     }
-
-    total = total + valorHoras;
 
     document.getElementById("ValorTotalDaComanda").value = total;
 

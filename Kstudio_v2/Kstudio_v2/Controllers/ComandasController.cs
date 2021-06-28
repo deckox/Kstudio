@@ -31,9 +31,8 @@ namespace Kstudio_v2.Controllers
         {
             try
             {
-                var aux = campoPesquisar;
                 var usuariosRepository = new UsuariosRepository();
-                var listaAuxBd = usuariosRepository.BuscarUsuario(aux);
+                var listaAuxBd = usuariosRepository.BuscarUsuario(campoPesquisar);
 
                 return View(listaAuxBd);
             }
@@ -71,7 +70,7 @@ namespace Kstudio_v2.Controllers
 
                 return View();
             }
-            catch (Exception)
+            catch (Exception e)
             {
 
                 throw;
