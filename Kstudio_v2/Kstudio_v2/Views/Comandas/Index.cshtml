@@ -1,4 +1,4 @@
-﻿@model Kstudio_v2.Models.ClienteViewModel
+﻿@model List<Kstudio_v2.Models.Comanda>
 
 @{
     ViewBag.Title = "Index";
@@ -39,34 +39,52 @@
         </div>
 
         <table class="table" id="agendamentosDoCliente">
-           
+            <tr>
+                <td>
+                    @Html.DisplayName("Id")
+                </td>
+                <td>
+                    @Html.DisplayName("Data")
+                </td>
+                <td>
+                    @Html.DisplayName("Banda")
+                </td>
+                <td>
+                    @Html.DisplayName("HoraDeInicio")
+                    @*@String.Format("{0:dd/MM/yyyy}", item.Agendamentos[index].Data)*@
+                <td>
+                    @Html.DisplayName("HoraFinal")
+                </td>
+                <td>
+                    @Html.DisplayName("ValorTotalDaComanda")
+                </td>
+            </tr>
 
-            @foreach (var item in Model.AgendamentosViewModel)
+            @foreach (var item in Model)
             {
-               
                 <tr id="trId">
                     <td>
-                        @Html.DisplayTextFor(modelItem => item.ClienteViewModel.Id)
+                        @Html.DisplayTextFor(modelItem => item.Id)
                     </td>
                     <td>
-                        @Html.DisplayTextFor(modelItem => item.ClienteViewModel.Banda)
+                        @Html.DisplayTextFor(modelItem => item.Data)
                     </td>
                     <td>
-                        @Html.DisplayTextFor(modelItem => item.ClienteViewModel.Responsavel)
+                        @Html.DisplayTextFor(modelItem => item.Banda)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Data)
+                        @Html.DisplayFor(modelItem => item.HoraDeInicio)
                         @*@String.Format("{0:dd/MM/yyyy}", item.Agendamentos[index].Data)*@
                     <td>
-                        @Html.DisplayTextFor(modelItem => item.HorarioInicio)
+                        @Html.DisplayTextFor(modelItem => item.HoraFinal)
                     </td>
                     <td>
-                        @Html.DisplayTextFor(modelItem => item.HorarioFinal)
+                        @Html.DisplayTextFor(modelItem => item.ValorTotalDaComanda)
                     </td>
                     <td>
-                            @Html.ActionLink("Editar", "Editar", new { id = item.Id })
-                            @Html.ActionLink("Detalhes", "Detalhes", new { id = item.Id })
-                            @Html.ActionLink("Deletar", "Deletar", new { id = item.Id })
+                        @Html.ActionLink("Editar", "Editar", new { id = item.Id })
+                        @Html.ActionLink("Detalhes", "Detalhes", new { id = item.Id })
+                        @Html.ActionLink("Deletar", "Deletar", new { id = item.Id })
                     </td>
                 </tr>
             }

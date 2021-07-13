@@ -14,10 +14,10 @@ namespace Kstudio_v2.Controllers
         {
             try
             {
-                var listaAgendamentos = new ClienteViewModel();
-                listaAgendamentos.AgendamentosViewModel.Add(new AgendamentoViewModel());
+                var listaDeComandas = new ComandasRepository();
+                var listaDeComandasDoBd = listaDeComandas.Listar();
 
-                return View(listaAgendamentos);
+                return View(listaDeComandasDoBd);
             }
             catch (Exception ex)
             {
