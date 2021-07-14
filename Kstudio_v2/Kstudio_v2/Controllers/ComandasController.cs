@@ -78,96 +78,105 @@ namespace Kstudio_v2.Controllers
 
         }
 
-        //public ActionResult Editar(int id)
-        //{
-        //    try
-        //    {
-        //        var usuariosRepository = new UsuariosRepository();
-        //        var user = usuariosRepository.Carregar(id);
-        //        return View(user);
-        //    }
-        //    catch (Exception)
-        //    {
+        public ActionResult Editar(int id)
+        {
+            try
+            {
+                var comandasRepository = new ComandasRepository();
+                var comanda = comandasRepository.Carregar(id);
+                return View(comanda);
+            }
+            catch (Exception)
+            {
 
-        //        throw;
-        //    }
+                throw;
+            }
 
-        //}
+        }
 
-        //[HttpPost]
+        [HttpPost]
+        public ActionResult Editar(Comanda comanda)
+        {
+            try
+            {
+                var comandaRepository = new ComandasRepository();
 
-        //public ActionResult Editar(Usuario usuario)
-        //{
-        //    try
-        //    {
-        //        var usuariosRepository = new UsuariosRepository();
-        //        var user = usuariosRepository.Salvar(usuario);
+                if (comandaRepository.Salvar(comanda))
+                {
+                    ViewData["mensagem"] = "<h1>Usuario cadastrado com sucesso!</h1>";
+                }
+                else
+                {
+                    ViewData["mensagem"] = "<h1>DEU RUIM</h1>";
+                    return View(comanda);
+                }
 
-        //        return View();
-        //    }
-        //    catch (Exception)
-        //    {
+                return View();
+            }
+            catch (Exception e)
+            {
 
-        //        throw;
-        //    }
+                throw;
+            }
 
-        //}
+        }
 
-        //public ActionResult Detalhes(int id)
-        //{
-        //    try
-        //    {
-        //        var usuariosRepository = new UsuariosRepository();
-        //        var user = usuariosRepository.Carregar(id);
-        //        return View(user);
-        //    }
-        //    catch (Exception)
-        //    {
+        public ActionResult Detalhes(int id)
+        {
+            try
+            {
+                var comandasRepository = new ComandasRepository();
+                var comanda = comandasRepository.Carregar(id);
+                return View(comanda);
+            }
+            catch (Exception e)
+            {
 
-        //        throw;
-        //    }
-        //}
+                throw;
+            }
+        }
 
-        //public ActionResult Deletar(int id)
-        //{
-        //    try
-        //    {
-        //        var usuariosRepository = new UsuariosRepository();
-        //        var user = usuariosRepository.Carregar(id);
-        //        return View(user);
-        //    }
-        //    catch (Exception)
-        //    {
+        public ActionResult Deletar(int id)
+        {
+            try
+            {
+                var comandasRepository = new ComandasRepository();
+                var comanda = comandasRepository.Carregar(id);
+                return View(comanda);
+            }
+            catch (Exception)
+            {
 
-        //        throw;
-        //    }
+                throw;
+            }
 
 
-        //}
+        }
 
-        //[HttpPost]
-        //public ActionResult Deletar(int id, FormCollection collection)
-        //{
-        //    try
-        //    {
-        //        var usuariosRepository = new UsuariosRepository();
+        [HttpPost]
+        public ActionResult Deletar(int id, FormCollection collection)
+        {
+            try
+            {
+                var comandaRepository = new ComandasRepository();
 
-        //        if (usuariosRepository.Excluir(id) == true)
-        //        {
-        //            ViewData["mensagem"] = "<h1>Usuario excluído com sucesso!</h1>";
-        //        }
-        //        else
-        //        {
-        //            ViewData["mensagem"] = "<h1>DEU RUIM</h1>";
-        //        }
+                if (comandaRepository.Excluir(id))
+                {
+                    ViewData["mensagem"] = "<h1>Usuario cadastrado com sucesso!</h1>";
+                }
+                else
+                {
+                    ViewData["mensagem"] = "<h1>DEU RUIM</h1>";
+                    return View();
+                }
 
-        //        return RedirectToAction("Index");
-        //    }
-        //    catch
-        //    {
-        //        return View();
-        //    }
-        //}
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
 
 
     }

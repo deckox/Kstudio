@@ -32,7 +32,7 @@
                             <div class="form-group">
                                 @Html.LabelFor(model => model.Banda, htmlAttributes: new { @class = "control-label col-md-5" })
                                 <div class="col-md-7">
-                                    @Html.EditorFor(model => model.Banda, new { htmlAttributes = new { id = "pesquisa", list = "autocompleteCliente", autocomplete = "off", required = "", @class = "form-control" } })
+                                    @Html.EditorFor(model => model.Banda, new { htmlAttributes = new { id = "pesquisa", list = "autocompleteCliente", autocomplete = "off", required = "", @class = "form-control", @readonly = "readonly" } })
                                     <datalist id="autocompleteCliente"></datalist>
                                 </div>
                             </div>

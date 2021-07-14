@@ -18,9 +18,10 @@ namespace Kstudio_v2.Core.Repositories
         private const string Sql_Insert = "INSERT into Comandas (IdBanda,Data,HorarioDeInicio,HorarioFinal,HorasDeEnsaio,ValorDasHoras,ValorTotalDaComanda,Status) VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}')";
         private const string Sql_InsertComandaItens = "INSERT into ComandaItens (ProdutoNome,ProdutoQuantidade,ProdutoValor,IdComanda) VALUES ('{0}','{1}','{2}','{3}')";
         private const string Sql_Update = "UPDATE Agendamentos SET Data='{1}',HorarioInicio='{2}',HorarioFim='{3}' WHERE Id = {0}";
-        private const string Sql_Delete = "DELETE from Agendamentos WHERE Id = {0}";
+        private const string Sql_Delete = "DELETE from Comandas WHERE Id = {0}";
         private const string Sql_Select = "SELECT * from Comandas";
-        private const string Sql_SelectOne = "SELECT a.*, c.* FROM Agendamentos a INNER JOIN Clientes c ON a.IdCliente = c.Id WHERE a.Id={0}";
+        private const string Sql_SelectByIdJoin = "SELECT a.*, c.* FROM Comandas a INNER JOIN ComandaItens c ON a.Id = c.IdComanda WHERE a.Id={0}";
+        private const string SelectById = "SELECT * from Comandas WHERE Id = {0}";
         private const string Sql_SelectByIdCliente = "SELECT a.*, c.* FROM Agendamentos a INNER JOIN Clientes c ON a.IdCliente = c.Id WHERE a.IdCliente={0}";
         private const string Sql_SelectJoin = "SELECT a.*, c.* FROM Comandas a INNER JOIN ComandaItens c ON a.Id = c.IdComanda";
         private const string Sql_SelectBandaResponsavel = "SELECT * FROM CLIENTES WHERE Banda LIKE '%{0}%' OR Responsavel LIKE '%{0}%'";
@@ -77,30 +78,53 @@ namespace Kstudio_v2.Core.Repositories
             return false;
         }
 
-        //public Cliente Carregar(int id)
-        //{
-        //    var connection = GetConnection();
-        //    connection.Open();
-        //    var command = new SQLiteCommand(connection);
+        public Comanda Carregar(int id)
+        {
+            var connection = GetConnection();
+            connection.Open();
+            var command = new SQLiteCommand(connection);
 
-        //    command.CommandText = string.Format(Sql_SelectOne, id);
+            command.CommandText = string.Format(Sql_SelectByIdJoin, id);
+            var checkSql = true;
 
-        //    var result = new Cliente();
+            var result = new Comanda();
 
-        //    using (var reader = command.ExecuteReader())
-        //    {
-        //        while (reader.Read())
-        //        {
-        //           result = Parse(reader);
-        //        }
-        //    }
+            using (var reader = command.ExecuteReader())
+            {
+                if (!reader.Read())
+                {
+                    checkSql = false;
+                }
 
-        //    command.Dispose();
-        //    connection.Close();
-        //    connection.Dispose();
+                else
+                {
+                    while (reader.Read())
+                    {
+                        result = Parse(reader);
+                    }
+                }
 
-        //    return result;
-        //}
+            }
+
+            if (checkSql == false)
+            {
+                command.CommandText = string.Format(SelectById, id);
+
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        result = Parse(reader);
+                    }
+                }
+            }
+
+            command.Dispose();
+            connection.Close();
+            connection.Dispose();
+
+            return result;
+        }
 
         //public Cliente CarregarLista(int id)
         //{
@@ -143,8 +167,8 @@ namespace Kstudio_v2.Core.Repositories
             {
                 while (reader.Read())
                 {
-                   var comanda = Parse(reader);
-                   result.Add(comanda);
+                    var comanda = Parse(reader);
+                    result.Add(comanda);
                 }
             }
 
@@ -173,9 +197,9 @@ namespace Kstudio_v2.Core.Repositories
 
             foreach (var item in result.Produto)
             {
-                
+
             }
-           
+
 
             return result;
         }
@@ -200,7 +224,7 @@ namespace Kstudio_v2.Core.Repositories
             {
                 while (reader.Read())
                 {
-                     result = ParseId(reader);
+                    result = ParseId(reader);
                 }
             }
 
@@ -235,9 +259,9 @@ namespace Kstudio_v2.Core.Repositories
         //                {
         //                   result[0] = cliente;
         //                }
-                       
+
         //            }
-                  
+
         //        }
         //    }
 
@@ -282,7 +306,7 @@ namespace Kstudio_v2.Core.Repositories
         //        var horaFim = cliente.Agendamentos[i].HorarioFinal.ToString("HH:mm:ss");
 
         //        command.CommandText = string.Format(Sql_SelectDisponibilidadeDeHorario, horaInicio, horaFim, dataConvertida);
-               
+
 
         //        using (var reader = command.ExecuteReader())
         //        {
@@ -303,5 +327,5 @@ namespace Kstudio_v2.Core.Repositories
         //}
     }
 
-   
+
 }

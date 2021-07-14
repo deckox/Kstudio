@@ -263,6 +263,9 @@
     <Content Include="Views\Agendamentos\Editar.cshtml" />
     <Content Include="Views\Comandas\Index.cshtml" />
     <Content Include="Views\Comandas\Cadastro.cshtml" />
+    <Content Include="Views\Comandas\Detalhes.cshtml" />
+    <Content Include="Views\Comandas\Editar.cshtml" />
+    <Content Include="Views\Comandas\Deletar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -67,19 +67,22 @@
                         @Html.DisplayTextFor(modelItem => item.Id)
                     </td>
                     <td>
-                        @Html.DisplayTextFor(modelItem => item.Data)
+                        @*@Html.DisplayTextFor(modelItem => item.Data)*@
+                        @String.Format("{0:dd/MM/yyyy}", item.Data)
                     </td>
                     <td>
                         @Html.DisplayTextFor(modelItem => item.Banda)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.HoraDeInicio)
-                        @*@String.Format("{0:dd/MM/yyyy}", item.Agendamentos[index].Data)*@
+                        @*@Html.DisplayFor(modelItem => item.HoraDeInicio)*@
+                        @String.Format("{0:HH:mm tt}", item.HoraDeInicio)
                     <td>
-                        @Html.DisplayTextFor(modelItem => item.HoraFinal)
+                        @*@Html.DisplayTextFor(modelItem => item.HoraFinal)*@
+                        @String.Format("{0:HH:mm tt}", item.HoraFinal)
                     </td>
                     <td>
-                        @Html.DisplayTextFor(modelItem => item.ValorTotalDaComanda)
+                        @*@Html.DisplayTextFor(modelItem => item.ValorTotalDaComanda)*@
+                        @String.Format("{0:c}", item.ValorTotalDaComanda)
                     </td>
                     <td>
                         @Html.ActionLink("Editar", "Editar", new { id = item.Id })
