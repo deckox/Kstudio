@@ -20,7 +20,7 @@ namespace Kstudio_v2.Core.Repositories
         private const string Sql_Update = "UPDATE Agendamentos SET Data='{1}',HorarioInicio='{2}',HorarioFim='{3}' WHERE Id = {0}";
         private const string Sql_Delete = "DELETE from Comandas WHERE Id = {0}";
         private const string Sql_Select = "SELECT * from Comandas";
-        private const string Sql_SelectByIdJoin = "SELECT a.*, c.* FROM Comandas a INNER JOIN ComandaItens c ON a.Id = c.IdComanda WHERE a.Id={0}";
+        private const string Sql_SelectByIdJoin = "SELECT c.id as IdItem, a.*, c.* FROM Comandas a INNER JOIN ComandaItens c ON a.Id = c.IdComanda WHERE a.Id={0}";
         private const string SelectById = "SELECT * from Comandas WHERE Id = {0}";
         private const string Sql_SelectByIdCliente = "SELECT a.*, c.* FROM Agendamentos a INNER JOIN Clientes c ON a.IdCliente = c.Id WHERE a.IdCliente={0}";
         private const string Sql_SelectJoin = "SELECT a.*, c.* FROM Comandas a INNER JOIN ComandaItens c ON a.Id = c.IdComanda";
@@ -100,7 +100,7 @@ namespace Kstudio_v2.Core.Repositories
                 {
                     while (reader.Read())
                     {
-                        result = Parse(reader);
+                        result = ParseComProdutos(reader);
                     }
                 }
 
@@ -194,12 +194,43 @@ namespace Kstudio_v2.Core.Repositories
             result.ValorTotalDaComanda = decimal.Parse(reader["ValorTotalDaComanda"].ToString());
             result.StatusComanda = bool.Parse(reader["Status"].ToString());
 
+            
+            //foreach (var item in result.Produto)
+            //{
+            //    item.Id = int.Parse(reader["Id:1"].ToString());
+            //    item.Nome = reader["ProdutoNome"].ToString();
+            //    item.Quantidade = int.Parse(reader["ProdutoQuantidade"].ToString());
+            //    item.Preco = decimal.Parse(reader["ProdutoValor"].ToString());
+            //}
+
+            return result;
+        }
+
+        private Comanda ParseComProdutos(SQLiteDataReader reader)
+        {
+            var result = new Comanda();
+
+            result.Id = int.Parse(reader["Id"].ToString());
+            result.Banda = reader["IdBanda"].ToString();
+            result.Data = DateTime.Parse(reader["Data"].ToString());
+            result.HoraDeInicio = DateTime.Parse(reader["HorarioDeInicio"].ToString());
+            result.HoraFinal = DateTime.Parse(reader["HorarioFinal"].ToString());
+            result.HorasDeEnsaio = decimal.Parse(reader["HorasDeEnsaio"].ToString());
+            result.ValorDeHoras = decimal.Parse(reader["ValorDasHoras"].ToString());
+            result.ValorTotalDaComanda = decimal.Parse(reader["ValorTotalDaComanda"].ToString());
+            result.StatusComanda = bool.Parse(reader["Status"].ToString());
+
+            result.Produto.Add(new Produto());
+            var aux = reader.FieldCount;
+
 
             foreach (var item in result.Produto)
             {
-
+                item.Id = int.Parse(reader["IdItem"].ToString());
+                item.Nome = reader["ProdutoNome"].ToString();
+                item.Quantidade = int.Parse(reader["ProdutoQuantidade"].ToString());
+                item.Preco = decimal.Parse(reader["ProdutoValor"].ToString());
             }
-
 
             return result;
         }
@@ -212,6 +243,7 @@ namespace Kstudio_v2.Core.Repositories
 
         public int BuscarIdDaComanda(string idBanda, string data)
         {
+            Comanda comanda;
             var result = 0;
 
             var connection = GetConnection();
@@ -224,7 +256,8 @@ namespace Kstudio_v2.Core.Repositories
             {
                 while (reader.Read())
                 {
-                    result = ParseId(reader);
+                    comanda = Parse(reader);
+                    result = comanda.Id;
                 }
             }
 
