@@ -1,13 +1,16 @@
 ﻿using DocumentFormat.OpenXml.Drawing.Charts;
 using DocumentFormat.OpenXml.Presentation;
 using Kstudio_v2.Models;
+using LinqToDB.Data;
 using Nest;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Infrastructure;
+using System.Data.OleDb;
 using System.Data.SqlClient;
 using System.Data.SQLite;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Web;
 
@@ -88,42 +91,89 @@ namespace Kstudio_v2.Core.Repositories
             var checkSql = true;
 
             var result = new Comanda();
+            var count = 0;
 
             using (var reader = command.ExecuteReader())
             {
+
                 if (!reader.Read())
                 {
                     checkSql = false;
                 }
 
-                else
+                else if (checkSql == false)
                 {
-                    while (reader.Read())
-                    {
-                        result = ParseComProdutos(reader);
-                    }
-                }
+                    command.CommandText = string.Format(SelectById, id);
 
-            }
-
-            if (checkSql == false)
-            {
-                command.CommandText = string.Format(SelectById, id);
-
-                using (var reader = command.ExecuteReader())
-                {
                     while (reader.Read())
                     {
                         result = Parse(reader);
                     }
+
                 }
+
+                else
+                {
+
+                    while (reader.Read())
+                    {
+                        result.Id = int.Parse(reader["Id"].ToString());
+                        result.Banda = reader["IdBanda"].ToString();
+                        result.Data = DateTime.Parse(reader["Data"].ToString());
+                        result.HoraDeInicio = DateTime.Parse(reader["HorarioDeInicio"].ToString());
+                        result.HoraFinal = DateTime.Parse(reader["HorarioFinal"].ToString());
+                        result.HorasDeEnsaio = decimal.Parse(reader["HorasDeEnsaio"].ToString());
+                        result.ValorDeHoras = decimal.Parse(reader["ValorDasHoras"].ToString());
+                        result.ValorTotalDaComanda = decimal.Parse(reader["ValorTotalDaComanda"].ToString());
+                        result.StatusComanda = bool.Parse(reader["Status"].ToString());
+
+                        result.Produto.Add(new Produto());
+
+                        //foreach (var produto in result.Produto)
+                        //{
+                        result.Id = int.Parse(reader["IdItem"].ToString());
+                        result.Produto.FirstOrDefault().Nome = reader["ProdutoNome"].ToString();
+                        result.Produto.FirstOrDefault().Quantidade = int.Parse(reader["ProdutoQuantidade"].ToString());
+                        result.Produto.FirstOrDefault().Preco = decimal.Parse(reader["ProdutoValor"].ToString());
+                        //}
+
+
+                    }
+
+                }
+
             }
+
+
 
             command.Dispose();
             connection.Close();
             connection.Dispose();
 
             return result;
+        }
+
+        public int A(int Id)
+        {
+
+
+            var number = 0;
+
+            //Sample 02: Form the SQL Connection String and Open Connection Object.
+            string connection_string = "Data Source=C:\\Users\\akimura\\Dropbox\\Workspace\\Kstudio_v2\\Kstudio_v2\\App_Data\\banco.db";
+            SQLiteConnection con = new SQLiteConnection(connection_string);
+            con.Open();
+
+            //Sample 03: Create the SQL Command Object
+            SQLiteCommand cmd = new SQLiteCommand();
+            cmd.CommandText = "SELECT c.id as IdItem, a.*, c.* FROM Comandas a INNER JOIN ComandaItens c ON a.Id = c.IdComanda WHERE a.Id=8";
+            cmd.Connection = con;
+
+            //Sample 04: Execute the Query and Get the Count of Emplyees
+            object count = cmd.ExecuteScalar();
+            Int32 Total_Records = System.Convert.ToInt32(count);
+
+            return number;
         }
 
         //public Cliente CarregarLista(int id)
@@ -194,15 +244,6 @@ namespace Kstudio_v2.Core.Repositories
             result.ValorTotalDaComanda = decimal.Parse(reader["ValorTotalDaComanda"].ToString());
             result.StatusComanda = bool.Parse(reader["Status"].ToString());
 
-            
-            //foreach (var item in result.Produto)
-            //{
-            //    item.Id = int.Parse(reader["Id:1"].ToString());
-            //    item.Nome = reader["ProdutoNome"].ToString();
-            //    item.Quantidade = int.Parse(reader["ProdutoQuantidade"].ToString());
-            //    item.Preco = decimal.Parse(reader["ProdutoValor"].ToString());
-            //}
-
             return result;
         }
 
@@ -220,17 +261,13 @@ namespace Kstudio_v2.Core.Repositories
             result.ValorTotalDaComanda = decimal.Parse(reader["ValorTotalDaComanda"].ToString());
             result.StatusComanda = bool.Parse(reader["Status"].ToString());
 
-            result.Produto.Add(new Produto());
-            var aux = reader.FieldCount;
-
-
-            foreach (var item in result.Produto)
+            result.Produto.Add(new Produto()
             {
-                item.Id = int.Parse(reader["IdItem"].ToString());
-                item.Nome = reader["ProdutoNome"].ToString();
-                item.Quantidade = int.Parse(reader["ProdutoQuantidade"].ToString());
-                item.Preco = decimal.Parse(reader["ProdutoValor"].ToString());
-            }
+                Id = int.Parse(reader["IdItem"].ToString()),
+                Nome = reader["ProdutoNome"].ToString(),
+                Quantidade = int.Parse(reader["ProdutoQuantidade"].ToString()),
+                Preco = decimal.Parse(reader["ProdutoValor"].ToString()),
+            });
 
             return result;
         }

@@ -765,3 +765,5 @@ C:\Users\akimura\Dropbox\Workspace\Kstudio_v2\Kstudio_v2\obj\Debug\Kstudio_v2.cs
 C:\Users\akimura\Dropbox\Workspace\Kstudio_v2\Kstudio_v2\obj\Debug\Kstudio_v2.dll
 C:\Users\akimura\Dropbox\Workspace\Kstudio_v2\Kstudio_v2\obj\Debug\Kstudio_v2.pdb
 C:\Users\akimura\Dropbox\Workspace\Kstudio_v2\Kstudio_v2\obj\Debug\Kstudio_v2.csprojAssemblyReference.cache
+C:\Users\akimura\Dropbox\Workspace\Kstudio_v2\Kstudio_v2\bin\linq2db.dll
+C:\Users\akimura\Dropbox\Workspace\Kstudio_v2\Kstudio_v2\bin\linq2db.xml
