@@ -37,6 +37,7 @@ namespace Kstudio_v2.Core.Repositories
             var listSql = new List<string>();
             var agendamentosCadastrados = 0;
             string sql;
+            var result = false;
 
             for (int i = 0; i < cliente.Agendamentos.Count; i++)
             {
@@ -66,10 +67,10 @@ namespace Kstudio_v2.Core.Repositories
 
             if (cliente.Agendamentos.Count == agendamentosCadastrados)
             {
-                return true;
+                result = true;
             }
 
-            return false;
+            return result;
         }
 
         public Cliente Carregar(int id)

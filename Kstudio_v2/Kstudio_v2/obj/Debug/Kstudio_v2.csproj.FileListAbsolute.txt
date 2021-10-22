@@ -617,7 +617,6 @@ C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\obj\Debug\Kst
 C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\obj\Debug\Kstudio_v2.csproj.CopyComplete
 C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\obj\Debug\Kstudio_v2.dll
 C:\Users\akimura\Downloads\Kstudio-master_v2\Kstudio_v2\Kstudio_v2\obj\Debug\Kstudio_v2.pdb
-C:\Users\akimura\Dropbox\Workspace\Kstudio_v2\Kstudio_v2\bin\Nest.pdb
 C:\Users\akimura\Dropbox\Workspace\Kstudio_v2\Kstudio_v2\bin\Kstudio_v2.dll.config
 C:\Users\akimura\Dropbox\Workspace\Kstudio_v2\Kstudio_v2\bin\Kstudio_v2.dll
 C:\Users\akimura\Dropbox\Workspace\Kstudio_v2\Kstudio_v2\bin\Kstudio_v2.pdb
@@ -722,6 +721,7 @@ C:\Users\akimura\Dropbox\Workspace\Kstudio_v2\Kstudio_v2\bin\DocumentFormat.Open
 C:\Users\akimura\Dropbox\Workspace\Kstudio_v2\Kstudio_v2\bin\Elasticsearch.Net.dll
 C:\Users\akimura\Dropbox\Workspace\Kstudio_v2\Kstudio_v2\bin\EntityFramework.dll
 C:\Users\akimura\Dropbox\Workspace\Kstudio_v2\Kstudio_v2\bin\EntityFramework.SqlServer.dll
+C:\Users\akimura\Dropbox\Workspace\Kstudio_v2\Kstudio_v2\bin\linq2db.dll
 C:\Users\akimura\Dropbox\Workspace\Kstudio_v2\Kstudio_v2\bin\Microsoft.Cci.dll
 C:\Users\akimura\Dropbox\Workspace\Kstudio_v2\Kstudio_v2\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\akimura\Dropbox\Workspace\Kstudio_v2\Kstudio_v2\bin\Nest.dll
@@ -746,6 +746,8 @@ C:\Users\akimura\Dropbox\Workspace\Kstudio_v2\Kstudio_v2\bin\Elasticsearch.Net.p
 C:\Users\akimura\Dropbox\Workspace\Kstudio_v2\Kstudio_v2\bin\Elasticsearch.Net.xml
 C:\Users\akimura\Dropbox\Workspace\Kstudio_v2\Kstudio_v2\bin\EntityFramework.xml
 C:\Users\akimura\Dropbox\Workspace\Kstudio_v2\Kstudio_v2\bin\EntityFramework.SqlServer.xml
+C:\Users\akimura\Dropbox\Workspace\Kstudio_v2\Kstudio_v2\bin\linq2db.xml
+C:\Users\akimura\Dropbox\Workspace\Kstudio_v2\Kstudio_v2\bin\Nest.pdb
 C:\Users\akimura\Dropbox\Workspace\Kstudio_v2\Kstudio_v2\bin\Nest.xml
 C:\Users\akimura\Dropbox\Workspace\Kstudio_v2\Kstudio_v2\bin\System.Buffers.xml
 C:\Users\akimura\Dropbox\Workspace\Kstudio_v2\Kstudio_v2\bin\System.Data.SQLite.xml
@@ -765,5 +767,3 @@ C:\Users\akimura\Dropbox\Workspace\Kstudio_v2\Kstudio_v2\obj\Debug\Kstudio_v2.cs
 C:\Users\akimura\Dropbox\Workspace\Kstudio_v2\Kstudio_v2\obj\Debug\Kstudio_v2.dll
 C:\Users\akimura\Dropbox\Workspace\Kstudio_v2\Kstudio_v2\obj\Debug\Kstudio_v2.pdb
 C:\Users\akimura\Dropbox\Workspace\Kstudio_v2\Kstudio_v2\obj\Debug\Kstudio_v2.csprojAssemblyReference.cache
-C:\Users\akimura\Dropbox\Workspace\Kstudio_v2\Kstudio_v2\bin\linq2db.dll
-C:\Users\akimura\Dropbox\Workspace\Kstudio_v2\Kstudio_v2\bin\linq2db.xml

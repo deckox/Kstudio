@@ -52,7 +52,7 @@
                         <td>
                             <div class="form-group">
                                 @Html.LabelFor(model => model.Data, htmlAttributes: new { @class = "control-label col-md-5" })
-                                <div class="col-md-5">
+                                <div class="col-md-6">
                                     @Html.EditorFor(model => model.Data, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly", } })
                                     @Html.ValidationMessageFor(model => model.Data, "", new { @class = "text-danger" })
                                 </div>
@@ -104,6 +104,12 @@
                     {
                         <tr id="modeloTr">
                             <td>
+                                <div class="form-group">
+                                    <div class="col-md-8">
+                                        @Html.HiddenFor(model => model.Produto[i].Id, new { htmlAttributes = new { id = "pesquisaProduto_0", list = "autocompleteCliente", autocomplete = "off", required = "", onclick = "pesquisaProdutoHandler()", @class = "form-control" } })
+                                        <datalist id="autocompleteProduto"></datalist>
+                                    </div>
+                                </div>
                                 <div class="form-group">
                                     @Html.LabelFor(model => model.Produto.FirstOrDefault().Nome, htmlAttributes: new { @class = "control-label col-md-2" })
                                     <div class="col-md-8">

@@ -10,7 +10,7 @@
 
 
 @section Scripts{
-    <script type="text/javascript" src='@Url.Content("~/Scripts/Comandas/cadastro.js?v3")' asp-append-version="true"></script>
+    <script type="text/javascript" src='@Url.Content("~/Scripts/Comandas/editar.js?v3")' asp-append-version="true"></script>
 
 }
 
@@ -52,9 +52,9 @@
                         <td>
                             <div class="form-group">
                                 @Html.LabelFor(model => model.Data, htmlAttributes: new { @class = "control-label col-md-5" })
-                                <div class="col-md-5">
-                                    @Html.EditorFor(model => model.Data, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly", } })
-                                    @Html.ValidationMessageFor(model => model.Data, "", new { @class = "text-danger" })
+                                <div class="col-md-4">
+                                   @Html.EditorFor(model => model.Data,  new { htmlAttributes = new { @class = "form-control", @readonly = "readonly", } })
+                                   @Html.ValidationMessageFor(model => model.Data, "", new { @class = "text-danger" })
                                 </div>
                             </div>
                         </td>
@@ -147,7 +147,7 @@
         <br />
         <div align="center">
             <label id="valorTotalId">Valor total</label>
-            @Html.HiddenFor(model => model.ValorTotalDaComanda)
+            @Html.EditorFor(model => model.ValorTotalDaComanda, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
         </div>
         <br />
         <div class="form-group">

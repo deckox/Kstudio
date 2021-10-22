@@ -20,9 +20,12 @@ namespace Kstudio_v2.Core.Repositories
     {
         private const string Sql_Insert = "INSERT into Comandas (IdBanda,Data,HorarioDeInicio,HorarioFinal,HorasDeEnsaio,ValorDasHoras,ValorTotalDaComanda,Status) VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}')";
         private const string Sql_InsertComandaItens = "INSERT into ComandaItens (ProdutoNome,ProdutoQuantidade,ProdutoValor,IdComanda) VALUES ('{0}','{1}','{2}','{3}')";
-        private const string Sql_Update = "UPDATE Agendamentos SET Data='{1}',HorarioInicio='{2}',HorarioFim='{3}' WHERE Id = {0}";
+        private const string Sql_Update = "UPDATE Comandas SET Data='{1}',HorarioDeInicio='{2}',HorarioFinal='{3}',HorasDeEnsaio='{4}',ValorDasHoras='{5}',ValorTotalDaComanda='{6}',Status='{7}' WHERE Id = {0}";
+        private const string Sql_UpdateComandaItens = "UPDATE ComandaItens SET ProdutoNome='{1}',ProdutoQuantidade='{2}',ProdutoValor='{3}' WHERE Id = {0}";
         private const string Sql_Delete = "DELETE from Comandas WHERE Id = {0}";
+        private const string Sql_DeleteComandaItens = "DELETE from ComandaItens WHERE Id = {0}";
         private const string Sql_Select = "SELECT * from Comandas";
+        private const string Sql_SelectByDate = "SELECT * FROM Comandas WHERE idBanda = '{0}' AND Data = '{1}'";
         private const string Sql_SelectByIdJoin = "SELECT c.id as IdItem, a.*, c.* FROM Comandas a INNER JOIN ComandaItens c ON a.Id = c.IdComanda WHERE a.Id={0}";
         private const string SelectById = "SELECT * from Comandas WHERE Id = {0}";
         private const string Sql_SelectByIdCliente = "SELECT a.*, c.* FROM Agendamentos a INNER JOIN Clientes c ON a.IdCliente = c.Id WHERE a.IdCliente={0}";
@@ -32,11 +35,36 @@ namespace Kstudio_v2.Core.Repositories
         private const string Sql_SelectAgendamentoPorData = "SELECT a.*, c.* FROM Agendamentos a INNER JOIN Clientes c ON a.IdCliente = c.Id WHERE Data = '{0}'";
         private const string Sql_SelectComandaId = "SELECT * from Comandas WHERE IdBanda = '{0}' AND Data = '{1}'";
 
-        public bool Excluir(int id)
+        public bool Excluir(Comanda comanda)
         {
-            var sql = string.Format(Sql_Delete, id);
+             
+            var sql = string.Format(Sql_Delete, comanda.Id);
+            var resultComanda = ExecuteCommand(sql);
+            bool resultComandaItens;
+            var resultComandaItensCount = 0;
+            var result = false;
 
-            return ExecuteCommand(sql);
+            if (resultComanda && comanda.Produto.Count > 0)
+            {
+                for (int i = 0; i < comanda.Produto.Count; i++)
+                {
+                    var sqlProduto = string.Format(Sql_DeleteComandaItens, comanda.Produto[i].Id);
+                    resultComandaItens = ExecuteCommand(sqlProduto);
+
+                    if (resultComandaItens)
+                    {
+                        resultComandaItensCount++;
+                    }
+                }
+
+                if (resultComanda && comanda.Produto.Count == resultComandaItensCount)
+                {
+                    result = true;
+                }
+            }
+
+            return result;
+
         }
 
         public bool Salvar(Comanda comanda)
@@ -56,19 +84,29 @@ namespace Kstudio_v2.Core.Repositories
                 var horaFinal = comanda.HoraFinal.ToString("HH:mm:ss");
 
                 sql = string.Format(Sql_Insert, idBanda, dataConvertida, horaDeInicio,
-                    horaFinal, comanda.HorasDeEnsaio, comanda.ValorDeHoras, comanda.ValorTotalDaComanda, comanda.StatusComanda);
+                    horaFinal, comanda.HorasDeEnsaio, comanda.ValorDeHoras, comanda.ValorTotalDaComanda,
+                    comanda.StatusComanda);
 
                 result = ExecuteCommand(sql);
 
-                var comandaId = BuscarIdDaComanda(idBanda, dataConvertida);
+               
 
                 if (result && comanda.Produto.Count > 0)
                 {
+                    var comandaId = BuscarIdDaComanda(idBanda, dataConvertida);
+
                     for (int i = 0; i < comanda.Produto.Count; i++)
                     {
                         if (comanda.Produto[i].Id == 0) //Se o Id for 0 o usuario e Novo, entao deve Inserir
                         {
                             sql = string.Format(Sql_InsertComandaItens, comanda.Produto[i].Nome,
+                                comanda.Produto[i].Quantidade, comanda.Produto[i].Preco, comandaId);
+                            ExecuteCommand(sql);
+                        }
+
+                        else
+                        {
+                            sql = string.Format(Sql_UpdateComandaItens, comanda.Produto[i].Nome,
                                 comanda.Produto[i].Quantidade, comanda.Produto[i].Preco, comandaId);
                             ExecuteCommand(sql);
                         }
@@ -78,7 +116,35 @@ namespace Kstudio_v2.Core.Repositories
                 return result;
             }
 
-            return false;
+            else
+            {
+                var split = comanda.Banda.Split('-');
+                var idBanda = split.FirstOrDefault();
+                var data = DateTime.Parse(comanda.Data.ToString());
+                var dataConvertida = data.ToString("yyyy-MM-dd");
+                var horaDeInicio = comanda.HoraDeInicio.ToString("HH:mm:ss");
+                var horaFinal = comanda.HoraFinal.ToString("HH:mm:ss");
+                var comandaId = BuscarIdDaComanda(idBanda, dataConvertida);
+
+                sql = string.Format(Sql_Update, comandaId, dataConvertida, horaDeInicio,
+                    horaFinal, comanda.HorasDeEnsaio, comanda.ValorDeHoras, comanda.ValorTotalDaComanda,
+                    comanda.StatusComanda);
+
+                result = ExecuteCommand(sql);
+
+                if (result && comanda.Produto.Count > 0)
+                {
+                    for (int i = 0; i < comanda.Produto.Count; i++)
+                    {
+                        sql = string.Format(Sql_UpdateComandaItens, comanda.Produto[i].Id, comanda.Produto[i].Nome,
+                            comanda.Produto[i].Quantidade, comanda.Produto[i].Preco);
+                        ExecuteCommand(sql);
+                    }
+                }
+
+                return result;
+            }
+
         }
 
         public Comanda Carregar(int id)
@@ -88,92 +154,55 @@ namespace Kstudio_v2.Core.Repositories
             var command = new SQLiteCommand(connection);
 
             command.CommandText = string.Format(Sql_SelectByIdJoin, id);
-            var checkSql = true;
 
             var result = new Comanda();
-            var count = 0;
 
             using (var reader = command.ExecuteReader())
             {
-
-                if (!reader.Read())
+                while (reader.Read())
                 {
-                    checkSql = false;
+                    result.Id = int.Parse(reader["Id"].ToString());
+                    result.Banda = reader["IdBanda"].ToString();
+                    result.Data = DateTime.Parse(reader["Data"].ToString());
+                    result.HoraDeInicio = DateTime.Parse(reader["HorarioDeInicio"].ToString());
+                    result.HoraFinal = DateTime.Parse(reader["HorarioFinal"].ToString());
+                    result.HorasDeEnsaio = decimal.Parse(reader["HorasDeEnsaio"].ToString());
+                    result.ValorDeHoras = decimal.Parse(reader["ValorDasHoras"].ToString());
+                    result.ValorTotalDaComanda = decimal.Parse(reader["ValorTotalDaComanda"].ToString());
+                    result.StatusComanda = bool.Parse(reader["Status"].ToString());
+
+                    var produto = new Produto
+                    {
+                        Id = int.Parse(reader["IdItem"].ToString()),
+                        Nome = reader["ProdutoNome"].ToString(),
+                        Quantidade = int.Parse(reader["ProdutoQuantidade"].ToString()),
+                        Preco = decimal.Parse(reader["ProdutoValor"].ToString()),
+                    };
+
+                    result.Produto.Add(produto);
                 }
 
-                else if (checkSql == false)
-                {
-                    command.CommandText = string.Format(SelectById, id);
+            }
 
+            if (result.Produto.Count < 1)
+            {
+                command.CommandText = string.Format(SelectById, id);
+
+                using (var reader = command.ExecuteReader())
+                {
                     while (reader.Read())
                     {
                         result = Parse(reader);
                     }
 
                 }
-
-                else
-                {
-
-                    while (reader.Read())
-                    {
-                        result.Id = int.Parse(reader["Id"].ToString());
-                        result.Banda = reader["IdBanda"].ToString();
-                        result.Data = DateTime.Parse(reader["Data"].ToString());
-                        result.HoraDeInicio = DateTime.Parse(reader["HorarioDeInicio"].ToString());
-                        result.HoraFinal = DateTime.Parse(reader["HorarioFinal"].ToString());
-                        result.HorasDeEnsaio = decimal.Parse(reader["HorasDeEnsaio"].ToString());
-                        result.ValorDeHoras = decimal.Parse(reader["ValorDasHoras"].ToString());
-                        result.ValorTotalDaComanda = decimal.Parse(reader["ValorTotalDaComanda"].ToString());
-                        result.StatusComanda = bool.Parse(reader["Status"].ToString());
-
-                        result.Produto.Add(new Produto());
-
-                        //foreach (var produto in result.Produto)
-                        //{
-                        result.Id = int.Parse(reader["IdItem"].ToString());
-                        result.Produto.FirstOrDefault().Nome = reader["ProdutoNome"].ToString();
-                        result.Produto.FirstOrDefault().Quantidade = int.Parse(reader["ProdutoQuantidade"].ToString());
-                        result.Produto.FirstOrDefault().Preco = decimal.Parse(reader["ProdutoValor"].ToString());
-                        //}
-
-
-                    }
-
-                }
-
             }
-
-
 
             command.Dispose();
             connection.Close();
             connection.Dispose();
 
             return result;
-        }
-
-        public int A(int Id)
-        {
-
-
-            var number = 0;
-
-            //Sample 02: Form the SQL Connection String and Open Connection Object.
-            string connection_string = "Data Source=C:\\Users\\akimura\\Dropbox\\Workspace\\Kstudio_v2\\Kstudio_v2\\App_Data\\banco.db";
-            SQLiteConnection con = new SQLiteConnection(connection_string);
-            con.Open();
-
-            //Sample 03: Create the SQL Command Object
-            SQLiteCommand cmd = new SQLiteCommand();
-            cmd.CommandText = "SELECT c.id as IdItem, a.*, c.* FROM Comandas a INNER JOIN ComandaItens c ON a.Id = c.IdComanda WHERE a.Id=8";
-            cmd.Connection = con;
-
-            //Sample 04: Execute the Query and Get the Count of Emplyees
-            object count = cmd.ExecuteScalar();
-            Int32 Total_Records = System.Convert.ToInt32(count);
-
-            return number;
         }
 
         //public Cliente CarregarLista(int id)
@@ -232,7 +261,6 @@ namespace Kstudio_v2.Core.Repositories
         private Comanda Parse(SQLiteDataReader reader)
         {
             var result = new Comanda();
-            result.Produto.Add(new Produto());
 
             result.Id = int.Parse(reader["Id"].ToString());
             result.Banda = reader["IdBanda"].ToString();
@@ -244,37 +272,6 @@ namespace Kstudio_v2.Core.Repositories
             result.ValorTotalDaComanda = decimal.Parse(reader["ValorTotalDaComanda"].ToString());
             result.StatusComanda = bool.Parse(reader["Status"].ToString());
 
-            return result;
-        }
-
-        private Comanda ParseComProdutos(SQLiteDataReader reader)
-        {
-            var result = new Comanda();
-
-            result.Id = int.Parse(reader["Id"].ToString());
-            result.Banda = reader["IdBanda"].ToString();
-            result.Data = DateTime.Parse(reader["Data"].ToString());
-            result.HoraDeInicio = DateTime.Parse(reader["HorarioDeInicio"].ToString());
-            result.HoraFinal = DateTime.Parse(reader["HorarioFinal"].ToString());
-            result.HorasDeEnsaio = decimal.Parse(reader["HorasDeEnsaio"].ToString());
-            result.ValorDeHoras = decimal.Parse(reader["ValorDasHoras"].ToString());
-            result.ValorTotalDaComanda = decimal.Parse(reader["ValorTotalDaComanda"].ToString());
-            result.StatusComanda = bool.Parse(reader["Status"].ToString());
-
-            result.Produto.Add(new Produto()
-            {
-                Id = int.Parse(reader["IdItem"].ToString()),
-                Nome = reader["ProdutoNome"].ToString(),
-                Quantidade = int.Parse(reader["ProdutoQuantidade"].ToString()),
-                Preco = decimal.Parse(reader["ProdutoValor"].ToString()),
-            });
-
-            return result;
-        }
-
-        private int ParseId(SQLiteDataReader reader)
-        {
-            var result = int.Parse(reader["Id"].ToString());
             return result;
         }
 
@@ -291,111 +288,41 @@ namespace Kstudio_v2.Core.Repositories
 
             using (var reader = command.ExecuteReader())
             {
-                while (reader.Read())
+                while (reader.Read()) //rever um possivel agendamento da mesma banda no mesmo dia porem em horarios diferentes
                 {
                     comanda = Parse(reader);
                     result = comanda.Id;
+                }
+
+            }
+
+            return result;
+        }
+
+
+
+        public bool ValidarComandaExistente(Comanda comanda)
+        {
+            var connection = GetConnection();
+            connection.Open();
+            var command = new SQLiteCommand(connection);
+
+            var result = false;
+            var data = comanda.Data.ToString("yyyy-MM-dd");
+            var bandaId = comanda.Banda.Split('-');
+
+            command.CommandText = string.Format(Sql_SelectByDate, bandaId.FirstOrDefault(), data);
+
+            using (var reader = command.ExecuteReader())
+            {
+                if (reader.Read())
+                {
+                    result = true;
                 }
             }
 
             return result;
         }
 
-        //public List<Cliente> BuscarIdDaBanda(int id)
-        //{
-
-        //    var connection = GetConnection();
-        //    connection.Open();
-        //    var command = new SQLiteCommand(connection);
-
-        //    command.CommandText = string.Format(Sql_SelectByIdCliente, id);
-
-        //    var result = new List<Cliente>();
-        //    result.Add(new Cliente());
-
-        //    using(var reader = command.ExecuteReader())
-        //    {
-        //        while (reader.Read())
-        //        {
-        //            var cliente = Parse(reader);
-        //            if (cliente.Id == result[0].Id)
-        //            {
-        //                var agendamento = cliente.Agendamentos[0];
-        //                result[0].Agendamentos.Add(agendamento);
-        //            }
-        //            else
-        //            {
-        //                if (result[0].Id == null || result[0].Id == 0)
-        //                {
-        //                   result[0] = cliente;
-        //                }
-
-        //            }
-
-        //        }
-        //    }
-
-        //    return result;
-        //}
-
-        //public List<Cliente> BuscarAgendamentosPorData(string data)
-        //{
-        //    var connection = GetConnection();
-        //    connection.Open();
-        //    var command = new SQLiteCommand(connection);
-
-        //    command.CommandText = string.Format(Sql_SelectAgendamentoPorData, data);
-
-        //    var result = new List<Cliente>();
-        //    result.Add(new Cliente());
-
-        //    using (var reader = command.ExecuteReader())
-        //    {
-        //        while (reader.Read())
-        //        {
-        //            var cliente = Parse(reader);
-        //            result.Add(cliente);
-        //        }
-        //    }
-
-        //    return result;
-        //}
-
-        //public bool ValidarHorarioDisponivel(Cliente cliente)
-        //{
-        //    var connection = GetConnection();
-        //    connection.Open();
-        //    var command = new SQLiteCommand(connection);
-        //    var result = 0;
-
-        //    for (int i = 0; i < cliente.Agendamentos.Count; i++)
-        //    {
-        //        var data = DateTime.Parse(cliente.Agendamentos[i].Data.ToString());
-        //        var dataConvertida = data.ToString("yyyy-MM-dd");
-        //        var horaInicio = cliente.Agendamentos[i].HorarioInicio.ToString("HH:mm:ss");
-        //        var horaFim = cliente.Agendamentos[i].HorarioFinal.ToString("HH:mm:ss");
-
-        //        command.CommandText = string.Format(Sql_SelectDisponibilidadeDeHorario, horaInicio, horaFim, dataConvertida);
-
-
-        //        using (var reader = command.ExecuteReader())
-        //        {
-        //            while (reader.Read())
-        //            {
-        //                result++;
-        //                break;
-        //            }
-        //        }
-        //    }
-
-        //    if (result > 0)
-        //    {
-        //        return false;
-        //    }
-
-        //    return true;
-        //}
     }
-
-
 }

@@ -10,7 +10,7 @@
 
 
 @section Scripts{
-    <script type="text/javascript" src='@Url.Content("~/Scripts/Comandas/cadastro.js?v3")' asp-append-version="true"></script>
+    <script type="text/javascript" src='@Url.Content("~/Scripts/Comandas/editar.js?v3")' asp-append-version="true"></script>
 
 }
 
@@ -23,10 +23,20 @@
         <div class="form-horizonta">
             @Html.Raw(ViewData["mensagem"] ?? "")
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <h1>Cadastrar Comanda</h1>
+            <h1>Editar Comanda</h1>
             <hr />
             <div class="form-group">
                 <table>
+                    <tr>
+                        <td>
+                            <div class="form-group">
+                                @Html.Label("Id da Comanda", htmlAttributes: new { @class = "control-label col-md-5" })
+                                <div class="col-md-3">
+                                    @Html.EditorFor(model => model.Id, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly", } })
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
                     <tr>
                         <td>
                             <div class="form-group">
@@ -37,18 +47,13 @@
                                 </div>
                             </div>
                         </td>
-                        <td class="col-md-5">
-                            <div class="control-label col-md-5">
-                               <input type="button" value="Pesquisar" class="btn btn-default" onclick="preencheCamposDeAgendamento()" />
-                            </div>
-                        </td>
                     </tr>
                     <tr>
                         <td>
                             <div class="form-group">
                                 @Html.LabelFor(model => model.Data, htmlAttributes: new { @class = "control-label col-md-5" })
-                                <div class="col-md-7">
-                                    @Html.EditorFor(model => model.Data, "{0:MM/dd/yyyy}", new { htmlAttributes = new {@class = "form-control", @readonly = "readonly", } })
+                                <div class="col-md-4">
+                                    @Html.EditorFor(model => model.Data, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly", } })
                                     @Html.ValidationMessageFor(model => model.Data, "", new { @class = "text-danger" })
                                 </div>
                             </div>
@@ -57,7 +62,7 @@
                             <div class="form-group">
                                 @Html.LabelFor(model => model.HoraDeInicio, htmlAttributes: new { @class = "control-label col-md-4" })
                                 <div class="col-md-4">
-                                    @Html.EditorFor(model => model.HoraDeInicio, new { htmlAttributes = new {@class = "form-control", @readonly = "readonly" } })
+                                    @Html.EditorFor(model => model.HoraDeInicio, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
                                     @Html.ValidationMessageFor(model => model.HoraDeInicio, "", new { @class = "text-danger" })
                                 </div>
                             </div>
@@ -66,7 +71,7 @@
                             <div class="form-group">
                                 @Html.Label("Horario Final", htmlAttributes: new { @class = "control-label col-md-5" })
                                 <div class="col-md-5">
-                                    @Html.EditorFor(model => model.HoraFinal, new { htmlAttributes = new {@class = "form-control", @readonly = "readonly" } })
+                                    @Html.EditorFor(model => model.HoraFinal, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
                                     @Html.ValidationMessageFor(model => model.HoraFinal, "", new { @class = "text-danger" })
                                 </div>
                             </div>
@@ -96,40 +101,86 @@
                 <div align="center">
                     <br />
                     <input type="button" id="plus" value="Adicionar Produtos" class="btn btn-default" style="width:300px" onclick="addFieldsProdutos()" />
+                    <input type="button" id="minus" value="Remover Produtos" class="btn btn-default" style="width:300px" onclick="removeFieldsProdutos()" />
                 </div>
                 <br />
                 <table id="tabelaProdutos">
-                    @for (var i = 0; i < Model.Produto.Count; i++)
-                    {
-                        <tr id="modeloTr">
+                    <tr id="modeloTr">
                         <td>
                             <div class="form-group">
-                                @Html.LabelFor(model => model.Produto.FirstOrDefault().Nome, htmlAttributes: new {@class = "control-label col-md-2"})
                                 <div class="col-md-8">
-                                    @Html.EditorFor(model => model.Produto[i].Nome, new {htmlAttributes = new {id = "pesquisaProduto_0", list = "autocompleteCliente", autocomplete = "off", required = "",  onclick = "pesquisaProdutoHandler()", @class = "form-control"}})
+                                    @Html.HiddenFor(model => model.Produto.FirstOrDefault().Id, new { htmlAttributes = new { id = "pesquisaProduto_0", list = "autocompleteCliente", autocomplete = "off", required = "", onclick = "pesquisaProdutoHandler()", @class = "form-control" } })
                                     <datalist id="autocompleteProduto"></datalist>
                                 </div>
                             </div>
                         </td>
                         <td>
                             <div class="form-group">
-                                @Html.LabelFor(model => model.Produto.FirstOrDefault().Quantidade, htmlAttributes: new {@class = "control-label col-md-3"})
-                                <div class="col-md-4">
-                                    @Html.EditorFor(model => model.Produto[i].Quantidade, new {htmlAttributes = new {@class = "form-control", required = "required", min = 1, id = "Produto_Quantidade_0"}})
-                                    @Html.ValidationMessageFor(model => model.Produto[i].Quantidade, "", new {@class = "text-danger"})
+                                @Html.HiddenFor(model => model.Produto.FirstOrDefault().Nome, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-8">
+                                    @Html.HiddenFor(model => model.Produto.FirstOrDefault().Nome, new { htmlAttributes = new { id = "pesquisaProduto_0", list = "autocompleteCliente", autocomplete = "off", required = "", onclick = "pesquisaProdutoHandler()", @class = "form-control" } })
+                                    <datalist id="autocompleteProduto"></datalist>
                                 </div>
                             </div>
                         </td>
                         <td>
                             <div class="form-group">
-                                @Html.LabelFor(model => model.Produto.FirstOrDefault().Preco, htmlAttributes: new {@class = "control-label col-md-2"})
+                                @Html.HiddenFor(model => model.Produto.FirstOrDefault().Quantidade, htmlAttributes: new { @class = "control-label col-md-3" })
                                 <div class="col-md-4">
-                                    @Html.EditorFor(model => model.Produto[i].Preco, new {htmlAttributes = new {@class = "form-control", required = "required", min = "1.00", value = "", id = "Produto_Preco_0"}})
-                                    @Html.ValidationMessageFor(model => model.Produto[i].Preco, "", new {@class = "text-danger"})
+                                    @Html.HiddenFor(model => model.Produto.FirstOrDefault().Quantidade, new { htmlAttributes = new { @class = "form-control", required = "required", min = 1 @*id = "Produto_Quantidade_" + i*@ } })
+                                    @Html.ValidationMessageFor(model => model.Produto.FirstOrDefault().Quantidade, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                @Html.HiddenFor(model => model.Produto.FirstOrDefault().Preco, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-4">
+                                    @Html.HiddenFor(model => model.Produto.FirstOrDefault().Preco, new { htmlAttributes = new { @class = "form-control", required = "required", min = "1.00", value = "" @*id = "Produto_Preco_" + i*@ } })
+                                    @Html.ValidationMessageFor(model => model.Produto.FirstOrDefault().Preco, "", new { @class = "text-danger" })
                                 </div>
                             </div>
                         </td>
                     </tr>
+                    @for (var i = 0; i < Model.Produto.Count; i++)
+                    {
+                        <tr>
+                            <td>
+                                <div class="form-group">
+                                    <div class="col-md-8">
+                                        @Html.HiddenFor(model => model.Produto[i].Id, new { htmlAttributes = new { id = "pesquisaProduto_0", list = "autocompleteCliente", autocomplete = "off", required = "", onclick = "pesquisaProdutoHandler()", @class = "form-control" } })
+                                        <datalist id="autocompleteProduto"></datalist>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Produto.FirstOrDefault().Nome, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-8">
+                                        @Html.EditorFor(model => model.Produto[i].Nome, new { htmlAttributes = new { id = "pesquisaProduto_0", list = "autocompleteCliente", autocomplete = "off", required = "", onclick = "pesquisaProdutoHandler()", @class = "form-control" } })
+                                        <datalist id="autocompleteProduto"></datalist>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Produto.FirstOrDefault().Quantidade, htmlAttributes: new { @class = "control-label col-md-3" })
+                                    <div class="col-md-4">
+                                        @Html.EditorFor(model => model.Produto[i].Quantidade, new { htmlAttributes = new { @class = "form-control", required = "required", min = 1, id = "Produto_Quantidade_" + i } })
+                                        @Html.ValidationMessageFor(model => model.Produto[i].Quantidade, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Produto.FirstOrDefault().Preco, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-4">
+                                        @Html.EditorFor(model => model.Produto[i].Preco, new { htmlAttributes = new { @class = "form-control", required = "required", min = "1.00", value = "", id = "Produto_Preco_" + i } })
+                                        @Html.ValidationMessageFor(model => model.Produto[i].Preco, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
                     }
                 </table>
             </div>
@@ -137,23 +188,22 @@
         <br />
         <div align="center">
             <label for="nada">Status:</label>
-            <input type="radio" value="aberto" id="statusaberto"/>
+            <input type="radio" value="aberto" name="radio" id="statusaberto"/>
             <label for="aberto">Em Aberto</label>
-            <input type="radio" value="fechado" id="statusfechado"/>
+            <input type="radio" value="fechado" name="radio" id="statusfechado"/>
             <label for="fechado">Pago</label>
             @Html.HiddenFor(model => model.StatusComanda)
         </div>
         <br />
         <div align="center">
             <label id="valorTotalId" >Valor total</label>
-            @Html.HiddenFor(model => model.ValorTotalDaComanda)
+            @Html.HiddenFor(model => model.ValorTotalDaComanda, new { htmlAttributes = new { @class = "form-control" } })
         </div>
         <br />
         <div class="form-group">
             <div>
                 <input id="salvar" type="submit" value="Salvar" class="btn-default" />
                 <input id="limpar" type="reset" value="Limpar" class="btn-default" />
-                <input id="btncalcular" type="button" value="Calcular!" onclick="valorCalculadoDaComanda()" />
             </div>
         </div>
     </body>

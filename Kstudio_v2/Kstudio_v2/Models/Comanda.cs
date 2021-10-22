@@ -12,9 +12,13 @@ namespace Kstudio_v2.Models
     {
         public int Id { get; set; }
         public string Banda { get; set; }
+        //[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
+        //[DataType(DataType.Date, ErrorMessage = "Data em formato inválido")]
         public DateTime Data { get; set; }
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:HH:mm tt}")]
         [Display(Name = "Hora De Inicio")]
         public DateTime HoraDeInicio { get; set; }
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:HH:mm tt}")]
         [Display(Name = "Hora Final")]
         public DateTime HoraFinal { get; set; }
         [Display(Name = "Hora De Ensaio")]

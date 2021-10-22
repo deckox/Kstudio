@@ -64,6 +64,7 @@
         }
 
     }
+
 };
 
 function addFieldsProdutos() {
@@ -86,15 +87,15 @@ function addFieldsProdutos() {
 
 }
 
-function removeFieldsAgendamento() {
+function removeFieldsProdutos() {
 
-    var quantidadeDeTr = document.getElementById("agendamentosDoCliente").getElementsByTagName('tr').length;
+    var quantidadeDeTr = document.getElementById("tabelaProdutos").getElementsByTagName('tr').length;
 
-    if (quantidadeDeTr < 3) {
+    if (quantidadeDeTr < 2) {
         alert("Não é possivel excluir este campo!!");
     } else {
 
-        var detalhe = document.getElementById("trIdTable");
+        var detalhe = document.getElementById("modeloTr");
         detalhe.nextElementSibling.remove();
 
     }
@@ -480,7 +481,7 @@ function pesquisaProdutoHandler() {
 
 }
 
-function valorCalculadoDaComanda() {
+document.onclick = function valorCalculadoDaComanda() {
 
     var valorHoras = parseFloat(document.getElementById("ValorDeHoras").value);
     var contagemDeProdutos = document.getElementById("tabelaProdutos").rows.length;
@@ -511,3 +512,23 @@ function valorCalculadoDaComanda() {
 
     valorTotalId.innerHTML = "Valor Total = R$" + total;
 }
+
+function insertCheckbox() {
+
+    var statusDaComanda = document.getElementById("StatusComanda").value;
+
+    if (statusDaComanda) {
+
+        document.getElementById("statusfechado").click();
+
+    } else {
+        document.getElementById("statusaberto").click();
+
+    }
+}
+
+
+
+
+
+  

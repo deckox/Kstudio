@@ -47,7 +47,7 @@ namespace Kstudio_v2.Controllers
         public ActionResult Cadastro()
         {
             var listaAgendamentos = new Comanda();
-            listaAgendamentos.Produto.Add(new Produto());       
+            listaAgendamentos.Produto.Add(new Produto());
             return View(listaAgendamentos);
         }
 
@@ -57,18 +57,23 @@ namespace Kstudio_v2.Controllers
             try
             {
                 var comandaRepository = new ComandasRepository();
+                var validate = comandaRepository.ValidarComandaExistente(comanda);
 
-                if (comandaRepository.Salvar(comanda))
+                if (!validate && comandaRepository.Salvar(comanda))
                 {
+
                     ViewData["mensagem"] = "<h1>Usuario cadastrado com sucesso!</h1>";
+                    return RedirectToAction("Index");
+
                 }
+
                 else
                 {
                     ViewData["mensagem"] = "<h1>DEU RUIM</h1>";
-                    return View(comanda);
+                    return View("Index");
                 }
 
-                return View();
+
             }
             catch (Exception e)
             {
@@ -84,7 +89,19 @@ namespace Kstudio_v2.Controllers
             {
                 var comandasRepository = new ComandasRepository();
                 var comanda = comandasRepository.Carregar(id);
-                return View(comanda);
+
+                if (!comanda.StatusComanda)
+                {
+                    return View(comanda);
+                }
+
+                else
+                {
+                    ViewData["mensagem"] = "<h1>A comanda esta fechada, consulte ela em '/Detalhes/'</h1>";
+                    return RedirectToAction("Index");
+                   
+                }
+               
             }
             catch (Exception)
             {
@@ -104,6 +121,7 @@ namespace Kstudio_v2.Controllers
                 if (comandaRepository.Salvar(comanda))
                 {
                     ViewData["mensagem"] = "<h1>Usuario cadastrado com sucesso!</h1>";
+                    return RedirectToAction("Index");
                 }
                 else
                 {
@@ -111,7 +129,6 @@ namespace Kstudio_v2.Controllers
                     return View(comanda);
                 }
 
-                return View();
             }
             catch (Exception e)
             {
@@ -154,23 +171,23 @@ namespace Kstudio_v2.Controllers
         }
 
         [HttpPost]
-        public ActionResult Deletar(int id, FormCollection collection)
+        public ActionResult Deletar(Comanda comanda, FormCollection collection)
         {
             try
             {
                 var comandaRepository = new ComandasRepository();
 
-                if (comandaRepository.Excluir(id))
+                if (comandaRepository.Excluir(comanda))
                 {
                     ViewData["mensagem"] = "<h1>Usuario cadastrado com sucesso!</h1>";
+                    return RedirectToAction("Index");
                 }
                 else
                 {
                     ViewData["mensagem"] = "<h1>DEU RUIM</h1>";
-                    return View();
+                    return View(comanda);
                 }
 
-                return RedirectToAction("Index");
             }
             catch
             {
